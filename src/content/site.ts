@@ -13,8 +13,7 @@ export const SITE = {
 
 export const PUBLISHER = {
   name: 'Luca Martinet',
-  legalForm: 'micro-entrepreneur registered in France, SIRET [SIRET]',
-  address: '[ADDRESS]',
+  legalForm: 'an individual based in France',
 } as const
 
 export const RELEASE = {

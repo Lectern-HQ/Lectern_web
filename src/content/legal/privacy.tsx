@@ -12,7 +12,7 @@ export const PRIVACY_POLICY: LegalDocument = {
       heading: 'Who is responsible',
       body: (
         <p>
-          {PUBLISHER.name}, {PUBLISHER.address}, {SITE.contactEmail}. This policy covers the Lectern app and this
+          {PUBLISHER.name}, {SITE.contactEmail}. This policy covers the Lectern app and this
           website. "We" means the person or company named here.
         </p>
       ),

@@ -12,11 +12,14 @@ export const LEGAL_NOTICE: LegalDocument = {
       body: (
         <>
           <p>
-            This website and the Lectern app are published by {PUBLISHER.name}, {PUBLISHER.legalForm},{' '}
-            {PUBLISHER.address}.
+            This website and the Lectern app are published by {PUBLISHER.name}, {PUBLISHER.legalForm}.
           </p>
-          <p>Contact: {SITE.contactEmail}. [PHONE, if you want to give one]</p>
-          <p>Director of publication: {PUBLISHER.name}. [VAT number, if you have one.]</p>
+          <p>
+            Lectern is still under construction and nothing is sold yet. The business registration details will be
+            published here before the first sale.
+          </p>
+          <p>Contact: {SITE.contactEmail}.</p>
+          <p>Director of publication: {PUBLISHER.name}.</p>
         </>
       ),
     },
