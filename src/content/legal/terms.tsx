@@ -22,8 +22,8 @@ export const TERMS_OF_USE: LegalDocument = {
       heading: 'Your licence',
       body: (
         <p>
-          We give you a personal, non-exclusive, non-transferable licence to install and use Lectern on your own
-          computers [CONFIRM: how many]. You may not sell, rent, copy or share the app or your licence key, and you may
+          We give you a personal, non-exclusive, non-transferable licence to install and use Lectern on{' '}
+          {PRICING.macsPerLicence === 1 ? 'one Mac' : `${PRICING.macsPerLicence} Macs`} that you own or control. You may not sell, rent, copy or share the app or your licence key, and you may
           not reverse engineer the app except where the law allows it.
         </p>
       ),
@@ -86,8 +86,9 @@ export const TERMS_OF_USE: LegalDocument = {
           </p>
           <p>
             Monthly and Yearly plans renew until you cancel. You can cancel at any time and keep the plan until the end
-            of the period you paid for. Lifetime means [CONFIRM: for as long as we offer Lectern, or for the current
-            major version]. Your transcripts stay yours whether or not you have a plan.
+            of the period you paid for. Lifetime means you pay once and never pay again: you get every update for as
+            long as we make Lectern, and the version you have keeps working after that. Your transcripts stay yours
+            whether or not you have a plan.
           </p>
         </>
       ),
@@ -96,10 +97,12 @@ export const TERMS_OF_USE: LegalDocument = {
       heading: 'Refunds and withdrawal',
       body: (
         <p>
-          [CONFIRM before launch.] If you live in the EU, you have 14 days to withdraw from a purchase. For digital
-          content you can lose that right once the download has begun, and only if you agreed to that at checkout and
-          we confirmed it. Beyond what the law gives you, we offer [YOUR REFUND POLICY]. Write to {SITE.contactEmail} to
-          ask for a refund.
+          Sales are final and we do not offer refunds, except where the law requires one. Your first{' '}
+          {PRICING.freeLectures} lectures are free so you can try Lectern before you pay. If you live in the EU, you
+          normally have 14 days to withdraw from a purchase. Because a plan gives you access straight away, at checkout
+          you are asked to agree that it starts at once and that you lose this right; without that agreement, you keep
+          it. If Lectern does not work as described, your legal rights to have it fixed or to get your money back still
+          apply. Write to {SITE.contactEmail}.
         </p>
       ),
     },

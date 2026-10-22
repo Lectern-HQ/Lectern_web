@@ -40,6 +40,8 @@ export const PRICING = {
   monthly: 10,
   yearly: 30,
   lifetime: 100,
+  /** Macs one licence covers */
+  macsPerLicence: 1,
 } as const
 
 export const PROVIDERS = {
