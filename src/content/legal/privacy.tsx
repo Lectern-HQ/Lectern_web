@@ -86,7 +86,8 @@ export const PRIVACY_POLICY: LegalDocument = {
       body: (
         <>
           <p>
-            This website uses no cookies and no analytics. [CONFIRM] Our host, {PROVIDERS.hosting}, keeps server logs
+            This website uses no cookies and no analytics, and loads nothing from other sites: its fonts are served from{' '}
+            {SITE.domain}. Our host, {PROVIDERS.hosting}, keeps server logs
             with your IP address, the time and the page requested for {LOG_RETENTION_DAYS} days, to keep the site
             secure.
           </p>

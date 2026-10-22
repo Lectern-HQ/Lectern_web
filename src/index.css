@@ -18,8 +18,8 @@
   /* Below this width the hero chip, nav and app mockups switch to their compact forms */
   --breakpoint-compact: 700px;
 
-  --font-sans: "Bricolage Grotesque", ui-sans-serif, -apple-system, "Segoe UI", system-ui, sans-serif;
-  --font-serif: "Newsreader", ui-serif, Georgia, serif;
+  --font-sans: "Bricolage Grotesque Variable", ui-sans-serif, -apple-system, "Segoe UI", system-ui, sans-serif;
+  --font-serif: "Newsreader Variable", ui-serif, Georgia, serif;
 
   --container-page: 1376px;
 

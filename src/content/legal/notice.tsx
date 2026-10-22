@@ -69,8 +69,15 @@ export const LEGAL_NOTICE: LegalDocument = {
             <li>Interface: React, under the MIT licence.</li>
           </ul>
           <p>
-            Fonts on this website: Bricolage Grotesque and Newsreader, under the SIL Open Font Licence, served by Google
-            Fonts. [CONFIRM: self-host them if you want no request to Google; see the privacy policy.]
+            Fonts: Bricolage Grotesque and Newsreader, under the SIL Open Font Licence 1.1 (
+            <TextLink inline href="/licenses/OFL-bricolage-grotesque.txt">
+              Bricolage Grotesque licence
+            </TextLink>
+            ,{' '}
+            <TextLink inline href="/licenses/OFL-newsreader.txt">
+              Newsreader licence
+            </TextLink>
+            ). The app includes them, and this website serves them from {SITE.domain}.
           </p>
         </>
       ),
