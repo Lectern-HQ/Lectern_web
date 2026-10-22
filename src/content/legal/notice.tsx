@@ -59,7 +59,11 @@ export const LEGAL_NOTICE: LegalDocument = {
             </li>
             <li>Voice detection: Silero VAD, under the MIT licence.</li>
             <li>Speech engine: whisper.cpp, under the MIT licence.</li>
-            <li>Recording download: yt-dlp, released into the public domain under the Unlicense.</li>
+            <li>
+              Recording download: yt-dlp, released into the public domain under the Unlicense. The macOS build Lectern
+              includes is a separate program that also contains GPLv3+ code, so that program as a whole is under the GNU
+              GPL version 3 or later. Its source is at github.com/yt-dlp/yt-dlp.
+            </li>
             <li>Audio conversion: FFmpeg, under the GNU LGPL version 2.1.</li>
             <li>Application framework: Tauri, under the MIT or Apache 2.0 licence.</li>
             <li>Interface: React, under the MIT licence.</li>
