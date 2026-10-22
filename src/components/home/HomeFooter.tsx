@@ -1,5 +1,6 @@
 import { SITE } from '../../content/site'
 import { SECTION_IDS, anchor } from '../../routes'
+import { ReleaseLink } from '../changelog/ReleaseLink'
 import { LegalNav } from '../layout/LegalNav'
 import { Container } from '../ui/Container'
 import { SlantedSection } from '../ui/SlantedSection'
@@ -19,6 +20,7 @@ export function HomeFooter() {
       <Container className="flex flex-wrap items-baseline justify-between gap-x-10 gap-y-3 text-base">
         <Wordmark size="sm" />
         <span className="text-muted">{SITE.owner}</span>
+        <ReleaseLink />
         <TextLink href={anchor(SECTION_IDS.top)}>Back to top</TextLink>
       </Container>
 

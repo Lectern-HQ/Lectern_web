@@ -3,6 +3,7 @@ export const ROUTES = {
   privacy: '/privacy',
   terms: '/terms',
   legal: '/legal',
+  changelog: '/changelog',
 } as const
 
 /** Element ids that links jump to */

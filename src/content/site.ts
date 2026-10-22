@@ -1,3 +1,5 @@
+import release from 'virtual:release'
+
 /**
  * Every fact the site repeats across pages. Bracketed values are placeholders
  * to fill in before launch; change them here and every page follows.
@@ -16,11 +18,13 @@ export const PUBLISHER = {
   legalForm: 'an individual based in France',
 } as const
 
+/** Version, date and download come from the published update feed, so each release updates the site. */
 export const RELEASE = {
-  version: '0.1.0',
+  version: release.version,
+  publishedAt: release.publishedAt,
+  downloadUrl: release.dmgUrl,
   minMacOS: '13 Ventura',
   chip: 'Apple Silicon',
-  downloadUrl: '[DOWNLOAD URL]',
 } as const
 
 export const SPEECH_MODEL = {
@@ -71,12 +75,26 @@ export function releaseSummary(...extra: string[]): string {
   ])
 }
 
+export const SYSTEM_REQUIREMENTS: readonly string[] = [
+  `A Mac with ${RELEASE.chip} (M1 or later)`,
+  `macOS ${RELEASE.minMacOS} or later`,
+  `About ${SPEECH_MODEL.size} of free space for the speech model, downloaded once on first launch`,
+  'An internet connection to download lectures; transcribing runs offline',
+]
+
 export function freeTrialNote(): string {
   return `Free for your first ${PRICING.freeLectures} lectures.`
 }
 
 export function formatPrice(amount: number): string {
   return `${PRICING.currency} ${amount}`
+}
+
+/** "2026-10-22" or a full ISO timestamp → "22 Oct 2026" */
+export function formatDate(isoDate: string): string {
+  return new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }).format(
+    new Date(isoDate),
+  )
 }
 
 export function formatList(items: readonly string[]): string {

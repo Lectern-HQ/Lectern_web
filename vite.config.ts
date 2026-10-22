@@ -1,6 +1,7 @@
 import { defineConfig, type Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
+import { releaseFeed } from './build/releaseFeed.ts'
 import { ROUTES } from './src/routes.ts'
 
 /**
@@ -34,6 +35,7 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
+    releaseFeed(),
     staticRoutePages(),
   ],
 })

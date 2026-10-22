@@ -1,5 +1,7 @@
-import { RELEASE, releaseSummary } from '../../content/site'
+import { RELEASE, formatDate, joinMeta } from '../../content/site'
 import { SECTION_IDS } from '../../routes'
+import { ReleaseLink } from '../changelog/ReleaseLink'
+import { SystemRequirements } from '../changelog/SystemRequirements'
 import { Container } from '../ui/Container'
 import { SlantedSection } from '../ui/SlantedSection'
 import { DownloadPrompt } from './DownloadPrompt'
@@ -19,11 +21,15 @@ export function DownloadSection() {
       <Container>
         <DownloadPrompt
           lede="Install Lectern on your Mac and read your first transcript today."
-          meta={releaseSummary('Windows planned')}
+          meta={joinMeta([`Version ${RELEASE.version}`, `released ${formatDate(RELEASE.publishedAt)}`, 'Windows planned'])}
           href={RELEASE.downloadUrl}
           tone="dark"
           metaUnder="lede"
         />
+        <div className="mt-10 flex flex-wrap items-end justify-between gap-x-12 gap-y-4 text-pale">
+          <SystemRequirements />
+          <ReleaseLink />
+        </div>
       </Container>
     </SlantedSection>
   )

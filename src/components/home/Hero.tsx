@@ -1,5 +1,5 @@
 import { HOME_NAV } from '../../content/home'
-import { freeTrialNote, releaseSummary } from '../../content/site'
+import { RELEASE, freeTrialNote, releaseSummary } from '../../content/site'
 import { SECTION_IDS, anchor } from '../../routes'
 import { SiteHeader } from '../layout/SiteHeader'
 import { DownloadPrompt } from './DownloadPrompt'
@@ -29,7 +29,7 @@ export function Hero() {
         lede="Lectern turns a recorded lecture into a transcript with timestamps. It runs on your Mac. No account, nothing uploaded."
         meta={releaseSummary()}
         note={freeTrialNote()}
-        href={anchor(SECTION_IDS.download)}
+        href={RELEASE.downloadUrl}
         tone="light"
         metaUnder="button"
         ledeClassName="animate-rise [animation-delay:.25s]"
