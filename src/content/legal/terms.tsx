@@ -81,7 +81,7 @@ export const TERMS_OF_USE: LegalDocument = {
           <p>
             [CONFIRM: these plans are not built yet.] Your first {PRICING.freeLectures} lectures are free. After that you
             need a plan: Monthly at {formatPrice(PRICING.monthly)} per month, Yearly at {formatPrice(PRICING.yearly)}{' '}
-            per year, or Lifetime at {formatPrice(PRICING.lifetime)} once. Prices include tax.
+            per year, or Lifetime at {formatPrice(PRICING.lifetime)} once. No VAT is charged (TVA non applicable, art. 293 B du CGI).
             You buy on our website, and {PROVIDERS.payment} handles the payment.
           </p>
           <p>

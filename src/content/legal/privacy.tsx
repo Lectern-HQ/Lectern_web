@@ -1,5 +1,5 @@
 import { ROUTES } from '../../routes'
-import { LOG_RETENTION_DAYS, PROVIDERS, PUBLISHER, SITE, SPEECH_MODEL } from '../site'
+import { PURCHASE_RECORD_YEARS, PROVIDERS, PUBLISHER, SITE, SPEECH_MODEL } from '../site'
 import type { LegalDocument } from './types'
 
 export const PRIVACY_POLICY: LegalDocument = {
@@ -68,16 +68,19 @@ export const PRIVACY_POLICY: LegalDocument = {
               server, it sees your IP address and the time of the request.
             </li>
             <li>
-              <strong>Our update server, {PROVIDERS.updateHost}.</strong> The update check asks for the latest version
-              and sends nothing that identifies you. [CONFIRM: state exactly what the request contains, for example the
-              app version and macOS version.]
+              <strong>Our update server, {PROVIDERS.updateHost}.</strong> Each time Lectern opens, and when you press check in
+              Settings, it downloads a small file listing the latest version. The request carries no version number,
+              no device or install identifier, no licence key and no cookie; like any request, it shows your IP address
+              and the time. If you install an update, Lectern downloads it from the address that file lists and checks
+              its signature first.
             </li>
             <li>
               <strong>Our website.</strong> If you choose Buy, Lectern opens our website in your browser. See "This
               website" below.
             </li>
           </ul>
-          <p>Lectern sends no analytics, no crash reports, no recordings and no transcripts. [CONFIRM]</p>
+          <p>Lectern sends no analytics, no crash reports, no recordings and no transcripts. When Lectern opens, macOS may run its own security checks
+            with Apple; those come from macOS, not from Lectern.</p>
         </>
       ),
     },
@@ -87,9 +90,9 @@ export const PRIVACY_POLICY: LegalDocument = {
         <>
           <p>
             This website uses no cookies and no analytics, and loads nothing from other sites: its fonts are served from{' '}
-            {SITE.domain}. Our host, {PROVIDERS.hosting}, keeps server logs
-            with your IP address, the time and the page requested for {LOG_RETENTION_DAYS} days, to keep the site
-            secure.
+            {SITE.domain}. We run no server of our own. Our host, {PROVIDERS.hosting}, logs
+            your IP address to keep the site secure and keeps those logs under its own privacy statement; we cannot
+            see them.
           </p>
           <p>
             If you buy a plan, {PROVIDERS.payment} processes your payment and tells us [CONFIRM: your email address and
@@ -117,8 +120,10 @@ export const PRIVACY_POLICY: LegalDocument = {
             {PROVIDERS.modelHost} and {PROVIDERS.updateHost}. We do not sell data and we do not show ads.
           </p>
           <p>
-            [CONFIRM: if any of them is outside the EU, the EEA or Switzerland, name it and the safeguard that covers
-            the transfer.]
+            {PROVIDERS.hosting} (GitHub, Inc.) and {PROVIDERS.modelHost} (Hugging Face, Inc.) are based in the United
+            States. GitHub is certified under the EU-US and Swiss-US Data Privacy Frameworks, which the European
+            Commission and Switzerland recognise as giving adequate protection. We send Hugging Face no data: the app
+            downloads the model from it directly, and its own privacy policy covers that request.
           </p>
         </>
       ),
@@ -127,8 +132,8 @@ export const PRIVACY_POLICY: LegalDocument = {
       heading: 'How long we keep it',
       body: (
         <p>
-          Server logs: {LOG_RETENTION_DAYS} days. Purchase records: for as long as accounting law requires, [CONFIRM:
-          the period that applies to you]. Everything the app stores on your computer stays there until you delete it.
+          Server logs: we keep none; our host keeps its own, as described above. Purchase records: {PURCHASE_RECORD_YEARS}{' '}
+          years after the purchase, as French accounting law requires, then deleted. Everything the app stores on your computer stays there until you delete it.
         </p>
       ),
     },

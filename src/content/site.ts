@@ -9,13 +9,16 @@ export const SITE = {
   name: 'Lectern',
   domain: 'lecternstudy.com',
   owner: 'Luca Martinet',
-  contactEmail: '[CONTACT EMAIL]',
+  contactEmail: 'hello@lecternstudy.com',
   country: 'France',
 } as const
 
 export const PUBLISHER = {
   name: 'Luca Martinet',
-  legalForm: 'an individual based in France',
+  tradingName: 'Luca Martinet EI',
+  legalForm: 'entrepreneur individuel (sole trader) registered in France',
+  siren: '131 955 395',
+  address: '377 rue du Riondel, 01210 Ornex, France',
 } as const
 
 /** Version, date and download come from the published update feed, so each release updates the site. */
@@ -57,9 +60,10 @@ export const HOST_DETAILS = {
   website: 'github.com',
 } as const
 
-export const LOG_RETENTION_DAYS = '[N]'
+/** French accounting law keeps sales records for 10 years (Code de commerce, article L123-22) */
+export const PURCHASE_RECORD_YEARS = 10
 
-export const LEGAL_UPDATED = '[DATE]'
+export const LEGAL_UPDATED = '26 October 2026'
 
 const META_SEPARATOR = ' · '
 
