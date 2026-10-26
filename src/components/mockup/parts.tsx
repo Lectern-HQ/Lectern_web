@@ -5,9 +5,9 @@ import { CheckIcon } from '../ui/icons'
 /** Drawn controls for the app mockups. They are pictures, not working buttons. */
 
 const BUTTON_VARIANTS = {
-  solid: 'bg-accent px-4 font-semibold text-paper',
-  outline: 'border border-control bg-white px-4 font-semibold',
-  select: 'border border-control bg-white px-3.5',
+  solid: 'bg-btn px-4 font-semibold text-on-btn',
+  outline: 'border border-control bg-card px-4 font-semibold',
+  select: 'border border-control bg-card px-3.5',
 } as const
 
 interface MockButtonProps {
@@ -21,7 +21,7 @@ export function MockButton({ variant, children }: MockButtonProps) {
 
 export function CheckBadge() {
   return (
-    <span className="inline-flex size-4 flex-none items-center justify-center rounded-full bg-accent text-paper">
+    <span className="inline-flex size-4 flex-none items-center justify-center rounded-full bg-btn text-on-btn">
       <CheckIcon size={10} />
     </span>
   )
@@ -51,7 +51,7 @@ export function ProgressBar({ percent, start, end }: ProgressBarProps) {
   return (
     <div>
       <div className="h-2 overflow-hidden rounded bg-sand">
-        <div className="h-full bg-accent" style={{ width: `${percent}%` }} />
+        <div className="a-grow h-full origin-left bg-btn" style={{ width: `${percent}%` }} />
       </div>
       <ScreenHint className="mt-1.5 flex justify-between">
         <span>{start}</span>

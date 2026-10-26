@@ -1,19 +1,45 @@
 @import "tailwindcss";
 
+/* dark: applies when dark is chosen with the toggle, or when the system is dark and light was not chosen */
+@custom-variant dark {
+  &:where([data-theme="dark"], [data-theme="dark"] *) {
+    @slot;
+  }
+  @media (prefers-color-scheme: dark) {
+    &:where(html:not([data-theme="light"]), html:not([data-theme="light"]) *) {
+      @slot;
+    }
+  }
+}
+
 @theme {
+  /* Light colors; the dark set below replaces them */
   --color-paper: #f4f4f1;
   --color-ink: #121618;
   --color-mist: #e9e9e4;
-  --color-accent: #1d2326;
   --color-muted: #41484b;
   --color-subtle: #596064;
+  --color-line: #c4c7c0;
+  --color-glass: rgb(244 244 241 / 0.94);
+  /* Dark surfaces (footer, "Yours to keep", the hero transcript) and the text on them */
+  --color-accent: #1d2326;
+  --color-on-accent: #f4f4f1;
   --color-pale: #c9d0d2;
   --color-haze: #e3e6e7;
+  /* Buttons and the logo: dark on light, light on dark */
+  --color-btn: #1d2326;
+  --color-on-btn: #f4f4f1;
   --color-focus: #8fa3ab;
-  --color-frame: #b5b8b2;
-  --color-rule: #dadad4;
-  --color-sand: #e4e4de;
   --color-control: #8e928c;
+  /* The drawn app windows */
+  --color-window: #f4f4f1;
+  --color-card: #ffffff;
+  --color-sand: #e4e4de;
+  --color-selection: #d5dde0;
+  --color-chip: #e9e9e4;
+  --color-rule: #dadad4;
+  --color-ruled: #e3e6ea;
+  --color-frame: #b5b8b2;
 
   /* Below this width the hero chip, nav and app mockups switch to their compact forms */
   --breakpoint-compact: 700px;
@@ -56,6 +82,7 @@
 
   html {
     scroll-behavior: smooth;
+    color-scheme: light;
   }
 
   body {
@@ -82,11 +109,61 @@
   }
 }
 
+/* Dark colors: on request through the toggle, or by default when the system is dark */
+
+@layer base {
+  html[data-theme="dark"] {
+    --color-paper: #121618;
+    --color-ink: #ecede9;
+    --color-mist: #1a2024;
+    --color-muted: #b0b6b8;
+    --color-subtle: #9aa2a5;
+    --color-line: #333b3f;
+    --color-glass: rgb(18 22 24 / 0.94);
+    --color-accent: #232b30;
+    --color-btn: #ecede9;
+    --color-on-btn: #121618;
+    --color-window: #1a2024;
+    --color-card: #232b30;
+    --color-sand: #151a1d;
+    --color-selection: #2e383d;
+    --color-chip: #2a3338;
+    --color-rule: #39424a;
+    --color-ruled: #2e383d;
+    --color-frame: #4a545a;
+    color-scheme: dark;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html:not([data-theme="light"]) {
+      --color-paper: #121618;
+      --color-ink: #ecede9;
+      --color-mist: #1a2024;
+      --color-muted: #b0b6b8;
+      --color-subtle: #9aa2a5;
+      --color-line: #333b3f;
+      --color-glass: rgb(18 22 24 / 0.94);
+      --color-accent: #232b30;
+      --color-btn: #ecede9;
+      --color-on-btn: #121618;
+      --color-window: #1a2024;
+      --color-card: #232b30;
+      --color-sand: #151a1d;
+      --color-selection: #2e383d;
+      --color-chip: #2a3338;
+      --color-rule: #39424a;
+      --color-ruled: #2e383d;
+      --color-frame: #4a545a;
+      color-scheme: dark;
+    }
+  }
+}
+
 /* Type scale */
 
 @utility type-display {
-  font-size: clamp(56px, 14.5vw, 232px);
-  line-height: 0.92;
+  font-size: clamp(52px, 10.5vw, 168px);
+  line-height: 0.94;
   font-weight: 700;
   letter-spacing: -0.045em;
 }
@@ -139,4 +216,25 @@
     animation-timeline: view();
     animation-range: entry 0% entry 45%;
   }
+}
+
+/* Questions open and close smoothly where the browser can animate to auto height */
+
+.faq-item {
+  interpolate-size: allow-keywords;
+}
+
+.faq-item::details-content {
+  block-size: 0;
+  overflow: clip;
+  opacity: 0;
+  transition:
+    block-size 0.38s var(--ease-spring),
+    opacity 0.28s ease,
+    content-visibility 0.38s allow-discrete;
+}
+
+.faq-item[open]::details-content {
+  block-size: auto;
+  opacity: 1;
 }

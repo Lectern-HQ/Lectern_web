@@ -12,7 +12,7 @@ export const PRIVACY_POLICY: LegalDocument = {
       heading: 'Who is responsible',
       body: (
         <p>
-          {PUBLISHER.name}, {SITE.contactEmail}. This policy covers the Lectern app and this
+          {PUBLISHER.tradingName}, {PUBLISHER.legalForm}, {PUBLISHER.address}, {SITE.contactEmail}. This policy covers the Lectern app and this
           website. "We" means the person or company named here.
         </p>
       ),
@@ -120,7 +120,7 @@ export const PRIVACY_POLICY: LegalDocument = {
             {PROVIDERS.modelHost} and {PROVIDERS.updateHost}. We do not sell data and we do not show ads.
           </p>
           <p>
-            {PROVIDERS.hosting} (GitHub, Inc.) and {PROVIDERS.modelHost} (Hugging Face, Inc.) are based in the United
+            GitHub, Inc., which runs {PROVIDERS.hosting}, and Hugging Face, Inc. are based in the United
             States. GitHub is certified under the EU-US and Swiss-US Data Privacy Frameworks, which the European
             Commission and Switzerland recognise as giving adequate protection. We send Hugging Face no data: the app
             downloads the model from it directly, and its own privacy policy covers that request.

@@ -1,0 +1,417 @@
+/*
+ * The scroll story: the screen stays pinned while five scenes take turns.
+ * Only where scroll-driven animation is supported, motion is welcome and the window is not very tall;
+ * everywhere else the scenes simply stack.
+ *
+ * Every animation runs over the whole pinned scroll, with its own steps placed inside it, and states its value at
+ * 0% and 100%. Safari does not reliably hold an animation's first or last frame outside a narrower range, which
+ * left scenes that were not playing visible behind the current one.
+ */
+
+.story-scene {
+  padding: 96px 32px;
+}
+
+.story-hint {
+  display: none;
+}
+
+/* Without the animation, show the notes already filled in */
+.story-scene .a-gap {
+  opacity: 0;
+}
+
+@keyframes story-scene-0 {
+  0% {
+    opacity: 1;
+  }
+  27.43% {
+    opacity: 1;
+  }
+  28.57% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes story-scene-1 {
+  0% {
+    opacity: 0;
+  }
+  28.57% {
+    opacity: 0;
+  }
+  29.71% {
+    opacity: 1;
+  }
+  41.72% {
+    opacity: 1;
+  }
+  42.86% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes story-scene-2 {
+  0% {
+    opacity: 0;
+  }
+  42.86% {
+    opacity: 0;
+  }
+  44.0% {
+    opacity: 1;
+  }
+  56.0% {
+    opacity: 1;
+  }
+  57.14% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes story-scene-3 {
+  0% {
+    opacity: 0;
+  }
+  57.14% {
+    opacity: 0;
+  }
+  58.28% {
+    opacity: 1;
+  }
+  70.29% {
+    opacity: 1;
+  }
+  71.43% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes story-scene-4 {
+  0% {
+    opacity: 0;
+  }
+  71.43% {
+    opacity: 0;
+  }
+  72.57% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes story-hint {
+  0% {
+    opacity: 1;
+  }
+  12.86% {
+    opacity: 1;
+  }
+  21.43% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes story-gap-0 {
+  0% {
+    opacity: 1;
+  }
+  17.43% {
+    opacity: 1;
+  }
+  19.71% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes story-fill-0 {
+  0% {
+    opacity: 0;
+  }
+  17.43% {
+    opacity: 0;
+  }
+  19.71% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes story-gap-1 {
+  0% {
+    opacity: 1;
+  }
+  21.14% {
+    opacity: 1;
+  }
+  23.43% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes story-fill-1 {
+  0% {
+    opacity: 0;
+  }
+  21.14% {
+    opacity: 0;
+  }
+  23.43% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes story-type-1 {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  30.71% {
+    clip-path: inset(0 100% 0 0);
+  }
+  36.43% {
+    clip-path: inset(0 0 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes story-fade-1 {
+  0% {
+    opacity: 0;
+  }
+  36.43% {
+    opacity: 0;
+  }
+  38.57% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes story-grow-2 {
+  0% {
+    transform: scaleX(0);
+  }
+  44.29% {
+    transform: scaleX(0);
+  }
+  54.29% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes story-grow-3 {
+  0% {
+    transform: scaleX(0);
+  }
+  58.57% {
+    transform: scaleX(0);
+  }
+  68.57% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes story-type-4 {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  73.14% {
+    clip-path: inset(0 100% 0 0);
+  }
+  77.14% {
+    clip-path: inset(0 0 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes story-fade-4 {
+  0% {
+    opacity: 0;
+  }
+  77.14% {
+    opacity: 0;
+  }
+  78.57% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes story-hit-4 {
+  0% {
+    background-color: transparent;
+    box-shadow: 0 0 0 1px transparent;
+  }
+  78.57% {
+    background-color: transparent;
+    box-shadow: 0 0 0 1px transparent;
+  }
+  81.43% {
+    background-color: var(--color-selection);
+    box-shadow: 0 0 0 1px var(--color-focus);
+  }
+  100% {
+    background-color: var(--color-selection);
+    box-shadow: 0 0 0 1px var(--color-focus);
+  }
+}
+
+@media (max-height: 1300px) {
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .story-stage {
+        height: calc(6 * min(100vh, 900px));
+        height: calc(6 * min(100dvh, 900px));
+        view-timeline: --story block;
+      }
+
+      .story-pin {
+        position: sticky;
+        top: 0;
+        height: min(100vh, 900px);
+        height: min(100dvh, 900px);
+        overflow: hidden;
+      }
+
+      .story-scene,
+      .story-hint,
+      .story-scene .a-type,
+      .story-scene .a-fade,
+      .story-scene .a-grow,
+      .story-scene .a-hit,
+      .story-scene .a-gap,
+      .story-scene .a-fill {
+        animation-duration: auto;
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+        animation-timeline: --story;
+      }
+
+      .story-scene {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        padding: 76px 32px 24px;
+        pointer-events: none;
+      }
+
+      .story-hint {
+        display: flex;
+        justify-content: center;
+      }
+
+      .story-scene-0 .a-gap {
+        opacity: 1;
+      }
+
+      .story-scene-0 {
+        animation-name: story-scene-0;
+      }
+      .story-scene-1 {
+        animation-name: story-scene-1;
+      }
+      .story-scene-2 {
+        animation-name: story-scene-2;
+      }
+      .story-scene-3 {
+        animation-name: story-scene-3;
+      }
+      .story-scene-4 {
+        animation-name: story-scene-4;
+      }
+      .story-hint {
+        animation-name: story-hint;
+      }
+      .story-scene-0 .a-gap.a-step-0 {
+        animation-name: story-gap-0;
+      }
+      .story-scene-0 .a-fill.a-step-0 {
+        animation-name: story-fill-0;
+      }
+      .story-scene-0 .a-gap.a-step-1 {
+        animation-name: story-gap-1;
+      }
+      .story-scene-0 .a-fill.a-step-1 {
+        animation-name: story-fill-1;
+      }
+      .story-scene-1 .a-type {
+        animation-name: story-type-1;
+      }
+      .story-scene-1 .a-fade {
+        animation-name: story-fade-1;
+      }
+      .story-scene-2 .a-grow {
+        animation-name: story-grow-2;
+      }
+      .story-scene-3 .a-grow {
+        animation-name: story-grow-3;
+      }
+      .story-scene-4 .a-type {
+        animation-name: story-type-4;
+      }
+      .story-scene-4 .a-fade {
+        animation-name: story-fade-4;
+      }
+      .story-scene-4 .a-hit {
+        animation-name: story-hit-4;
+      }
+
+      @media (max-width: 700px) {
+        .story-scene h2 {
+          font-size: clamp(26px, 8vw, 36px);
+        }
+        .story-scene p {
+          font-size: 16px;
+          line-height: 1.4;
+        }
+        .story-picture {
+          transform-origin: top center;
+          zoom: 0.82;
+        }
+      }
+    }
+  }
+}

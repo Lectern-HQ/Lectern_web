@@ -13,7 +13,7 @@ export const TERMS_OF_USE: LegalDocument = {
       heading: 'Agreement',
       body: (
         <p>
-          These terms are between you and {PUBLISHER.name} ("we"). By installing or using Lectern
+          These terms are between you and {PUBLISHER.tradingName}, {PUBLISHER.legalForm}, {PUBLISHER.address} ("we"). By installing or using Lectern
           you accept them. If you do not accept them, do not install the app.
         </p>
       ),

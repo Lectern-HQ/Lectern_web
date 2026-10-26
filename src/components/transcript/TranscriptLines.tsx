@@ -1,45 +1,56 @@
+import type { ReactNode } from 'react'
 import { SAMPLE_LECTURE, pauseLabel } from '../../content/home'
 import { cn } from '../../lib/cn'
 
-/** Two looks for the same transcript: a tiny ticker inside the hero headline, and the app window. */
-const VARIANTS = {
-  chip: {
-    row: 'flex gap-[1.4em] pb-[0.7em]',
-    time: 'flex-none pt-[0.25em] font-sans text-[0.8em] text-pale tabular-nums',
-    text: '',
-    pause: 'block pb-[0.7em] pl-[4.6em] font-sans text-[0.8em] text-pale',
-  },
-  window: {
-    row: 'flex gap-4 pt-3',
-    time: 'flex-none pt-[5px] text-[12.5px] text-subtle tabular-nums',
-    text: 'font-serif text-[17px] leading-[1.6]',
-    pause: 'mt-2.5 ml-[58px] self-start rounded bg-mist px-2.5 py-[5px] text-xs text-muted',
-  },
-} as const
-
 interface TranscriptLinesProps {
-  variant: keyof typeof VARIANTS
   /** Show only the first entries */
   limit?: number
-  /** On narrow screens, show only this many entries */
-  compactLimit?: number
+  /** A searched term, marked wherever it appears */
+  highlight?: string
+  /** Extra classes for each mark, such as the scroll story's animation */
+  markClassName?: string
 }
 
-export function TranscriptLines({ variant, limit, compactLimit }: TranscriptLinesProps) {
-  const styles = VARIANTS[variant]
-  const hiddenWhenCompact = (index: number) => compactLimit !== undefined && index >= compactLimit && 'max-compact:hidden'
+function withMarks(text: string, term: string | undefined, markClassName: string | undefined): ReactNode {
+  if (!term) {
+    return text
+  }
+  return text.split(term).flatMap((part, index) =>
+    index === 0
+      ? [part]
+      : [
+          <mark
+            key={index}
+            className={cn(
+              'rounded-xs bg-selection px-0.5 text-inherit shadow-[0_0_0_1px_var(--color-focus)]',
+              markClassName,
+            )}
+          >
+            {term}
+          </mark>,
+          part,
+        ],
+  )
+}
 
+/** The sample transcript as the app shows it: a timestamp beside each passage, and the skipped break. */
+export function TranscriptLines({ limit, highlight, markClassName }: TranscriptLinesProps) {
   return (
     <>
-      {SAMPLE_LECTURE.entries.slice(0, limit).map((entry, index) =>
+      {SAMPLE_LECTURE.entries.slice(0, limit).map((entry) =>
         entry.kind === 'pause' ? (
-          <span key={`pause-${entry.minutes}`} className={cn(styles.pause, hiddenWhenCompact(index))}>
+          <span
+            key={`pause-${entry.minutes}`}
+            className="mt-2.5 ml-[58px] self-start rounded bg-chip px-2.5 py-[5px] text-xs text-muted"
+          >
             {pauseLabel(entry.minutes)}
           </span>
         ) : (
-          <span key={entry.time} className={cn(styles.row, hiddenWhenCompact(index))}>
-            <span className={styles.time}>{entry.time}</span>
-            <span className={styles.text}>{entry.text}</span>
+          <span key={entry.time} className="flex gap-4 pt-3">
+            <span className="flex-none pt-[5px] text-[12.5px] text-subtle tabular-nums">{entry.time}</span>
+            <span className="font-serif text-[17px] leading-[1.6]">
+              {withMarks(entry.text, highlight, markClassName)}
+            </span>
           </span>
         ),
       )}

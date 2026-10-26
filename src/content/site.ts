@@ -81,13 +81,6 @@ export function releaseSummary(...extra: string[]): string {
   ])
 }
 
-export const SYSTEM_REQUIREMENTS: readonly string[] = [
-  `A Mac with ${RELEASE.chip} (M1 or later)`,
-  `macOS ${RELEASE.minMacOS} or later`,
-  `About ${SPEECH_MODEL.size} of free space for the speech model, downloaded once on first launch`,
-  'An internet connection to download lectures; transcribing runs offline',
-]
-
 export function freeTrialNote(): string {
   return `Free for your first ${PRICING.freeLectures} lectures.`
 }

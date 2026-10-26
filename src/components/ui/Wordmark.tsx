@@ -11,13 +11,14 @@ const SIZES = {
 
 interface WordmarkProps {
   size: keyof typeof SIZES
+  className?: string
 }
 
 /** The logo mark followed by the name. */
-export function Wordmark({ size }: WordmarkProps) {
-  const { mark, className, label } = SIZES[size]
+export function Wordmark({ size, className }: WordmarkProps) {
+  const { mark, className: sizeClassName, label } = SIZES[size]
   return (
-    <span className={cn('flex items-center font-bold', className)}>
+    <span className={cn('flex items-center font-bold', sizeClassName, className)}>
       <LogoMark size={mark} label={label} />
       <span>{SITE.name}</span>
     </span>

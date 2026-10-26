@@ -4,7 +4,7 @@ import { cn } from '../../lib/cn'
 const TONES = {
   paper: 'bg-paper',
   mist: 'bg-mist',
-  accent: 'bg-accent text-paper',
+  accent: 'bg-accent text-on-accent',
 } as const
 
 interface SlantedSectionProps {

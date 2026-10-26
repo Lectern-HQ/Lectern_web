@@ -11,13 +11,10 @@ export const SECTION_IDS = {
   main: 'main',
   top: 'top',
   how: 'how',
-  privacy: 'privacy',
+  yours: 'yours',
   faq: 'faq',
-  download: 'download',
 } as const
 
 export function anchor(id: string): string {
   return `#${id}`
 }
-
-export const DOWNLOAD_FROM_ELSEWHERE = `${ROUTES.home}${anchor(SECTION_IDS.download)}`

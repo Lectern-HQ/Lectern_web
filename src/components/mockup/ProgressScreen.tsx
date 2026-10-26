@@ -22,7 +22,7 @@ function StepIcon({ status }: { status: StepStatus }) {
   if (status === 'done') {
     return <CheckBadge />
   }
-  return <span className={cn(RING, status === 'active' ? 'border-t-accent' : 'border-dashed')} />
+  return <span className={cn(RING, status === 'active' ? 'border-t-btn' : 'border-dashed')} />
 }
 
 export function ProgressScreen() {

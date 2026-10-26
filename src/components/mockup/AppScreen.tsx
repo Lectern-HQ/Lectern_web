@@ -18,9 +18,9 @@ export function AppScreen({ label, children }: AppScreenProps) {
     <div
       role="img"
       aria-label={label}
-      className="relative w-full max-w-[600px] overflow-hidden rounded-[10px] border border-frame bg-paper text-left text-ink shadow-[0_22px_44px_-28px_rgba(18,22,24,.5)]"
+      className="relative w-full max-w-[600px] overflow-hidden rounded-[10px] border border-frame bg-window text-left text-ink shadow-[0_22px_44px_-28px_rgba(18,22,24,.5)]"
     >
-      <div className="relative flex h-[34px] items-center border-b border-rule bg-white px-3.5">
+      <div className="relative flex h-[34px] items-center border-b border-rule bg-card px-3.5">
         <div className="flex gap-[7px]">
           {TRAFFIC_LIGHTS.map((color) => (
             <i key={color} className={cn('block size-[11px] rounded-full', color)} />
@@ -35,7 +35,7 @@ export function AppScreen({ label, children }: AppScreenProps) {
               key={item}
               className={cn(
                 'rounded px-2.5 py-[7px] text-[13px]',
-                index === 0 ? 'bg-white font-semibold shadow-[inset_3px_0_0_var(--color-accent)]' : 'text-muted',
+                index === 0 ? 'bg-card font-semibold shadow-[inset_3px_0_0_var(--color-btn)]' : 'text-muted',
               )}
             >
               {item}
