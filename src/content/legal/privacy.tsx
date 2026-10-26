@@ -1,5 +1,14 @@
 import { ROUTES } from '../../routes'
-import { PURCHASE_RECORD_YEARS, PROVIDERS, PUBLISHER, SITE, SPEECH_MODEL } from '../site'
+import {
+  HOST_DETAILS,
+  PAYMENT_DETAILS,
+  PURCHASE_RECORD_YEARS,
+  PROVIDERS,
+  PUBLISHER,
+  SITE,
+  SPEECH_MODEL,
+  formatList,
+} from '../site'
 import type { LegalDocument } from './types'
 
 export const PRIVACY_POLICY: LegalDocument = {
@@ -95,8 +104,9 @@ export const PRIVACY_POLICY: LegalDocument = {
             see them.
           </p>
           <p>
-            If you buy a plan, {PROVIDERS.payment} processes your payment and tells us [CONFIRM: your email address and
-            the licence key it issues]. We do not receive your card details.
+            If you buy a plan, {PROVIDERS.payment} ({PAYMENT_DETAILS.company}, in {PAYMENT_DETAILS.country}) processes
+            your payment and tells us your name, your email address, your billing country and what you bought. We use
+            your email address to send you your licence key and your invoice. We do not receive your card details.
           </p>
         </>
       ),
@@ -116,14 +126,15 @@ export const PRIVACY_POLICY: LegalDocument = {
       body: (
         <>
           <p>
-            Only the services named above, each for the job described: {PROVIDERS.hosting}, {PROVIDERS.payment},{' '}
-            {PROVIDERS.modelHost} and {PROVIDERS.updateHost}. We do not sell data and we do not show ads.
+            Only the services named above, each for the job described: {formatList(Object.values(PROVIDERS))}. We do
+            not sell data and we do not show ads.
           </p>
           <p>
-            GitHub, Inc., which runs {PROVIDERS.hosting}, and Hugging Face, Inc. are based in the United
+            {HOST_DETAILS.company}, which runs {PROVIDERS.hosting}, and Hugging Face, Inc. are based in the United
             States. GitHub is certified under the EU-US and Swiss-US Data Privacy Frameworks, which the European
             Commission and Switzerland recognise as giving adequate protection. We send Hugging Face no data: the app
-            downloads the model from it directly, and its own privacy policy covers that request.
+            downloads the model from it directly, and its own privacy policy covers that request. {PROVIDERS.payment}{' '}
+            processes payments in the European Union.
           </p>
         </>
       ),

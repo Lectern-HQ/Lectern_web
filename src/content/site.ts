@@ -49,10 +49,19 @@ export const PRICING = {
 
 export const PROVIDERS = {
   hosting: 'GitHub Pages',
-  payment: '[PAYMENT PROVIDER]',
-  modelHost: 'Hugging Face (huggingface.co)',
+  payment: 'Stripe',
+  modelHost: 'Hugging Face',
   updateHost: SITE.domain,
 } as const
+
+/** The company Stripe contracts with sellers in Europe */
+export const PAYMENT_DETAILS = {
+  company: 'Stripe Payments Europe, Limited',
+  country: 'Ireland',
+} as const
+
+/** Where plans are sold; other countries would bring their own VAT rules from the first sale */
+export const SALES_REGIONS = ['France', 'the rest of the European Union', 'Switzerland'] as const
 
 export const HOST_DETAILS = {
   company: 'GitHub, Inc.',
