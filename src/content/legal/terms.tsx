@@ -1,6 +1,6 @@
 import { TextLink } from '../../components/ui/TextLink'
 import { ROUTES } from '../../routes'
-import { PRICING, PROVIDERS, PUBLISHER, SALES_REGIONS, SITE, SPEECH_MODEL, formatList, formatPrice } from '../site'
+import { PRICING, PROVIDERS, PUBLISHER, SALES_REGIONS, SITE, SPEECH_MODEL, VAT_NOTE, formatList, formatPrice } from '../site'
 import type { LegalDocument } from './types'
 
 export const TERMS_OF_USE: LegalDocument = {
@@ -81,7 +81,7 @@ export const TERMS_OF_USE: LegalDocument = {
           <p>
             [CONFIRM: these plans are not built yet.] Your first {PRICING.freeLectures} lectures are free. After that you
             need a plan: Monthly at {formatPrice(PRICING.monthly)} per month, Yearly at {formatPrice(PRICING.yearly)}{' '}
-            per year, or Lifetime at {formatPrice(PRICING.lifetime)} once. No VAT is charged (TVA non applicable, art. 293 B du CGI).
+            per year, or Lifetime at {formatPrice(PRICING.lifetime)} once. {VAT_NOTE}
             You buy on our website, and {PROVIDERS.payment} handles the payment. Plans are sold to customers in{' '}
             {formatList(SALES_REGIONS)}.
           </p>

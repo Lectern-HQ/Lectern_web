@@ -7,6 +7,7 @@ export interface NavItem {
 
 export const HOME_NAV: readonly NavItem[] = [
   { label: 'How it works', href: anchor(SECTION_IDS.how) },
+  { label: 'Pricing', href: anchor(SECTION_IDS.pricing) },
   { label: 'Questions', href: anchor(SECTION_IDS.faq) },
 ]
 

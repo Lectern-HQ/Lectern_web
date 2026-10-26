@@ -11,6 +11,7 @@ export const SECTION_IDS = {
   main: 'main',
   top: 'top',
   how: 'how',
+  pricing: 'pricing',
   yours: 'yours',
   faq: 'faq',
 } as const

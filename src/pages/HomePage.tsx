@@ -1,5 +1,6 @@
 import { FaqSection } from '../components/home/FaqSection'
 import { Hero } from '../components/home/Hero'
+import { PricingSection } from '../components/home/PricingSection'
 import { HomeFooter } from '../components/home/HomeFooter'
 import { YoursSection } from '../components/home/YoursSection'
 import { SiteHeader } from '../components/layout/SiteHeader'
@@ -26,6 +27,7 @@ export function HomePage() {
       <Hero />
       <main id={SECTION_IDS.main}>
         <ScrollStory />
+        <PricingSection />
         <YoursSection />
         <FaqSection />
       </main>

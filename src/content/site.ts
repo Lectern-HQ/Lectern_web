@@ -47,6 +47,17 @@ export const PRICING = {
   macsPerLicence: 1,
 } as const
 
+export const VAT_NOTE = 'No VAT is charged (TVA non applicable, art. 293 B du CGI).'
+
+export type PlanId = 'monthly' | 'yearly' | 'lifetime'
+
+/** Stripe payment links; null until licence keys work, so the plan shows as coming soon */
+export const CHECKOUT_LINKS: Record<PlanId, string | null> = {
+  monthly: null,
+  yearly: null,
+  lifetime: null,
+}
+
 export const PROVIDERS = {
   hosting: 'GitHub Pages',
   payment: 'Stripe',
@@ -94,13 +105,31 @@ export function freeTrialNote(): string {
   return `Free for your first ${PRICING.freeLectures} lectures.`
 }
 
-/** 15 → "€15" */
-export function formatPrice(amount: number): string {
+function priceFormat(amount: number): Intl.NumberFormat {
+  const fractionDigits = Number.isInteger(amount) ? 0 : 2
   return new Intl.NumberFormat('en-GB', {
     style: 'currency',
     currency: PRICING.currency,
-    maximumFractionDigits: 0,
-  }).format(amount)
+    minimumFractionDigits: fractionDigits,
+    maximumFractionDigits: fractionDigits,
+  })
+}
+
+/** 15 → "€15", 100 / 12 → "€8.33" */
+export function formatPrice(amount: number): string {
+  return priceFormat(amount).format(amount)
+}
+
+/** 15 → { symbol: "€", value: "15" }, for prices set with a small currency sign */
+export function priceParts(amount: number): { symbol: string; value: string } {
+  const parts = priceFormat(amount).formatToParts(amount)
+  return {
+    symbol: parts.find(({ type }) => type === 'currency')?.value ?? '',
+    value: parts
+      .filter(({ type }) => type !== 'currency')
+      .map(({ value }) => value)
+      .join(''),
+  }
 }
 
 /** "2026-10-22" or a full ISO timestamp → "22 Oct 2026" */
