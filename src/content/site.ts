@@ -38,11 +38,11 @@ export const SPEECH_MODEL = {
 export const LANGUAGES = ['English', 'French', 'German', 'Italian'] as const
 
 export const PRICING = {
-  currency: 'CHF',
+  currency: 'EUR',
   freeLectures: 3,
-  monthly: 10,
-  yearly: 30,
-  lifetime: 100,
+  monthly: 15,
+  yearly: 100,
+  lifetime: 200,
   /** Macs one licence covers */
   macsPerLicence: 1,
 } as const
@@ -94,8 +94,13 @@ export function freeTrialNote(): string {
   return `Free for your first ${PRICING.freeLectures} lectures.`
 }
 
+/** 15 → "€15" */
 export function formatPrice(amount: number): string {
-  return `${PRICING.currency} ${amount}`
+  return new Intl.NumberFormat('en-GB', {
+    style: 'currency',
+    currency: PRICING.currency,
+    maximumFractionDigits: 0,
+  }).format(amount)
 }
 
 /** "2026-10-22" or a full ISO timestamp → "22 Oct 2026" */
