@@ -103,7 +103,7 @@ export const TERMS_OF_USE: LegalDocument = {
           normally have 14 days to withdraw from a purchase. Because a plan gives you access straight away, at checkout
           you are asked to agree that it starts at once and that you lose this right; without that agreement, you keep
           it. If Lectern does not work as described, your legal rights to have it fixed or to get your money back still
-          apply. Write to {SITE.contactEmail}.
+          apply. Write to {SITE.supportEmail}.
         </p>
       ),
     },
