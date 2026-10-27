@@ -141,7 +141,7 @@ export const PRIVACY_POLICY: LegalDocument = {
             Commission and Switzerland recognise as giving adequate protection. We send Hugging Face no data: the app
             downloads the model from it directly, and its own privacy policy covers that request. {PROVIDERS.payment}{' '}
             processes payments in the European Union. Cloudflare, Inc., which runs our licence service, is based in the
-            United States. [CONFIRM: Cloudflare's Data Privacy Framework status on dataprivacyframework.gov.]
+            United States and is also certified under the EU-US and Swiss-US Data Privacy Frameworks.
           </p>
         </>
       ),
