@@ -15,7 +15,7 @@ export const PRIVACY_POLICY: LegalDocument = {
   path: ROUTES.privacy,
   label: 'Privacy policy',
   summary:
-    'Your lectures, transcripts and logins stay on your computer. Lectern has no accounts, so we hold no profile of you. The app goes online only to download your lecture from its own site, to download the speech model once, and to check for updates.',
+    'Your lectures, transcripts and logins stay on your computer. Lectern has no accounts, so we hold no profile of you. The app goes online only to download your lecture from its own site, to download the speech model once, to check for updates, and, on a Monthly or Yearly plan, to renew your licence.',
   sections: [
     {
       heading: 'Who is responsible',
