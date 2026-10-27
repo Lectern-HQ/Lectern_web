@@ -99,14 +99,20 @@ export const PRIVACY_POLICY: LegalDocument = {
         <>
           <p>
             This website uses no cookies and no analytics, and loads nothing from other sites: its fonts are served from{' '}
-            {SITE.domain}. We run no server of our own. Our host, {PROVIDERS.hosting}, logs
+            {SITE.domain}. Our host, {PROVIDERS.hosting}, logs
             your IP address to keep the site secure and keeps those logs under its own privacy statement; we cannot
             see them.
           </p>
           <p>
             If you buy a plan, {PROVIDERS.payment} ({PAYMENT_DETAILS.company}, in {PAYMENT_DETAILS.country}) processes
-            your payment and tells us your name, your email address, your billing country and what you bought. We use
-            your email address to send you your licence key and your invoice. We do not receive your card details.
+            your payment and tells us your name, your email address, your billing country and what you bought, and it
+            emails you your receipt. We do not receive your card details.
+          </p>
+          <p>
+            Our licence service at licence.{SITE.domain}, which runs on {PROVIDERS.licences}, asks {PROVIDERS.payment}{' '}
+            whether a purchase is paid and signs your licence key, which contains your email address and your plan. It
+            stores nothing. For Monthly and Yearly plans, the app sends it your licence number near the end of each
+            paid period to get a renewed key, and nothing else.
           </p>
         </>
       ),
@@ -134,7 +140,8 @@ export const PRIVACY_POLICY: LegalDocument = {
             States. GitHub is certified under the EU-US and Swiss-US Data Privacy Frameworks, which the European
             Commission and Switzerland recognise as giving adequate protection. We send Hugging Face no data: the app
             downloads the model from it directly, and its own privacy policy covers that request. {PROVIDERS.payment}{' '}
-            processes payments in the European Union.
+            processes payments in the European Union. Cloudflare, Inc., which runs our licence service, is based in the
+            United States. [CONFIRM: Cloudflare's Data Privacy Framework status on dataprivacyframework.gov.]
           </p>
         </>
       ),

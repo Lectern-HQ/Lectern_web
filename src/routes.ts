@@ -4,6 +4,7 @@ export const ROUTES = {
   terms: '/terms',
   legal: '/legal',
   changelog: '/changelog',
+  thanks: '/thanks',
 } as const
 
 /** Element ids that links jump to */

@@ -10,6 +10,8 @@ export const SITE = {
   domain: 'lecternstudy.com',
   owner: 'Luca Martinet',
   contactEmail: 'hello@lecternstudy.com',
+  /** For purchases and licence keys */
+  supportEmail: 'support@lecternstudy.com',
   country: 'France',
 } as const
 
@@ -58,9 +60,13 @@ export const CHECKOUT_LINKS: Record<PlanId, string | null> = {
   lifetime: null,
 }
 
+/** The Worker that turns a paid checkout into a licence key */
+export const LICENCE_SERVICE_URL = 'https://licence.lecternstudy.com'
+
 export const PROVIDERS = {
   hosting: 'GitHub Pages',
   payment: 'Stripe',
+  licences: 'Cloudflare',
   modelHost: 'Hugging Face',
   updateHost: SITE.domain,
 } as const

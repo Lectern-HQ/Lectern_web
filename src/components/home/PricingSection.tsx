@@ -1,5 +1,5 @@
 import { PLANS, PRICING_COPY } from '../../content/pricing'
-import { PROVIDERS, SALES_REGIONS, VAT_NOTE, formatList, freeTrialNote } from '../../content/site'
+import { PROVIDERS, SALES_REGIONS, SITE, VAT_NOTE, formatList, freeTrialNote } from '../../content/site'
 import { ROUTES, SECTION_IDS } from '../../routes'
 import { Container } from '../ui/Container'
 import { SlantedSection } from '../ui/SlantedSection'
@@ -28,13 +28,17 @@ export function PricingSection() {
             ))}
           </ul>
           <p className="max-w-[52ch] flex-[1_1_320px] text-[15px] leading-[1.5] text-muted">
-            Your licence key and invoice arrive by email after you pay. {VAT_NOTE} Plans are sold in{' '}
+            Your licence key appears on screen right after you pay, and Stripe emails your receipt. {VAT_NOTE} Plans are sold in{' '}
             {formatList(SALES_REGIONS)}, and {PROVIDERS.payment} handles the payment. Cancel Monthly and Yearly any
             time. Sales are final except where the law requires a refund, as the{' '}
             <TextLink inline href={ROUTES.terms}>
               terms of use
             </TextLink>{' '}
-            explain.
+            explain. Trouble with a purchase or a lost key? Write to{' '}
+            <TextLink inline href={`mailto:${SITE.supportEmail}`}>
+              {SITE.supportEmail}
+            </TextLink>
+            .
           </p>
         </div>
       </Container>
