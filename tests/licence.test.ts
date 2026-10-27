@@ -1,17 +1,10 @@
 import { describe, expect, it, vi } from 'vitest'
 import { LICENCE_SERVICE_URL } from '../src/content/site'
-import { fetchLicence, sessionIdFrom } from '../src/lib/licence'
+import { fetchLicence } from '../src/lib/licence'
 
 function respond(status: number, body: unknown = {}) {
   return vi.fn(async () => new Response(JSON.stringify(body), { status }))
 }
-
-describe('sessionIdFrom', () => {
-  it('reads the session id Stripe adds to the link', () => {
-    expect(sessionIdFrom('?session_id=cs_test_1')).toBe('cs_test_1')
-    expect(sessionIdFrom('')).toBeNull()
-  })
-})
 
 describe('fetchLicence', () => {
   it('returns the key, plan and expiry from the licence service', async () => {

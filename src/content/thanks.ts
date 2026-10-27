@@ -8,5 +8,6 @@ export const THANKS_COPY = {
   saveNote: 'Save this key somewhere safe, such as your password manager. Paste it into Lectern under Settings, Licence.',
   copy: 'Copy key',
   copied: 'Copied',
+  manage: 'Manage or cancel your plan',
   lostKey: 'Lost your key later? Write to',
 } as const

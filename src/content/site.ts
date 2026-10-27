@@ -60,6 +60,9 @@ export const CHECKOUT_LINKS: Record<PlanId, string | null> = {
   lifetime: null,
 }
 
+/** Stripe's customer portal: buyers sign in with their email to change card or cancel */
+export const CUSTOMER_PORTAL_URL = 'https://billing.stripe.com/p/login/3cI3cv5rfeirdlT8p9fMA00'
+
 /** The Worker that turns a paid checkout into a licence key */
 export const LICENCE_SERVICE_URL = 'https://licence.lecternstudy.com'
 

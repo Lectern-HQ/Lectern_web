@@ -22,7 +22,7 @@ export function LicenceKeyBox({ licenceKey }: LicenceKeyBoxProps) {
   }
 
   return (
-    <div className="mt-10 flex max-w-[880px] flex-col gap-4 rounded bg-mist p-8">
+    <div className="flex max-w-[880px] flex-col gap-4 rounded bg-mist p-8">
       <code className="block break-all font-mono text-sm select-all">{licenceKey}</code>
       <button
         type="button"

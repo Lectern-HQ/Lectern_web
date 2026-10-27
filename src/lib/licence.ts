@@ -8,11 +8,6 @@ export type LicenceState =
   | { status: 'ready'; key: string; plan: string; expires: string | null }
   | { status: 'failed' }
 
-/** Reads the Checkout Session id Stripe puts in the thank-you link */
-export function sessionIdFrom(search: string): string | null {
-  return new URLSearchParams(search).get('session_id')
-}
-
 /** Asks the licence service for the key of a paid checkout. Never throws. */
 export async function fetchLicence(sessionId: string, fetcher: typeof fetch = fetch): Promise<LicenceState> {
   try {
