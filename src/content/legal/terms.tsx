@@ -14,9 +14,9 @@ import {
   formatList,
   formatPrice,
 } from '../site'
+import type { LegalDocument } from './types'
 
 const portalHost = new URL(CUSTOMER_PORTAL_URL).host
-import type { LegalDocument } from './types'
 
 export const TERMS_OF_USE: LegalDocument = {
   path: ROUTES.terms,
