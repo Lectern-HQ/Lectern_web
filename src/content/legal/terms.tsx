@@ -81,7 +81,7 @@ export const TERMS_OF_USE: LegalDocument = {
           <p>
             Your first {PRICING.freeLectures} lectures are free. After that you
             need a plan: Monthly at {formatPrice(PRICING.monthly)} per month, Yearly at {formatPrice(PRICING.yearly)}{' '}
-            per year, or Lifetime at {formatPrice(PRICING.lifetime)} once. {VAT_NOTE}
+            per year, or Lifetime at {formatPrice(PRICING.lifetime)} once. {VAT_NOTE}{' '}
             You buy on our website, and {PROVIDERS.payment} handles the payment. Plans are sold to customers in{' '}
             {formatList(SALES_REGIONS)}.
           </p>
