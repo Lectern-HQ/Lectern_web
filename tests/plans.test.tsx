@@ -22,9 +22,8 @@ describe('plansFor', () => {
     expect(new Set(plans.map((plan) => plan.checkoutUrl)).size).toBe(plans.length)
   })
 
-  it('stays closed until the owner opens sales', () => {
-    expect(SALES_OPEN).toBe(false)
-    expect(PLANS.every((plan) => plan.checkoutUrl === null)).toBe(true)
+  it('follows the one sales switch', () => {
+    expect(PLANS).toEqual(plansFor(SALES_OPEN))
   })
 })
 
