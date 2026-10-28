@@ -5,23 +5,27 @@ on:
     branches: [main]
   workflow_dispatch:
 
+# Read only by default; only the deploy job may publish to Pages
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 # One deployment at a time; a newer push waits for the running one
 concurrency:
   group: pages
   cancel-in-progress: false
 
-# Each action is pinned to a full commit hash, with the release it points to in the comment, and
-# Node to an exact version, so nothing upstream changes a deploy without a commit here.
+# Each action used here is pinned to a full commit hash, with the release it points to in the
+# comment, and Node to an exact version. Actions those actions call themselves are not pinned:
+# upload-pages-artifact v3.0.1 calls actions/upload-artifact@v4 by tag.
 jobs:
   build:
     # A manual run from another branch neither builds nor deploys
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      # configure-pages reads the site's Pages settings
+      pages: read
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
@@ -41,6 +45,9 @@ jobs:
     # Checked here too, so the deploy job itself never runs for another ref
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
