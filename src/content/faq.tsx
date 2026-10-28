@@ -40,7 +40,8 @@ export const FAQ: readonly FaqEntry[] = [
     question: 'How can I check the download?',
     answer: (
       <>
-        Open Terminal and run <code className="font-mono text-[0.85em]">shasum -a 256 ~/Downloads/{RELEASE.downloadFileName}</code>.
+        Open Terminal, type <code className="font-mono text-[0.85em]">shasum -a 256 </code> with a space after it, drag
+        the downloaded file onto the window and press Return.
         It should print the SHA-256 shown at the top of this page, under the version:{' '}
         <code className="font-mono text-[0.85em] break-all">{RELEASE.downloadSha256}</code>. If it prints anything
         else, delete the file and write to{' '}
