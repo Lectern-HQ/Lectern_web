@@ -15,10 +15,10 @@ import {
   SPEECH_MODEL,
   formatList,
 } from '../site'
+import type { LegalDocument } from './types'
 
 const licenceHost = new URL(LICENCE_SERVICE_URL).host
 const portalHost = new URL(CUSTOMER_PORTAL_URL).host
-import type { LegalDocument } from './types'
 
 export const PRIVACY_POLICY: LegalDocument = {
   path: ROUTES.privacy,
@@ -55,8 +55,8 @@ export const PRIVACY_POLICY: LegalDocument = {
             <li>the speech model, about {SPEECH_MODEL.size}.</li>
           </ul>
           <p>
-            We cannot see any of it. Nothing is uploaded to us. Lectern checks your licence key on your Mac, so
-            pasting or checking a key sends nothing.
+            We cannot see any of it. Nothing is uploaded to us. Lectern checks your licence key on your Mac.
+            Checking a key sends nothing; a Monthly or Yearly key that is due is then renewed as described below.
           </p>
         </>
       ),
@@ -107,8 +107,8 @@ export const PRIVACY_POLICY: LegalDocument = {
               <strong>Our licence service, {licenceHost}.</strong> Only on a Monthly or Yearly plan. Your key keeps
               working for {LICENCE.renewalGraceDays} days after the end of the period you paid for. From the end of that
               period, while Lectern is open, it asks the service for your renewed key, at most once an hour, until it
-              gets one or you remove the key. The request carries your licence number and nothing else about you or your Mac;
-              like any request, it shows your IP address and the time. A Lifetime key never asks.
+              gets one or you remove the key. The request carries your licence number and nothing else about you or your Mac,
+              except the app's name; like any request, it shows your IP address and the time. A Lifetime key never asks.
             </li>
             <li>
               <strong>{PROVIDERS.payment}.</strong> If you choose a plan, or choose to manage or cancel one, Lectern
@@ -126,7 +126,8 @@ export const PRIVACY_POLICY: LegalDocument = {
         <>
           <p>
             This website uses no cookies and no analytics, and loads nothing from other sites: its fonts are served from{' '}
-            {SITE.domain}. Only the thank-you page keeps anything in your browser, as described below. Our host, {PROVIDERS.hosting}, logs
+            {SITE.domain}. Your browser keeps two things for this site: your light or dark choice, if you pick one, and,
+            on the thank-you page, the reference described below. Our host, {PROVIDERS.hosting}, logs
             your IP address to keep the site secure and keeps those logs under its own privacy statement; we cannot
             see them.
           </p>
@@ -147,7 +148,8 @@ export const PRIVACY_POLICY: LegalDocument = {
             service at {licenceHost}, which runs on {PROVIDERS.licences}. The service asks {PROVIDERS.payment} whether
             the purchase is paid and signs your licence key, which contains your email address, your plan, its end date
             and your licence number ({PROVIDERS.payment}'s id for your subscription or purchase). It has no database
-            and we keep no logs of it. It uses your IP address only to limit how many requests one address can make;{' '}
+            and keeps no record of your requests; its error reports contain no licence number, email address or IP
+            address. It uses your IP address only to limit how many requests one address can make;{' '}
             {PROVIDERS.licences} handles that address under its own privacy policy.
           </p>
         </>
@@ -187,8 +189,9 @@ export const PRIVACY_POLICY: LegalDocument = {
       heading: 'How long we keep it',
       body: (
         <p>
-          Server logs: we keep none, for this website or the licence service; {PROVIDERS.hosting} and{' '}
-          {PROVIDERS.licences} keep their own, as described above. Purchase records: {PURCHASE_RECORD_YEARS} years after
+          Server logs: we keep none for this website, and the licence service keeps no record of your requests; its
+          error reports contain no licence number, email address or IP address. {PROVIDERS.hosting} and{' '}
+          {PROVIDERS.licences} keep their own logs, as described above. Purchase records: {PURCHASE_RECORD_YEARS} years after
           the purchase, as French accounting law requires, then deleted. Emails you send us: {EMAIL_RETENTION}.
           Everything the app stores on your computer stays there until you delete it.
         </p>

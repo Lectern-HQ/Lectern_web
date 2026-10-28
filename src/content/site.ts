@@ -106,6 +106,7 @@ export const MEDIATOR = {
   website: '[CONFIRM: website of the consumer mediator]',
 } as const
 
+/** Set to the day the legal texts are merged, so the date at the top matches what is live */
 export const LEGAL_UPDATED = '28 October 2026'
 
 const META_SEPARATOR = ' · '
