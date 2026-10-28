@@ -49,9 +49,9 @@ const PLAN_DETAILS: readonly Omit<Plan, 'checkoutUrl'>[] = [
   },
 ]
 
-/** The plans with their payment links, or with none while `salesOpen` is false */
-export function plansFor(salesOpen: boolean): readonly Plan[] {
-  return PLAN_DETAILS.map((plan) => ({ ...plan, checkoutUrl: salesOpen ? CHECKOUT_LINKS[plan.id] : null }))
+/** The plans with their payment `links`, or with none while `salesOpen` is false */
+export function plansFor(salesOpen: boolean, links: Record<PlanId, string | null> = CHECKOUT_LINKS): readonly Plan[] {
+  return PLAN_DETAILS.map((plan) => ({ ...plan, checkoutUrl: salesOpen ? links[plan.id] : null }))
 }
 
 export const PLANS = plansFor(SALES_OPEN)
