@@ -16,6 +16,7 @@ const SHA256_HEX = /^[0-9a-f]{64}$/
 const MODULE_ID = 'virtual:release'
 const RESOLVED_ID = `\0${MODULE_ID}`
 
+/** True for a non-null object, so its fields can be read */
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null
 }
@@ -54,6 +55,7 @@ export function parseRelease(feed: unknown): ReleaseInfo {
   }
 }
 
+/** Reads and checks the feed file at `feedFile`. */
 function readRelease(feedFile: string): ReleaseInfo {
   return parseRelease(JSON.parse(readFileSync(feedFile, 'utf8')))
 }
