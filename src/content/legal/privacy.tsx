@@ -107,8 +107,8 @@ export const PRIVACY_POLICY: LegalDocument = {
               <strong>Our licence service, {licenceHost}.</strong> Only on a Monthly or Yearly plan. Your key keeps
               working for {LICENCE.renewalGraceDays} days after the end of the period you paid for. From the end of that
               period, while Lectern is open, it asks the service for your renewed key, at most once an hour, until it
-              gets one or you remove the key. The request carries your licence number and nothing else; like any request, it
-              shows your IP address and the time. A Lifetime key never asks.
+              gets one or you remove the key. The request carries your licence number and nothing else about you or your Mac;
+              like any request, it shows your IP address and the time. A Lifetime key never asks.
             </li>
             <li>
               <strong>{PROVIDERS.payment}.</strong> If you choose a plan, or choose to manage or cancel one, Lectern
@@ -209,8 +209,7 @@ export const PRIVACY_POLICY: LegalDocument = {
           <p>
             Because the app keeps your data on your computer, you can delete it yourself: remove transcripts in the app,
             remove your licence key under Settings, Licence, delete the speech model, and uninstall Lectern. The count
-            of free lectures stays in your Keychain after you uninstall; to remove it, delete the item named{' '}
-            "{LICENCE.keychainItem}" in Keychain Access.
+            of free lectures stays in your Keychain after you uninstall.
           </p>
         </>
       ),

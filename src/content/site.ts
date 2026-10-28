@@ -69,8 +69,6 @@ export const LICENCE_SERVICE_URL = 'https://licence.lecternstudy.com'
 export const LICENCE = {
   /** Days a Monthly or Yearly key keeps working after the period paid for, while the app renews it */
   renewalGraceDays: 7,
-  /** The macOS Keychain item that counts the free lectures used */
-  keychainItem: 'com.lecternstudy.lectern',
 } as const
 
 export const PROVIDERS = {
