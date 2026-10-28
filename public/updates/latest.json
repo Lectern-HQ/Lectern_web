@@ -5,7 +5,8 @@
   "platforms": {
     "darwin-aarch64": {
       "url": "https://github.com/Lectern-HQ/Lectern_web/releases/download/v0.1.0/Lectern_0.1.0_aarch64.app.tar.gz",
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSOXFGNE5lMjFwUEZuRlYzS0dpWXZLcmNwelExS0ozQlllL3ltdnVqYkx2NU9zOHQzR1BObmtpb2xBdDc4MGJFcFJ0NmN6RHNtMzdYWjN0cUQ0MVRFeHVhY0Nnd2NHSlFJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyNjc2NTUwCWZpbGU6TGVjdGVybi5hcHAudGFyLmd6CkE3MHhucHcxMXNuYVIveHk5RTNseUVNdVZkZnF6K0t2SXhzbS95cWpCY05MVzljdXdTUkg5YlpQYytJOUsvUC81aDFLd1BQVVJwZm5aalphRzlDTURRPT0K"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSOXFGNE5lMjFwUEZuRlYzS0dpWXZLcmNwelExS0ozQlllL3ltdnVqYkx2NU9zOHQzR1BObmtpb2xBdDc4MGJFcFJ0NmN6RHNtMzdYWjN0cUQ0MVRFeHVhY0Nnd2NHSlFJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyNjc2NTUwCWZpbGU6TGVjdGVybi5hcHAudGFyLmd6CkE3MHhucHcxMXNuYVIveHk5RTNseUVNdVZkZnF6K0t2SXhzbS95cWpCY05MVzljdXdTUkg5YlpQYytJOUsvUC81aDFLd1BQVVJwZm5aalphRzlDTURRPT0K",
+      "dmg_sha256": "a3a1787b9ed71e5a6af9b0a5e1e190a474aebd14e1cfaa249cb3414094280966"
     }
   }
 }

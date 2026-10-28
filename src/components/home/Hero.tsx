@@ -1,5 +1,5 @@
 import { HERO } from '../../content/home'
-import { freeTrialNote, releaseSummary } from '../../content/site'
+import { RELEASE, freeTrialNote, releaseSummary } from '../../content/site'
 import { SECTION_IDS } from '../../routes'
 import { HeroFlow } from './HeroFlow'
 
@@ -16,6 +16,10 @@ export function Hero() {
         <div className="flex animate-rise flex-col items-start gap-3 [animation-delay:.4s]">
           <span className="text-[17px] font-medium">{freeTrialNote()}</span>
           <span className="text-sm text-muted">{releaseSummary()}</span>
+          <span className="max-w-full text-xs text-muted">
+            {HERO.checksumLabel}{' '}
+            <code className="font-mono break-all select-all">{RELEASE.downloadSha256}</code>
+          </span>
         </div>
       </div>
     </section>

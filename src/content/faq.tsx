@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 import { TextLink } from '../components/ui/TextLink'
 import { ROUTES } from '../routes'
-import { LANGUAGES, PRICING, RELEASE, SPEECH_MODEL, formatList, formatPrice } from './site'
+import { LANGUAGES, PRICING, RELEASE, SITE, SPEECH_MODEL, formatList, formatPrice } from './site'
 
 export interface FaqEntry {
   question: string
@@ -35,6 +35,21 @@ export const FAQ: readonly FaqEntry[] = [
   {
     question: 'Which computers does it run on?',
     answer: `Macs with ${RELEASE.chip} (M1 or later), on macOS ${RELEASE.minMacOS} or later. Intel Macs are not supported. A Windows version is planned and is not available yet.`,
+  },
+  {
+    question: 'How can I check the download?',
+    answer: (
+      <>
+        Open Terminal and run <code className="font-mono text-[0.85em]">shasum -a 256 ~/Downloads/{RELEASE.downloadFileName}</code>.
+        It should print the SHA-256 shown at the top of this page, under the version:{' '}
+        <code className="font-mono text-[0.85em] break-all">{RELEASE.downloadSha256}</code>. If it prints anything
+        else, delete the file and write to{' '}
+        <TextLink inline href={`mailto:${SITE.supportEmail}`}>
+          {SITE.supportEmail}
+        </TextLink>
+        .
+      </>
+    ),
   },
   {
     question: 'How big is the speech model?',

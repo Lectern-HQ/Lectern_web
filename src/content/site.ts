@@ -28,6 +28,10 @@ export const RELEASE = {
   version: release.version,
   publishedAt: release.publishedAt,
   downloadUrl: release.dmgUrl,
+  /** The DMG's name, as it lands in Downloads */
+  downloadFileName: release.dmgUrl.slice(release.dmgUrl.lastIndexOf('/') + 1),
+  /** The DMG's SHA-256, so a download can be checked against the release */
+  downloadSha256: release.dmgSha256,
   minMacOS: '13 Ventura',
   chip: 'Apple Silicon',
 } as const
