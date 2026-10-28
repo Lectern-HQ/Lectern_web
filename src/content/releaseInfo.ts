@@ -5,4 +5,6 @@ export interface ReleaseInfo {
   publishedAt: string
   /** The DMG on the GitHub release */
   dmgUrl: string
+  /** The DMG's SHA-256, in lower-case hex */
+  dmgSha256: string
 }
