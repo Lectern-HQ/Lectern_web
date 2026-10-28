@@ -53,11 +53,17 @@ export const VAT_NOTE = 'No VAT is charged (TVA non applicable, art. 293 B du CG
 
 export type PlanId = 'monthly' | 'yearly' | 'lifetime'
 
-/** Stripe payment links; null until licence keys work, so the plan shows as coming soon */
-export const CHECKOUT_LINKS: Record<PlanId, string | null> = {
-  monthly: null,
-  yearly: null,
-  lifetime: null,
+/**
+ * The one switch for selling. While false, every plan shows "Coming soon" and no payment link is
+ * on the page. Set it to true once the app release that takes licence keys is out.
+ */
+export const SALES_OPEN = false
+
+/** Stripe payment links; each sends the buyer back to the thank-you page with the session id */
+export const CHECKOUT_LINKS: Record<PlanId, string> = {
+  monthly: 'https://buy.stripe.com/6oU8wP5rfa2b1DbfRBfMA02',
+  yearly: 'https://buy.stripe.com/28EfZh8Drb6f5TrbBlfMA03',
+  lifetime: 'https://buy.stripe.com/3cI00j06V8Y75Tr5cXfMA04',
 }
 
 /** Stripe's customer portal: buyers sign in with their email to change card or cancel */

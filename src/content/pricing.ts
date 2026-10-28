@@ -1,4 +1,4 @@
-import { CHECKOUT_LINKS, PRICING, type PlanId, formatPrice } from './site'
+import { CHECKOUT_LINKS, PRICING, SALES_OPEN, type PlanId, formatPrice } from './site'
 
 const MONTHS_PER_YEAR = 12
 
@@ -10,6 +10,7 @@ export interface Plan {
   period: string
   blurb: string
   buyLabel: string
+  /** Null while sales are closed, so the card shows "Coming soon" */
   checkoutUrl: string | null
   /** Set on the dark card */
   featured: boolean
@@ -18,7 +19,7 @@ export interface Plan {
 const yearlyPerMonth = PRICING.yearly / MONTHS_PER_YEAR
 const yearlySaving = PRICING.monthly * MONTHS_PER_YEAR - PRICING.yearly
 
-export const PLANS: readonly Plan[] = [
+const PLAN_DETAILS: readonly Omit<Plan, 'checkoutUrl'>[] = [
   {
     id: 'monthly',
     name: 'Monthly',
@@ -26,7 +27,6 @@ export const PLANS: readonly Plan[] = [
     period: 'a month',
     blurb: 'Pay month by month and stop whenever you like.',
     buyLabel: 'Buy monthly',
-    checkoutUrl: CHECKOUT_LINKS.monthly,
     featured: false,
   },
   {
@@ -36,7 +36,6 @@ export const PLANS: readonly Plan[] = [
     period: 'a year',
     blurb: `That is ${formatPrice(yearlyPerMonth)} a month, paid once a year. It saves ${formatPrice(yearlySaving)} compared with paying monthly.`,
     buyLabel: 'Buy yearly',
-    checkoutUrl: CHECKOUT_LINKS.yearly,
     featured: true,
   },
   {
@@ -46,10 +45,16 @@ export const PLANS: readonly Plan[] = [
     period: 'once',
     blurb: 'Pay once and never pay again. You get every update for as long as we make Lectern.',
     buyLabel: 'Buy lifetime',
-    checkoutUrl: CHECKOUT_LINKS.lifetime,
     featured: false,
   },
 ]
+
+/** The plans with their payment links, or with none while `salesOpen` is false */
+export function plansFor(salesOpen: boolean): readonly Plan[] {
+  return PLAN_DETAILS.map((plan) => ({ ...plan, checkoutUrl: salesOpen ? CHECKOUT_LINKS[plan.id] : null }))
+}
+
+export const PLANS = plansFor(SALES_OPEN)
 
 export const PRICING_COPY = {
   lede: 'After that, pick the plan that fits how you study. They all work the same.',
