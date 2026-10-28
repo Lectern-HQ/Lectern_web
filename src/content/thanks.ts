@@ -5,7 +5,7 @@ export const THANKS_COPY = {
   processing: 'Your payment is still going through. This page will show your key as soon as it clears.',
   missing: 'This page shows your licence key after you buy a plan. If you have just paid, use the link from the payment page.',
   expired:
-    'This link has expired, so the page can no longer show the key. If you added it to Lectern, it is under Settings, Licence. Otherwise write to',
+    'This link has expired, so the page can no longer show the key. If you added it to Lectern, it is under Settings, Licence. If not, write to',
   failed: 'We could not fetch your key just now. Your payment is safe; reload the page in a minute, or write to us.',
   saveNote: 'Save this key somewhere safe, such as your password manager. Paste it into Lectern under Settings, Licence.',
   copy: 'Copy key',
