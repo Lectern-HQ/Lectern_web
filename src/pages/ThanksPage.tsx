@@ -45,7 +45,7 @@ function WarningIcon() {
   )
 }
 
-/** A tinted box for the states that need attention: still clearing, or failed */
+/** A tinted box for the states that need attention: still clearing, expired, or failed */
 function Panel({ children }: { children: ReactNode }) {
   return <div className="flex items-start gap-4 rounded-lg bg-mist px-6 py-5">{children}</div>
 }
@@ -79,6 +79,17 @@ function LicenceStatus({ licence }: { licence: LicenceState }) {
           <Panel>
             <Spinner />
             <p>{THANKS_COPY.processing}</p>
+          </Panel>
+        </div>
+      )
+    case 'expired':
+      return (
+        <div role="alert">
+          <Panel>
+            <WarningIcon />
+            <p>
+              {THANKS_COPY.expired} <SupportLink />.
+            </p>
           </Panel>
         </div>
       )
