@@ -1,7 +1,13 @@
+import { TextLink } from '../../components/ui/TextLink'
 import { ROUTES } from '../../routes'
 import {
+  CUSTOMER_PORTAL_URL,
+  EMAIL_RETENTION,
   HOST_DETAILS,
+  LICENCE,
+  LICENCE_SERVICE_URL,
   PAYMENT_DETAILS,
+  PRICING,
   PURCHASE_RECORD_YEARS,
   PROVIDERS,
   PUBLISHER,
@@ -10,6 +16,9 @@ import {
   formatList,
 } from '../site'
 import type { LegalDocument } from './types'
+
+const licenceHost = new URL(LICENCE_SERVICE_URL).host
+const portalHost = new URL(CUSTOMER_PORTAL_URL).host
 
 export const PRIVACY_POLICY: LegalDocument = {
   path: ROUTES.privacy,
@@ -35,9 +44,20 @@ export const PRIVACY_POLICY: LegalDocument = {
             <li>the lecture recordings you download, kept only while the setting "Keep the downloaded media" is on;</li>
             <li>your transcripts and the list of past transcripts;</li>
             <li>your settings, such as the default language and the browser you chose;</li>
+            <li>
+              your licence key, if you have one, which holds your email address, your plan, its end date and your
+              licence number;
+            </li>
+            <li>
+              how many of your {PRICING.freeLectures} free lectures you have used, and the latest time Lectern has
+              seen on your Mac's clock, kept in your macOS Keychain so that reinstalling the app does not reset them;
+            </li>
             <li>the speech model, about {SPEECH_MODEL.size}.</li>
           </ul>
-          <p>We cannot see any of it. Nothing is uploaded to us.</p>
+          <p>
+            We cannot see any of it. Nothing is uploaded to us. Lectern checks your licence key on your Mac.
+            Checking a key sends nothing; a Monthly or Yearly key that is due is then renewed as described below.
+          </p>
         </>
       ),
     },
@@ -84,8 +104,15 @@ export const PRIVACY_POLICY: LegalDocument = {
               its signature first.
             </li>
             <li>
-              <strong>Our website.</strong> If you choose Buy, Lectern opens our website in your browser. See "This
-              website" below.
+              <strong>Our licence service, {licenceHost}.</strong> Only on a Monthly or Yearly plan. Your key keeps
+              working for {LICENCE.renewalGraceDays} days after the end of the period you paid for. From the end of that
+              period, while Lectern is open, it asks the service for your renewed key, at most once an hour, until it
+              gets one or you remove the key. The request carries your licence number and nothing else about you or your Mac,
+              except the app's name; like any request, it shows your IP address and the time. A Lifetime key never asks.
+            </li>
+            <li>
+              <strong>{PROVIDERS.payment}.</strong> If you choose a plan, or choose to manage or cancel one, Lectern
+              opens {PROVIDERS.payment}'s payment page or customer portal in your browser. See "This website" below.
             </li>
           </ul>
           <p>Lectern sends no analytics, no crash reports, no recordings and no transcripts. When Lectern opens, macOS may run its own security checks
@@ -99,20 +126,31 @@ export const PRIVACY_POLICY: LegalDocument = {
         <>
           <p>
             This website uses no cookies and no analytics, and loads nothing from other sites: its fonts are served from{' '}
-            {SITE.domain}. Our host, {PROVIDERS.hosting}, logs
+            {SITE.domain}. Your browser keeps two things for this site: your light or dark choice, if you pick one, and,
+            on the thank-you page, the reference described below. Our host, {PROVIDERS.hosting}, logs
             your IP address to keep the site secure and keeps those logs under its own privacy statement; we cannot
             see them.
           </p>
           <p>
             If you buy a plan, {PROVIDERS.payment} ({PAYMENT_DETAILS.company}, in {PAYMENT_DETAILS.country}) processes
             your payment and tells us your name, your email address, your billing country and what you bought, and it
-            emails you your receipt. We do not receive your card details.
+            emails you your receipt. We do not receive your card details. To change your card or cancel a Monthly or
+            Yearly plan, you sign in to {PROVIDERS.payment}'s customer portal at{' '}
+            <TextLink inline href={CUSTOMER_PORTAL_URL}>
+              {portalHost}
+            </TextLink>{' '}
+            with your email address; {PROVIDERS.payment}'s own privacy policy covers it.
           </p>
           <p>
-            Our licence service at licence.{SITE.domain}, which runs on {PROVIDERS.licences}, asks {PROVIDERS.payment}{' '}
-            whether a purchase is paid and signs your licence key, which contains your email address and your plan. It
-            stores nothing. For Monthly and Yearly plans, the app sends it your licence number near the end of each
-            paid period to get a renewed key, and nothing else.
+            After you pay, {PROVIDERS.payment} sends you back to our thank-you page with the reference of your
+            checkout session. The page takes the reference out of the address bar and keeps it only in that browser
+            tab until you close it, so that reloading still shows your key. It sends the reference to our licence
+            service at {licenceHost}, which runs on {PROVIDERS.licences}. The service asks {PROVIDERS.payment} whether
+            the purchase is paid and signs your licence key, which contains your email address, your plan, its end date
+            and your licence number ({PROVIDERS.payment}'s id for your subscription or purchase). It has no database
+            and keeps no record of your requests; its error reports contain no licence number, email address or IP
+            address. It uses your IP address only to limit how many requests one address can make;{' '}
+            {PROVIDERS.licences} handles that address under its own privacy policy.
           </p>
         </>
       ),
@@ -121,8 +159,9 @@ export const PRIVACY_POLICY: LegalDocument = {
       heading: 'Why we may use this data',
       body: (
         <p>
-          Server logs and the update check: our legitimate interest in running and securing the service (article
-          6(1)(f) GDPR). Payments and licences: to carry out our contract with you (article 6(1)(b) GDPR). We also
+          Server logs, the update check and the limit on requests to the licence service: our legitimate interest in
+          running and securing the service (article 6(1)(f) GDPR). Payments, licence keys and their renewal: to carry
+          out our contract with you (article 6(1)(b) GDPR). We also
           follow the Swiss Federal Act on Data Protection.
         </p>
       ),
@@ -150,8 +189,11 @@ export const PRIVACY_POLICY: LegalDocument = {
       heading: 'How long we keep it',
       body: (
         <p>
-          Server logs: we keep none; our host keeps its own, as described above. Purchase records: {PURCHASE_RECORD_YEARS}{' '}
-          years after the purchase, as French accounting law requires, then deleted. Everything the app stores on your computer stays there until you delete it.
+          Server logs: we keep none for this website, and the licence service keeps no record of your requests; its
+          error reports contain no licence number, email address or IP address. {PROVIDERS.hosting} and{' '}
+          {PROVIDERS.licences} keep their own logs, as described above. Purchase records: {PURCHASE_RECORD_YEARS} years after
+          the purchase, as French accounting law requires, then deleted. Emails you send us: {EMAIL_RETENTION}.
+          Everything the app stores on your computer stays there until you delete it.
         </p>
       ),
     },
@@ -169,7 +211,8 @@ export const PRIVACY_POLICY: LegalDocument = {
           </p>
           <p>
             Because the app keeps your data on your computer, you can delete it yourself: remove transcripts in the app,
-            delete the speech model, and uninstall Lectern.
+            remove your licence key under Settings, Licence, delete the speech model, and uninstall Lectern. The count
+            of free lectures stays in your Keychain after you uninstall.
           </p>
         </>
       ),

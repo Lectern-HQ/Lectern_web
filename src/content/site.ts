@@ -80,6 +80,11 @@ export const CUSTOMER_PORTAL_URL = APP_PLANS.manage
 /** The Worker that turns a paid checkout into a licence key */
 export const LICENCE_SERVICE_URL = 'https://licence.lecternstudy.com'
 
+export const LICENCE = {
+  /** Days a Monthly or Yearly key keeps working after the period paid for, while the app renews it */
+  renewalGraceDays: 7,
+} as const
+
 export const PROVIDERS = {
   hosting: 'GitHub Pages',
   payment: 'Stripe',
@@ -106,7 +111,17 @@ export const HOST_DETAILS = {
 /** French accounting law keeps sales records for 10 years (Code de commerce, article L123-22) */
 export const PURCHASE_RECORD_YEARS = 10
 
-export const LEGAL_UPDATED = '26 October 2026'
+/** How long emails to us are kept; the owner's choice */
+export const EMAIL_RETENTION = '3 years after the last reply'
+
+/** The consumer mediator French law requires sellers to name (Code de la consommation, article L616-1) */
+export const MEDIATOR = {
+  name: '[CONFIRM: name of the consumer mediator]',
+  website: '[CONFIRM: website of the consumer mediator]',
+} as const
+
+/** Set to the day the legal texts are merged, so the date at the top matches what is live */
+export const LEGAL_UPDATED = '28 October 2026'
 
 const META_SEPARATOR = ' · '
 
