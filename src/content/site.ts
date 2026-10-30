@@ -1,4 +1,5 @@
 import release from 'virtual:release'
+import { APP_LANGUAGE_NAMES, APP_PLANS, appPlan } from './appFiles'
 
 /**
  * Every fact the site repeats across pages. Bracketed values are placeholders
@@ -10,8 +11,8 @@ export const SITE = {
   domain: 'lecternstudy.com',
   owner: 'Luca Martinet',
   contactEmail: 'hello@lecternstudy.com',
-  /** For purchases and licence keys */
-  supportEmail: 'support@lecternstudy.com',
+  /** For purchases and licence keys, as the app gives it */
+  supportEmail: APP_PLANS.support,
   country: 'France',
 } as const
 
@@ -37,31 +38,44 @@ export const SPEECH_MODEL = {
   size: '1.6 GB',
 } as const
 
-export const LANGUAGES = ['English', 'French', 'German', 'Italian'] as const
+/** The languages the app transcribes, from the app's own list */
+export const LANGUAGES = APP_LANGUAGE_NAMES
 
+/** Prices come from the app's plans, so the site and the app ask the same */
 export const PRICING = {
-  currency: 'EUR',
+  currency: APP_PLANS.currency,
   freeLectures: 3,
-  monthly: 15,
-  yearly: 100,
-  lifetime: 200,
+  monthly: appPlan('monthly').amount,
+  yearly: appPlan('yearly').amount,
+  lifetime: appPlan('lifetime').amount,
   /** Macs one licence covers */
   macsPerLicence: 1,
 } as const
 
-export const VAT_NOTE = 'No VAT is charged (TVA non applicable, art. 293 B du CGI).'
+/** What the prices include, as the app says it */
+export const VAT_NOTE = APP_PLANS.vatNote
 
 export type PlanId = 'monthly' | 'yearly' | 'lifetime'
 
-/** Stripe payment links; null until licence keys work, so the plan shows as coming soon */
+/**
+ * The one switch for selling. While false, every plan shows "Coming soon" and no payment link is
+ * on the page. Set it to true once the app release that takes licence keys is out.
+ */
+export const SALES_OPEN = false
+
+/**
+ * Stripe payment links; each sends the buyer back to the thank-you page with the session id. They
+ * stay null while sales are closed, so the live site carries no link at all. Fill them in the same
+ * commit that sets SALES_OPEN to true.
+ */
 export const CHECKOUT_LINKS: Record<PlanId, string | null> = {
   monthly: null,
   yearly: null,
   lifetime: null,
 }
 
-/** Stripe's customer portal: buyers sign in with their email to change card or cancel */
-export const CUSTOMER_PORTAL_URL = 'https://billing.stripe.com/p/login/3cI3cv5rfeirdlT8p9fMA00'
+/** Stripe's customer portal: buyers sign in with their email to change card or cancel; the app opens the same page */
+export const CUSTOMER_PORTAL_URL = APP_PLANS.manage
 
 /** The Worker that turns a paid checkout into a licence key */
 export const LICENCE_SERVICE_URL = 'https://licence.lecternstudy.com'

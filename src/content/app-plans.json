@@ -1,0 +1,30 @@
+{
+  "support": "support@lecternstudy.com",
+  "vatNote": "No VAT is charged (TVA non applicable, art. 293 B du CGI).",
+  "manage": "https://billing.stripe.com/p/login/3cI3cv5rfeirdlT8p9fMA00",
+  "currency": "EUR",
+  "plans": [
+    {
+      "id": "monthly",
+      "name": "Monthly",
+      "amount": 15,
+      "per": "a month",
+      "note": "Pay month by month and stop whenever you like."
+    },
+    {
+      "id": "yearly",
+      "name": "Yearly",
+      "badge": "Best value",
+      "amount": 100,
+      "per": "a year",
+      "note": "{perMonth} a month, saves {saving}."
+    },
+    {
+      "id": "lifetime",
+      "name": "Lifetime",
+      "amount": 200,
+      "per": "once",
+      "note": "Pay once. You get every update for as long as we make Lectern."
+    }
+  ]
+}

@@ -24,6 +24,10 @@ describe('fetchLicence', () => {
     expect(await fetchLicence('cs', respond(202))).toEqual({ status: 'processing' })
   })
 
+  it('reports a checkout link that has expired', async () => {
+    expect(await fetchLicence('cs', respond(410, { error: 'session_expired' }))).toEqual({ status: 'expired' })
+  })
+
   it.each([
     ['an error status', respond(404)],
     ['a body without a key', respond(200, { plan: 'monthly' })],
