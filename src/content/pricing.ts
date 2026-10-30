@@ -1,4 +1,5 @@
 import { CHECKOUT_LINKS, PRICING, SALES_OPEN, type PlanId, formatPrice } from './site'
+import { appPlan } from './appFiles'
 
 const MONTHS_PER_YEAR = 12
 
@@ -16,8 +17,21 @@ export interface Plan {
   featured: boolean
 }
 
-const yearlyPerMonth = PRICING.yearly / MONTHS_PER_YEAR
-const yearlySaving = PRICING.monthly * MONTHS_PER_YEAR - PRICING.yearly
+/** A `{field}` in a note from the app */
+const NOTE_FIELD = /\{(\w+)\}/g
+
+/**
+ * The app's note for plan `id`, as its Plans screen shows it. `{perMonth}` is the plan's price
+ * over a year's months and `{saving}` what it saves against paying monthly for a year.
+ */
+function planNote(id: PlanId): string {
+  const { amount, note } = appPlan(id)
+  const fields: Record<string, string> = {
+    perMonth: formatPrice(amount / MONTHS_PER_YEAR),
+    saving: formatPrice(PRICING.monthly * MONTHS_PER_YEAR - amount),
+  }
+  return note.replace(NOTE_FIELD, (field, name: string) => fields[name] ?? field)
+}
 
 const PLAN_DETAILS: readonly Omit<Plan, 'checkoutUrl'>[] = [
   {
@@ -25,7 +39,7 @@ const PLAN_DETAILS: readonly Omit<Plan, 'checkoutUrl'>[] = [
     name: 'Monthly',
     amount: PRICING.monthly,
     period: 'a month',
-    blurb: 'Pay month by month and stop whenever you like.',
+    blurb: planNote('monthly'),
     buyLabel: 'Buy monthly',
     featured: false,
   },
@@ -34,7 +48,7 @@ const PLAN_DETAILS: readonly Omit<Plan, 'checkoutUrl'>[] = [
     name: 'Yearly',
     amount: PRICING.yearly,
     period: 'a year',
-    blurb: `That is ${formatPrice(yearlyPerMonth)} a month, paid once a year. It saves ${formatPrice(yearlySaving)} compared with paying monthly.`,
+    blurb: planNote('yearly'),
     buyLabel: 'Buy yearly',
     featured: true,
   },
@@ -43,7 +57,7 @@ const PLAN_DETAILS: readonly Omit<Plan, 'checkoutUrl'>[] = [
     name: 'Lifetime',
     amount: PRICING.lifetime,
     period: 'once',
-    blurb: 'Pay once and never pay again. You get every update for as long as we make Lectern.',
+    blurb: planNote('lifetime'),
     buyLabel: 'Buy lifetime',
     featured: false,
   },
