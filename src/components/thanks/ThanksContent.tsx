@@ -57,12 +57,27 @@ function Panel({ children }: { children: ReactNode }) {
   return <div className="flex items-start gap-4 rounded-lg bg-mist px-6 py-5">{children}</div>
 }
 
+/** The three steps from the copied key to an activated app */
+function ActivationSteps() {
+  return (
+    <div>
+      <h2 className="font-semibold">{THANKS_COPY.stepsTitle}</h2>
+      <ol className="mt-2 list-decimal space-y-1 pl-6">
+        {THANKS_COPY.steps.map((step) => (
+          <li key={step}>{step}</li>
+        ))}
+      </ol>
+    </div>
+  )
+}
+
 function LicenceStatus({ licence }: { licence: LicenceState }) {
   switch (licence.status) {
     case 'ready':
       return (
         <>
           <LicenceKeyBox licenceKey={licence.key} />
+          <ActivationSteps />
           <p>{THANKS_COPY.saveNote}</p>
           {hasManageLink(licence.plan) && <ManageLink />}
         </>
