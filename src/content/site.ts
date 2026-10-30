@@ -112,7 +112,7 @@ export const HOST_DETAILS = {
 export const PURCHASE_RECORD_YEARS = 10
 
 /** How long emails to us are kept; the owner's choice */
-export const EMAIL_RETENTION = '[CONFIRM: how long emails to us are kept, for example 3 years after the last reply]'
+export const EMAIL_RETENTION = '3 years after the last reply'
 
 /** The consumer mediator French law requires sellers to name (Code de la consommation, article L616-1) */
 export const MEDIATOR = {
