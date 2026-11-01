@@ -4,13 +4,16 @@ import { parseRelease } from '../build/releaseFeed'
 /** Where the release keeps the archive and the DMG */
 const RELEASE_URL = 'https://github.com/Lectern-HQ/Lectern_web/releases/download/v0.2.0'
 
+/** Any well-formed SHA-256, since the feed must give the DMG's */
+const DMG_SHA256 = 'a'.repeat(64)
+
 /** A feed shaped like public/updates/latest.json, with `extra` fields in its platform entry */
 function feedWith(extra: Record<string, unknown>) {
   return {
     version: '0.2.0',
     pub_date: '2026-10-29T12:00:00Z',
     platforms: {
-      'darwin-aarch64': { url: `${RELEASE_URL}/Lectern_0.2.0_aarch64.app.tar.gz`, signature: 'sig', ...extra },
+      'darwin-aarch64': { url: `${RELEASE_URL}/Lectern_0.2.0_aarch64.app.tar.gz`, signature: 'sig', dmg_sha256: DMG_SHA256, ...extra },
     },
   }
 }

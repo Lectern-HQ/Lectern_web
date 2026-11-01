@@ -13,6 +13,8 @@ export const HOME_NAV: readonly NavItem[] = [
 
 export const HERO = {
   title: 'Your lecture, written down.',
+  /** Shown before the DMG's SHA-256, under the release summary */
+  checksumLabel: 'SHA-256',
   lede: 'Give Lectern the recording. It writes down everything your teacher said, with the time next to every passage. Search it, skim it, quote it.',
   recording: { title: 'Macroeconomics, week 6', duration: '1 h 45 min' },
   /** Bar heights of the drawn waveform, in percent */
