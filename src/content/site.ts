@@ -24,11 +24,22 @@ export const PUBLISHER = {
   address: '377 rue du Riondel, 01210 Ornex, France',
 } as const
 
+/**
+ * The one switch for downloads. While false, the header's button says "Coming soon" and no link to the DMG is on
+ * the page. Set it to true when the app is ready for everyone.
+ */
+export const DOWNLOADS_OPEN = false
+
+/** The DMG's link while `downloadsOpen`, otherwise null so the page carries no link */
+export function downloadUrlFor(downloadsOpen: boolean, dmgUrl: string = release.dmgUrl): string | null {
+  return downloadsOpen ? dmgUrl : null
+}
+
 /** Version, date and download come from the published update feed, so each release updates the site. */
 export const RELEASE = {
   version: release.version,
   publishedAt: release.publishedAt,
-  downloadUrl: release.dmgUrl,
+  downloadUrl: downloadUrlFor(DOWNLOADS_OPEN),
   minMacOS: '13 Ventura',
   chip: 'Apple Silicon',
 } as const
