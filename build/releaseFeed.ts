@@ -8,6 +8,8 @@ const FEED_PATH = 'public/updates/latest.json'
 const PLATFORM = 'darwin-aarch64'
 const UPDATE_ARCHIVE_SUFFIX = '.app.tar.gz'
 const DMG_SUFFIX = '.dmg'
+/** The DMG's link, which the app's release script writes next to the archive's url */
+const DMG_URL_FIELD = 'dmg_url'
 /** The DMG's SHA-256 sits next to the archive's url; the updater ignores the extra field. */
 const DMG_HASH_FIELD = 'dmg_sha256'
 /** A SHA-256 as `shasum -a 256` prints it: 64 lower-case hex digits */
@@ -21,12 +23,22 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null
 }
 
-/** The release publishes the DMG next to the updater archive, under the same name. */
+/** For an older feed without dmg_url: the release publishes the DMG next to the updater archive, under the same name. */
 function dmgUrlFor(archiveUrl: string): string {
   if (!archiveUrl.endsWith(UPDATE_ARCHIVE_SUFFIX)) {
     throw new Error(`${FEED_PATH}: ${PLATFORM} url does not end in ${UPDATE_ARCHIVE_SUFFIX}`)
   }
   return archiveUrl.slice(0, -UPDATE_ARCHIVE_SUFFIX.length) + DMG_SUFFIX
+}
+
+/** The DMG's link from the feed's platform entry, or the guess from the archive's when it has none; a bad one fails the build. */
+function dmgUrlFrom(platform: Record<string, unknown>, archiveUrl: string): string {
+  const dmgUrl = platform[DMG_URL_FIELD]
+  if (dmgUrl === undefined) return dmgUrlFor(archiveUrl)
+  if (typeof dmgUrl !== 'string' || !URL.canParse(dmgUrl) || new URL(dmgUrl).protocol !== 'https:') {
+    throw new Error(`${FEED_PATH}: platforms.${PLATFORM}.${DMG_URL_FIELD} must be an https link`)
+  }
+  return dmgUrl
 }
 
 /** The DMG's hash from the feed's platform entry; a missing or malformed one fails the build. */
@@ -50,7 +62,7 @@ export function parseRelease(feed: unknown): ReleaseInfo {
   return {
     version: feed.version,
     publishedAt: feed.pub_date,
-    dmgUrl: dmgUrlFor(platform.url),
+    dmgUrl: dmgUrlFrom(platform, platform.url),
     dmgSha256: dmgSha256From(platform),
   }
 }

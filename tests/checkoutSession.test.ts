@@ -35,6 +35,16 @@ describe('isCheckoutSessionId', () => {
   })
 })
 
+describe('isCheckoutSessionId length', () => {
+  it('accepts an id of up to 255 characters after the prefix, as the licence service does', () => {
+    expect(isCheckoutSessionId(`cs_live_${'a'.repeat(255)}`)).toBe(true)
+  })
+
+  it('rejects a longer one', () => {
+    expect(isCheckoutSessionId(`cs_live_${'a'.repeat(256)}`)).toBe(false)
+  })
+})
+
 describe('rememberCheckoutSession', () => {
   it('returns the id from the address bar and saves it for a reload', () => {
     const store = memoryStore()

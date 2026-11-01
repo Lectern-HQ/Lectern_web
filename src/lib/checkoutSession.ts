@@ -1,7 +1,7 @@
 import type { PlanId } from '../content/site'
 
-/** Same shape the licence service accepts; anything else is never stored or sent */
-const SESSION_ID = /^cs_(test|live)_[A-Za-z0-9]+$/
+/** Same shape the licence service accepts, capped at 255 characters after the prefix as it is; anything else is never stored or sent */
+const SESSION_ID = /^cs_(test|live)_[A-Za-z0-9]{1,255}$/
 
 /** Where the tab keeps the id once it is gone from the address bar, so a reload still finds the key */
 export const SESSION_STORAGE_KEY = 'lectern.checkoutSession'
