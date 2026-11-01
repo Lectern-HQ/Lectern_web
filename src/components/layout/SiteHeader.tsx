@@ -6,10 +6,17 @@ import { TextLink } from '../ui/TextLink'
 import { ThemeToggle } from '../ui/ThemeToggle'
 import { Wordmark } from '../ui/Wordmark'
 
+/** What the download button says while downloads are closed */
+export const DOWNLOADS_CLOSED_LABEL = 'Coming soon'
+
+/** The button's smaller size on the home page's one-line bar */
+const COMPACT_BUTTON = 'max-compact:px-3.5 max-compact:text-[15px] max-[380px]:px-2.5 max-[380px]:text-sm'
+
 interface SiteHeaderProps {
   homeHref: string
   links: readonly NavItem[]
-  downloadHref: string
+  /** Null while downloads are closed: the button becomes a plain "Coming soon" label */
+  downloadHref: string | null
   downloadLabel: string
   /**
    * The home page's bar stays on one line: on narrow screens its links, which only jump down the page, hide and
@@ -49,15 +56,20 @@ export function SiteHeader({ homeHref, links, downloadHref, downloadLabel, compa
           </TextLink>
         ))}
         <ThemeToggle />
-        <ButtonLink
-          href={downloadHref}
-          className={cn(
-            compactOnNarrow &&
-              'max-compact:px-3.5 max-compact:text-[15px] max-[380px]:px-2.5 max-[380px]:text-sm',
-          )}
-        >
-          {downloadLabel}
-        </ButtonLink>
+        {downloadHref ? (
+          <ButtonLink href={downloadHref} className={cn(compactOnNarrow && COMPACT_BUTTON)}>
+            {downloadLabel}
+          </ButtonLink>
+        ) : (
+          <span
+            className={cn(
+              'inline-flex min-h-11 items-center rounded border border-line px-5 text-base font-semibold text-muted',
+              compactOnNarrow && COMPACT_BUTTON,
+            )}
+          >
+            {DOWNLOADS_CLOSED_LABEL}
+          </span>
+        )}
       </nav>
     </header>
   )
