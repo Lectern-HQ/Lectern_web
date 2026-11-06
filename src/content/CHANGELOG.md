@@ -4,6 +4,28 @@ All notable changes to the Lectern app. The format follows [Keep a Changelog](ht
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-11-06
+
+The screens as the design draws them: Your plan on the Plans screen, a line under each Progress step, the plans as rows in a small window, the design's wording, no text smaller than 13px, the design's Safari permission step, and screens that fit the smallest window.
+
+### Added
+- Your plan says when a Monthly or Yearly plan will not renew: "Your plan will not renew: it was cancelled, or a payment failed. It keeps working until the end date. To keep it, open Manage your plan." When Lectern could not renew it, it says so and gives the support address to write to.
+
+### Changed
+- While a plan is active, the Plans screen is "Your plan": the plan with "Active", until when it is active (or "No end date." for Lifetime) and how it goes on, "Manage your plan" for Monthly and Yearly, which opens the billing page in the browser, where to write about a payment, and the way to the key in Settings, Licence. Nothing is offered to buy. Without a key, or once a plan ended, it shows the three plans as before.
+- Plans stays in the sidebar with a Lifetime licence too, since it leads to Your plan.
+- In a small window (under 860px wide), the plans are rows: the name (Yearly with "Best value"), a short note, the price and how often, and a small Buy. The line under them reads "Buy opens your browser. Pay there, then paste your key here." at every size.
+- The Progress steps carry the design's lines: Checking your login names the browser and the site ("Dia, mediaserver.unige.ch"), or the dropped cookies.txt, and each finished step says how long it took: "1.1 GB, 38 s" for the download instead of "1.1 GB of 1.1 GB", and "Done in 6 s" for the audio instead of "105 of 105 min".
+- Wording and spacing as the design draws them: text that is not a web address says "This is not a link." (other refused links keep their reason), plan dates write the month in full ("12 March 2027") while transcript dates keep "6 Oct 2026", Settings says "and they are used" (or how many are left) after a plan ended, the Keychain drawing's note explains the number 2, and the first run's columns have the same 16px gap.
+- No text is smaller than 13px (labels, captions, chips, step states, timestamps, the step numbers and the Keychain drawing were 12px). The Safari permission step uses the design's words: a "What this allows" note, shorter steps, and "Another browser is the simpler choice." It has Back, Choose another browser and Continue, and keeps Open System Settings and the note for when Lectern is not in the list.
+
+### Fixed
+- After you choose a browser that needs the Keychain or Full Disk Access, the first run shows the permission step instead of skipping it, and the speech model step after it says "Step 4 of 4".
+- Settings, General shows the whole output folder in the smallest window: the folder wraps onto a second line and Change goes under it.
+- History shows a title such as "Macroeconomics II, Lecture 7" whole in the smallest window (720 x 520): the date and duration columns and the margins beside the list are narrower there.
+- In the smallest window (720 x 520), the Keychain permission step and the one that needs both permissions (Google Chrome) are no longer cut off on the left, History's titles show about 20 characters instead of one letter (the Language column is hidden), Welcome's "Step 1 of 4" no longer wraps and Continue is no longer cut off, and in Settings, General the "Installed" chip goes under the speech model's title instead of past the card. A first-run page taller than the window can be scrolled to its top.
+- A recording shorter than a minute shows its length in seconds ("20 s") instead of "0 min" or "1 min".
+
 ## [0.2.0] - 2026-10-29
 
 The first paid version for macOS (Apple Silicon, macOS 13 or later). The first 3 lectures are free; after that, a plan: Monthly (€15 a month), Yearly (€100 a year) or Lifetime (€200 once).
@@ -76,6 +98,7 @@ The first beta for macOS (Apple Silicon, macOS 13 or later).
 - The window has no permissions of its own: the app's core runs every tool, reads every file and opens every dialog.
 - The bundled tools are pinned and checked: yt-dlp's signature, the built ffmpeg (LGPL) and whisper.cpp; every binary is signed with the hardened runtime.
 
-[Unreleased]: https://github.com/Lectern-HQ/lectern/compare/v0.2.0...dev
+[Unreleased]: https://github.com/Lectern-HQ/lectern/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/Lectern-HQ/lectern/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/Lectern-HQ/lectern/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/Lectern-HQ/lectern/releases/tag/v0.1.0
