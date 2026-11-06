@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest'
 import { LICENCE_SERVICE_URL } from '../src/content/site'
-import { fetchLicence } from '../src/lib/licence'
+import { fetchLicence, recoverLicence } from '../src/lib/licence'
 
 function respond(status: number, body: unknown = {}) {
   return vi.fn(async () => new Response(JSON.stringify(body), { status }))
@@ -34,5 +34,32 @@ describe('fetchLicence', () => {
     ['a network failure', vi.fn(async () => Promise.reject(new Error('offline')))],
   ])('fails on %s', async (_case, fetcher) => {
     expect(await fetchLicence('cs', fetcher as unknown as typeof fetch)).toEqual({ status: 'failed' })
+  })
+})
+
+describe('recoverLicence', () => {
+  it('sends the email and receipt number to the licence service and returns the key', async () => {
+    const fetcher = respond(200, { key: 'a.b', plan: 'lifetime', expires: null })
+
+    const state = await recoverLicence('a@b.c', '1234-5678', fetcher)
+
+    expect(state).toEqual({ status: 'ready', key: 'a.b', plan: 'lifetime', expires: null })
+    expect(fetcher).toHaveBeenCalledWith(`${LICENCE_SERVICE_URL}/recover`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: 'a@b.c', receiptNumber: '1234-5678' }),
+    })
+  })
+
+  it('reports details that match no purchase', async () => {
+    expect(await recoverLicence('a@b.c', '1', respond(404, { error: 'not_found' }))).toEqual({ status: 'notFound' })
+  })
+
+  it.each([
+    ['a refusal for the purchase', respond(409, { error: 'payment_reversed' })],
+    ['a body without a key', respond(200, { plan: 'monthly' })],
+    ['a network failure', vi.fn(async () => Promise.reject(new Error('offline')))],
+  ])('fails on %s', async (_case, fetcher) => {
+    expect(await recoverLicence('a@b.c', '1234-5678', fetcher as unknown as typeof fetch)).toEqual({ status: 'failed' })
   })
 })

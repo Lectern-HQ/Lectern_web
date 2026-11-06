@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { LostKeyLink } from '../components/lostKey/LostKeyLink'
 import { TextLink } from '../components/ui/TextLink'
 import { ROUTES } from '../routes'
 import { LANGUAGES, PRICING, RELEASE, SPEECH_MODEL, formatList, formatPrice } from './site'
@@ -39,6 +40,15 @@ export const FAQ: readonly FaqEntry[] = [
   {
     question: 'How big is the speech model?',
     answer: `About ${SPEECH_MODEL.size}. Lectern downloads it one time, the first time you use the app, and keeps it on your Mac. You need ${SPEECH_MODEL.size} of free space.`,
+  },
+  {
+    question: 'I lost my licence key. Can I get it back?',
+    answer: (
+      <>
+        Yes. If you added it to Lectern, it is under Settings, Licence. Otherwise, have the email you used at checkout
+        and the receipt number from Stripe's receipt email ready: <LostKeyLink inline />.
+      </>
+    ),
   },
   {
     question: 'Does anything leave my computer?',

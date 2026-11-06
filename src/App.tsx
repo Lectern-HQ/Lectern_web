@@ -4,6 +4,7 @@ import { LEGAL_DOCUMENTS } from './content/legal'
 import { ChangelogPage } from './pages/ChangelogPage'
 import { HomePage } from './pages/HomePage'
 import { LegalPage } from './pages/LegalPage'
+import { LostKeyPage } from './pages/LostKeyPage'
 import { ThanksPage } from './pages/ThanksPage'
 import { ROUTES } from './routes'
 
@@ -17,6 +18,7 @@ function App() {
         ))}
         <Route path={ROUTES.changelog} element={<ChangelogPage />} />
         <Route path={ROUTES.thanks} element={<ThanksPage />} />
+        <Route path={ROUTES.lostKey} element={<LostKeyPage />} />
         <Route path="*" element={<Navigate to={ROUTES.home} replace />} />
       </Route>
     </Routes>

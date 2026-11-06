@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { THANKS_COPY } from '../../content/thanks'
+import { Button } from '../ui/Button'
 
 const COPIED_MS = 2000
 
@@ -24,13 +25,7 @@ export function LicenceKeyBox({ licenceKey }: LicenceKeyBoxProps) {
   return (
     <div className="flex max-w-[880px] flex-col gap-4 rounded bg-mist p-8">
       <code className="block break-all font-mono text-sm select-all">{licenceKey}</code>
-      <button
-        type="button"
-        onClick={copy}
-        className="inline-flex min-h-11 w-fit items-center rounded bg-btn px-5 font-semibold text-on-btn"
-      >
-        {copied ? THANKS_COPY.copied : THANKS_COPY.copy}
-      </button>
+      <Button onClick={copy}>{copied ? THANKS_COPY.copied : THANKS_COPY.copy}</Button>
     </div>
   )
 }
