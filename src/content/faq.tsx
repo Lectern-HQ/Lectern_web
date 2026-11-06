@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import { LostKeyLink } from '../components/lostKey/LostKeyLink'
 import { TextLink } from '../components/ui/TextLink'
+import { YourMacsLink } from '../components/yourMacs/YourMacsLink'
 import { ROUTES } from '../routes'
 import { LANGUAGES, PRICING, RELEASE, SPEECH_MODEL, formatList, formatPrice } from './site'
 
@@ -47,6 +48,16 @@ export const FAQ: readonly FaqEntry[] = [
       <>
         Yes. If you added it to Lectern, it is under Settings, Licence. Otherwise, have the email you used at checkout
         and the receipt number from Stripe's receipt email ready: <LostKeyLink inline />.
+      </>
+    ),
+  },
+  {
+    question: 'How do I move my key to another Mac?',
+    answer: (
+      <>
+        Your key works on up to {PRICING.macsPerLicence} Macs. Remove it in Lectern, Settings, Licence on a Mac you no
+        longer use, and enter it on the new one. If you no longer have that Mac, paste your key on{' '}
+        <YourMacsLink inline /> to free it, up to {PRICING.remoteFreesPerYear} times a year.
       </>
     ),
   },

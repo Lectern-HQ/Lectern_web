@@ -61,6 +61,8 @@ export const PRICING = {
   lifetime: appPlan('lifetime').amount,
   /** Macs one licence covers */
   macsPerLicence: 3,
+  /** Macs one licence may free on the Your Macs page in a year; the licence service applies it */
+  remoteFreesPerYear: 3,
 } as const
 
 /** What the prices include, as the app says it */
@@ -166,11 +168,9 @@ export function priceParts(amount: number): { symbol: string; value: string } {
   }
 }
 
-/** "2026-10-22" or a full ISO timestamp → "22 Oct 2026" */
-export function formatDate(isoDate: string): string {
-  return new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }).format(
-    new Date(isoDate),
-  )
+/** "2026-10-22", a full ISO timestamp or a Date → "22 Oct 2026", or "22 October 2026" with `month` long */
+export function formatDate(date: string | Date, month: 'short' | 'long' = 'short'): string {
+  return new Intl.DateTimeFormat('en-GB', { day: 'numeric', month, year: 'numeric', timeZone: 'UTC' }).format(new Date(date))
 }
 
 export function formatList(items: readonly string[]): string {

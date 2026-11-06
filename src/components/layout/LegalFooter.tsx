@@ -2,10 +2,11 @@ import { ROUTES } from '../../routes'
 import { Container } from '../ui/Container'
 import { SlantedSection } from '../ui/SlantedSection'
 import { LostKeyLink } from '../lostKey/LostKeyLink'
+import { YourMacsLink } from '../yourMacs/YourMacsLink'
 import { TextLink } from '../ui/TextLink'
 import { DocumentNav } from './DocumentNav'
 
-/** The footer of the pages away from home: back home, the legal pages and the lost key page */
+/** The footer of the pages away from home: back home, the legal pages, the lost key page and Your Macs */
 export function LegalFooter() {
   return (
     <SlantedSection
@@ -22,6 +23,7 @@ export function LegalFooter() {
         <div className="flex flex-wrap gap-x-7">
           <DocumentNav />
           <LostKeyLink />
+          <YourMacsLink />
         </div>
       </Container>
     </SlantedSection>

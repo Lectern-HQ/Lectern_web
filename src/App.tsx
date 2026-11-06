@@ -6,6 +6,7 @@ import { HomePage } from './pages/HomePage'
 import { LegalPage } from './pages/LegalPage'
 import { LostKeyPage } from './pages/LostKeyPage'
 import { ThanksPage } from './pages/ThanksPage'
+import { YourMacsPage } from './pages/YourMacsPage'
 import { ROUTES } from './routes'
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path={ROUTES.changelog} element={<ChangelogPage />} />
         <Route path={ROUTES.thanks} element={<ThanksPage />} />
         <Route path={ROUTES.lostKey} element={<LostKeyPage />} />
+        <Route path={ROUTES.yourMacs} element={<YourMacsPage />} />
         <Route path="*" element={<Navigate to={ROUTES.home} replace />} />
       </Route>
     </Routes>

@@ -1,20 +1,6 @@
 import { LOST_KEY_COPY } from '../../content/lostKey'
 import type { LostKeyState } from '../../lib/licence'
-import { Panel, ReadyKey, Spinner, SupportLink, WarningIcon } from '../thanks/parts'
-
-/** One message in the tinted box, ending with the support address */
-function Problem({ text }: { text: string }) {
-  return (
-    <div role="alert">
-      <Panel>
-        <WarningIcon />
-        <p>
-          {text} <SupportLink />.
-        </p>
-      </Panel>
-    </div>
-  )
-}
+import { Problem, ReadyKey, Spinner } from '../thanks/parts'
 
 /** What the page shows for each step of the search */
 function Status({ state }: { state: LostKeyState }) {
