@@ -23,7 +23,7 @@ export const TERMS_OF_USE: LegalDocument = {
       body: (
         <p>
           We give you a personal, non-exclusive, non-transferable licence to install and use Lectern on{' '}
-          {PRICING.macsPerLicence === 1 ? 'one Mac' : `${PRICING.macsPerLicence} Macs`} that you own or control. You may not sell, rent, copy or share the app or your licence key, and you may
+          up to {PRICING.macsPerLicence} Macs that you own or control. You may not sell, rent, copy or share the app or your licence key, and you may
           not reverse engineer the app except where the law allows it.
         </p>
       ),
