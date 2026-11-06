@@ -5,6 +5,7 @@ import { Button } from '../ui/Button'
 /** The names the form sends its two fields under */
 const FIELD = { email: 'email', receiptNumber: 'receiptNumber' } as const
 
+/** A text input with the name the form sends it under and the label it shows */
 interface FieldProps extends ComponentProps<'input'> {
   name: string
   label: string
@@ -37,9 +38,11 @@ function Field({ name, label, hint, ...input }: FieldProps) {
   )
 }
 
+/** Whether a search is running, and what to call with the two fields */
 interface LostKeyFormProps {
   /** While true the button waits, so one search runs at a time */
   sending: boolean
+  /** Called with the email and receipt number as typed; the licence service tidies them */
   onSend: (email: string, receiptNumber: string) => void
 }
 

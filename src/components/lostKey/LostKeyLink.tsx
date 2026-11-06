@@ -2,6 +2,7 @@ import { LOST_KEY_COPY } from '../../content/lostKey'
 import { ROUTES } from '../../routes'
 import { TextLink } from '../ui/TextLink'
 
+/** Where the link sits: in running text or on its own */
 interface LostKeyLinkProps {
   /** Inside running text rather than on its own */
   inline?: boolean

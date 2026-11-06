@@ -1,3 +1,4 @@
+/** Every line of the lost key page, and the link to it */
 export const LOST_KEY_COPY = {
   title: 'Lost your key?',
   subtitle: 'Get your licence key back with the details of your purchase.',
