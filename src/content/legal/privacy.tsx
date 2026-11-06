@@ -112,7 +112,9 @@ export const PRIVACY_POLICY: LegalDocument = {
             Our licence service at licence.{SITE.domain}, which runs on {PROVIDERS.licences}, asks {PROVIDERS.payment}{' '}
             whether a purchase is paid and signs your licence key, which contains your email address and your plan. It
             stores nothing. For Monthly and Yearly plans, the app sends it your licence number near the end of each
-            paid period to get a renewed key, and nothing else.
+            paid period to get a renewed key, and nothing else. If you lost your key, the lost key page sends it the
+            email address and receipt number you type, so it can ask {PROVIDERS.payment} for the matching purchase; it
+            keeps neither.
           </p>
         </>
       ),

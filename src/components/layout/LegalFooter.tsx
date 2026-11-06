@@ -1,9 +1,11 @@
 import { ROUTES } from '../../routes'
 import { Container } from '../ui/Container'
 import { SlantedSection } from '../ui/SlantedSection'
+import { LostKeyLink } from '../lostKey/LostKeyLink'
 import { TextLink } from '../ui/TextLink'
 import { DocumentNav } from './DocumentNav'
 
+/** The footer of the pages away from home: back home, the legal pages and the lost key page */
 export function LegalFooter() {
   return (
     <SlantedSection
@@ -17,7 +19,10 @@ export function LegalFooter() {
     >
       <Container className="flex flex-wrap items-center justify-between gap-x-8 gap-y-3 text-base">
         <TextLink href={ROUTES.home}>Back to Lectern</TextLink>
-        <DocumentNav />
+        <div className="flex flex-wrap gap-x-7">
+          <DocumentNav />
+          <LostKeyLink />
+        </div>
       </Container>
     </SlantedSection>
   )

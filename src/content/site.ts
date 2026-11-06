@@ -117,7 +117,7 @@ export const HOST_DETAILS = {
 /** French accounting law keeps sales records for 10 years (Code de commerce, article L123-22) */
 export const PURCHASE_RECORD_YEARS = 10
 
-export const LEGAL_UPDATED = '26 October 2026'
+export const LEGAL_UPDATED = '6 November 2026'
 
 const META_SEPARATOR = ' · '
 
