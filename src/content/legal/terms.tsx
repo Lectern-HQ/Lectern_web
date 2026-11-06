@@ -21,18 +21,21 @@ export const TERMS_OF_USE: LegalDocument = {
     {
       heading: 'Your licence',
       body: (
-        <>
-          <p>
-            We give you a personal, non-exclusive, non-transferable licence to install and use Lectern on{' '}
-            {PRICING.macsPerLicence === 1 ? 'one Mac' : `${PRICING.macsPerLicence} Macs`} that you own or control. You may not sell, rent, copy or share the app or your licence key, and you may
-            not reverse engineer the app except where the law allows it.
-          </p>
-          <p>
-            Entering your key in Lectern activates it on that Mac. To move it to another Mac, open Lectern on a Mac you no
-            longer use and remove the key in Settings, Licence: that frees the Mac, and you can enter the key on the other
-            one. If you can no longer open Lectern on it, write to {SITE.supportEmail} and we will free it.
-          </p>
-        </>
+        <p>
+          We give you a personal, non-exclusive, non-transferable licence to install and use Lectern on{' '}
+          {PRICING.macsPerLicence === 1 ? 'one Mac' : `${PRICING.macsPerLicence} Macs`} that you own or control. You may not sell, rent, copy or share the app or your licence key, and you may
+          not reverse engineer the app except where the law allows it.
+        </p>
+      ),
+    },
+    {
+      heading: 'Moving your key to another Mac',
+      body: (
+        <p>
+          Entering your key in Lectern activates it on that Mac. To move it to another Mac, open Lectern on a Mac you no
+          longer use and remove the key in Settings, Licence: that frees the Mac, and you can enter the key on the other
+          one. If you can no longer open Lectern on it, write to {SITE.supportEmail} and we will free it.
+        </p>
       ),
     },
     {
