@@ -1,4 +1,5 @@
 import { TextLink } from '../../components/ui/TextLink'
+import { YourMacsLink } from '../../components/yourMacs/YourMacsLink'
 import { ROUTES } from '../../routes'
 import { PRICING, PROVIDERS, PUBLISHER, SALES_REGIONS, SITE, SPEECH_MODEL, VAT_NOTE, formatList, formatPrice } from '../site'
 import type { LegalDocument } from './types'
@@ -34,7 +35,9 @@ export const TERMS_OF_USE: LegalDocument = {
         <p>
           Entering your key in Lectern activates it on that Mac. To move it to another Mac, open Lectern on a Mac you no
           longer use and remove the key in Settings, Licence: that frees the Mac, and you can enter the key on the other
-          one. If you can no longer open Lectern on it, write to {SITE.supportEmail} and we will free it.
+          one. If you can no longer open Lectern on it, free it on the <YourMacsLink inline>Your Macs page</YourMacsLink>{' '}
+          with your key, up to {PRICING.remoteFreesPerYear} times a year. Past that, write to {SITE.supportEmail} and we will
+          free it.
         </p>
       ),
     },

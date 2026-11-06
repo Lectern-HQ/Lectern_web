@@ -2,12 +2,13 @@ import { SITE } from '../../content/site'
 import { SECTION_IDS, anchor } from '../../routes'
 import { DocumentNav } from '../layout/DocumentNav'
 import { LostKeyLink } from '../lostKey/LostKeyLink'
+import { YourMacsLink } from '../yourMacs/YourMacsLink'
 import { Container } from '../ui/Container'
 import { SlantedSection } from '../ui/SlantedSection'
 import { TextLink } from '../ui/TextLink'
 import { Wordmark } from '../ui/Wordmark'
 
-/** The home page's footer: contact address, legal pages and the lost key page */
+/** The home page's footer: contact address, legal pages, the lost key page and Your Macs */
 export function HomeFooter() {
   return (
     <SlantedSection
@@ -36,6 +37,7 @@ export function HomeFooter() {
           <div className="flex flex-wrap gap-x-7 text-ink">
             <DocumentNav />
             <LostKeyLink />
+            <YourMacsLink />
           </div>
           <span>
             {SITE.name}, {new Date().getFullYear()}

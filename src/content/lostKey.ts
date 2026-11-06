@@ -9,6 +9,8 @@ export const LOST_KEY_COPY = {
   sending: 'Looking for your purchase…',
   notFound: 'We could not find a purchase with these details. Check the email and the receipt number, or write to',
   failed: 'We could not reach the licence service just now. Try again in a minute, or write to',
+  /** Before the link to Your Macs, for a buyer who has the key */
+  yourMacs: 'Have your key, and want to free a Mac you no longer have? Go to',
   /** The link from the thank-you page, the FAQ and the footers */
   link: 'Get your key back',
 } as const

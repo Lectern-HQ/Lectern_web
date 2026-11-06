@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1793993404756" clover="3.2.0">
+  <project timestamp="1793993404756" name="All files">
+    <metrics statements="297" coveredstatements="247" conditionals="206" coveredconditionals="167" methods="120" coveredmethods="94" elements="623" coveredelements="508" complexity="0" loc="297" ncloc="297" packages="13" files="52" classes="52"/>
+    <package name="build">
+      <metrics statements="30" coveredstatements="19" conditionals="26" coveredconditionals="18" methods="9" coveredmethods="4"/>
+      <file name="releaseFeed.ts" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/build/releaseFeed.ts">
+        <metrics statements="30" coveredstatements="19" conditionals="26" coveredconditionals="18" methods="9" coveredmethods="4"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="18" count="18" type="cond" truecount="2" falsecount="0"/>
+        <line num="23" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="31" count="6" type="stmt"/>
+        <line num="32" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="33" count="5" type="cond" truecount="5" falsecount="0"/>
+        <line num="34" count="4" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="41" count="6" type="cond" truecount="4" falsecount="1"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="44" count="6" type="cond" truecount="1" falsecount="1"/>
+        <line num="45" count="6" type="cond" truecount="3" falsecount="1"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="48" count="6" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="60" count="0" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="66" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="69" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="70" count="0" type="stmt"/>
+        <line num="71" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="routes.ts" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/routes.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.home">
+      <metrics statements="5" coveredstatements="5" conditionals="10" coveredconditionals="10" methods="2" coveredmethods="2"/>
+      <file name="HomeFooter.tsx" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/components/home/HomeFooter.tsx">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="13" count="2" type="stmt"/>
+      </file>
+      <file name="PlanCard.tsx" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/components/home/PlanCard.tsx">
+        <metrics statements="4" coveredstatements="4" conditionals="10" coveredconditionals="10" methods="1" coveredmethods="1"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="13" count="9" type="stmt"/>
+        <line num="14" count="9" type="cond" truecount="2" falsecount="0"/>
+        <line num="16" count="9" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.layout">
+      <metrics statements="9" coveredstatements="9" conditionals="15" coveredconditionals="9" methods="6" coveredmethods="6"/>
+      <file name="DocumentNav.tsx" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/components/layout/DocumentNav.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="11" count="7" type="stmt"/>
+        <line num="14" count="28" type="stmt"/>
+      </file>
+      <file name="DocumentPage.tsx" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/components/layout/DocumentPage.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="19" count="3" type="stmt"/>
+        <line num="21" count="3" type="stmt"/>
+      </file>
+      <file name="LegalFooter.tsx" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/components/layout/LegalFooter.tsx">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="11" count="5" type="stmt"/>
+      </file>
+      <file name="SiteHeader.tsx" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/components/layout/SiteHeader.tsx">
+        <metrics statements="4" coveredstatements="4" conditionals="15" coveredconditionals="9" methods="2" coveredmethods="2"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="29" count="5" type="stmt"/>
+        <line num="50" count="12" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.lostKey">
+      <metrics statements="13" coveredstatements="10" conditionals="10" coveredconditionals="6" methods="5" coveredmethods="4"/>
+      <file name="LostKeyForm.tsx" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/components/lostKey/LostKeyForm.tsx">
+        <metrics statements="5" coveredstatements="2" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="25" count="4" type="stmt"/>
+      </file>
+      <file name="LostKeyLink.tsx" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/components/lostKey/LostKeyLink.tsx">
+        <metrics statements="1" coveredstatements="1" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="14" count="12" type="stmt"/>
+      </file>
+      <file name="LostKeyResult.tsx" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/components/lostKey/LostKeyResult.tsx">
+        <metrics statements="7" coveredstatements="7" conditionals="5" coveredconditionals="5" methods="2" coveredmethods="2"/>
+        <line num="7" count="8" type="cond" truecount="5" falsecount="0"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="28" count="8" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.thanks">
+      <metrics statements="24" coveredstatements="17" conditionals="10" coveredconditionals="6" methods="14" coveredmethods="12"/>
+      <file name="LicenceKeyBox.tsx" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/components/thanks/LicenceKeyBox.tsx">
+        <metrics statements="7" coveredstatements="3" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="1"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="25" count="3" type="stmt"/>
+      </file>
+      <file name="ThanksContent.tsx" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/components/thanks/ThanksContent.tsx">
+        <metrics statements="8" coveredstatements="5" conditionals="6" coveredconditionals="3" methods="2" coveredmethods="2"/>
+        <line num="8" count="3" type="cond" truecount="3" falsecount="3"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="55" count="3" type="stmt"/>
+      </file>
+      <file name="parts.tsx" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/components/thanks/parts.tsx">
+        <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="9" coveredmethods="9"/>
+        <line num="11" count="10" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
+        <line num="31" count="2" type="stmt"/>
+        <line num="41" count="8" type="stmt"/>
+        <line num="60" count="8" type="stmt"/>
+        <line num="65" count="6" type="stmt"/>
+        <line num="79" count="3" type="stmt"/>
+        <line num="84" count="9" type="stmt"/>
+        <line num="93" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.ui">
+      <metrics statements="25" coveredstatements="22" conditionals="23" coveredconditionals="23" methods="17" coveredmethods="14"/>
+      <file name="Button.tsx" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/components/ui/Button.tsx">
+        <metrics statements="1" coveredstatements="1" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="6" count="14" type="stmt"/>
+      </file>
+      <file name="ButtonLink.tsx" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/components/ui/ButtonLink.tsx">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="5" count="4" type="stmt"/>
+      </file>
+      <file name="Container.tsx" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/components/ui/Container.tsx">
+        <metrics statements="1" coveredstatements="1" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="13" count="15" type="stmt"/>
+      </file>
+      <file name="Field.tsx" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/components/ui/Field.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+        <line num="13" count="11" type="cond" truecount="2" falsecount="0"/>
+        <line num="14" count="11" type="stmt"/>
+      </file>
+      <file name="LogoMark.tsx" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/components/ui/LogoMark.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="8" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="9" count="7" type="stmt"/>
+      </file>
+      <file name="SlantedSection.tsx" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/components/ui/SlantedSection.tsx">
+        <metrics statements="3" coveredstatements="3" conditionals="7" coveredconditionals="7" methods="2" coveredmethods="2"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="26" count="14" type="cond" truecount="2" falsecount="0"/>
+        <line num="40" count="7" type="stmt"/>
+      </file>
+      <file name="SmartLink.tsx" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/components/ui/SmartLink.tsx">
+        <metrics statements="4" coveredstatements="4" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+        <line num="7" count="6" type="stmt"/>
+        <line num="11" count="98" type="cond" truecount="4" falsecount="0"/>
+        <line num="12" count="75" type="stmt"/>
+        <line num="14" count="23" type="stmt"/>
+      </file>
+      <file name="TextLink.tsx" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/components/ui/TextLink.tsx">
+        <metrics statements="1" coveredstatements="1" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
+        <line num="10" count="89" type="stmt"/>
+      </file>
+      <file name="ThemeToggle.tsx" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/components/ui/ThemeToggle.tsx">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="6" count="5" type="stmt"/>
+      </file>
+      <file name="Wordmark.tsx" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/components/ui/Wordmark.tsx">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="19" count="7" type="stmt"/>
+        <line num="20" count="7" type="stmt"/>
+      </file>
+      <file name="icons.tsx" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/components/ui/icons.tsx">
+        <metrics statements="6" coveredstatements="3" conditionals="1" coveredconditionals="1" methods="6" coveredmethods="3"/>
+        <line num="15" count="10" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="60" count="5" type="stmt"/>
+        <line num="68" count="5" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.yourMacs">
+      <metrics statements="28" coveredstatements="23" conditionals="24" coveredconditionals="21" methods="12" coveredmethods="8"/>
+      <file name="MacRow.tsx" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/components/yourMacs/MacRow.tsx">
+        <metrics statements="7" coveredstatements="4" conditionals="4" coveredconditionals="3" methods="4" coveredmethods="1"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="21" count="5" type="stmt"/>
+        <line num="22" count="5" type="stmt"/>
+        <line num="24" count="5" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+      </file>
+      <file name="YourMacsForm.tsx" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/components/yourMacs/YourMacsForm.tsx">
+        <metrics statements="4" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="21" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="24" count="3" type="stmt"/>
+      </file>
+      <file name="YourMacsLink.tsx" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/components/yourMacs/YourMacsLink.tsx">
+        <metrics statements="1" coveredstatements="1" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="15" count="12" type="stmt"/>
+      </file>
+      <file name="YourMacsResult.tsx" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/components/yourMacs/YourMacsResult.tsx">
+        <metrics statements="16" coveredstatements="16" conditionals="16" coveredconditionals="16" methods="5" coveredmethods="5"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="20" count="4" type="cond" truecount="4" falsecount="0"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="31" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="32" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="33" count="5" type="stmt"/>
+        <line num="37" count="4" type="stmt"/>
+        <line num="49" count="11" type="cond" truecount="6" falsecount="0"/>
+        <line num="51" count="2" type="stmt"/>
+        <line num="53" count="1" type="stmt"/>
+        <line num="60" count="5" type="stmt"/>
+        <line num="62" count="1" type="stmt"/>
+        <line num="64" count="1" type="stmt"/>
+        <line num="66" count="1" type="stmt"/>
+        <line num="72" count="11" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.content">
+      <metrics statements="62" coveredstatements="59" conditionals="17" coveredconditionals="13" methods="24" coveredmethods="21"/>
+      <file name="app-languages.json" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/content/app-languages.json">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="8" type="stmt"/>
+      </file>
+      <file name="app-plans.json" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/content/app-plans.json">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="8" type="stmt"/>
+        <line num="2" count="8" type="stmt"/>
+        <line num="3" count="8" type="stmt"/>
+        <line num="4" count="8" type="stmt"/>
+        <line num="5" count="8" type="stmt"/>
+      </file>
+      <file name="appFiles.ts" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/content/appFiles.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="1" methods="4" coveredmethods="4"/>
+        <line num="14" count="8" type="stmt"/>
+        <line num="17" count="8" type="stmt"/>
+        <line num="21" count="60" type="stmt"/>
+        <line num="22" count="30" type="cond" truecount="1" falsecount="1"/>
+        <line num="23" count="30" type="stmt"/>
+        <line num="27" count="8" type="stmt"/>
+        <line num="28" count="40" type="stmt"/>
+        <line num="29" count="32" type="stmt"/>
+      </file>
+      <file name="faq.tsx" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/content/faq.tsx">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="13" count="2" type="stmt"/>
+      </file>
+      <file name="lostKey.ts" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/content/lostKey.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="2" count="3" type="stmt"/>
+      </file>
+      <file name="pricing.ts" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/content/pricing.ts">
+        <metrics statements="9" coveredstatements="9" conditionals="5" coveredconditionals="4" methods="4" coveredmethods="4"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="28" count="6" type="stmt"/>
+        <line num="29" count="6" type="stmt"/>
+        <line num="33" count="6" type="cond" truecount="1" falsecount="1"/>
+        <line num="36" count="2" type="stmt"/>
+        <line num="68" count="21" type="cond" truecount="2" falsecount="0"/>
+        <line num="71" count="2" type="stmt"/>
+        <line num="73" count="2" type="stmt"/>
+      </file>
+      <file name="site.ts" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/content/site.ts">
+        <metrics statements="31" coveredstatements="28" conditionals="8" coveredconditionals="7" methods="12" coveredmethods="9"/>
+        <line num="9" count="8" type="stmt"/>
+        <line num="19" count="8" type="stmt"/>
+        <line num="31" count="8" type="stmt"/>
+        <line num="35" count="11" type="cond" truecount="2" falsecount="0"/>
+        <line num="39" count="8" type="stmt"/>
+        <line num="47" count="8" type="stmt"/>
+        <line num="53" count="8" type="stmt"/>
+        <line num="56" count="8" type="stmt"/>
+        <line num="77" count="8" type="stmt"/>
+        <line num="84" count="8" type="stmt"/>
+        <line num="94" count="8" type="stmt"/>
+        <line num="96" count="8" type="stmt"/>
+        <line num="105" count="8" type="stmt"/>
+        <line num="111" count="8" type="stmt"/>
+        <line num="113" count="8" type="stmt"/>
+        <line num="120" count="8" type="stmt"/>
+        <line num="122" count="8" type="stmt"/>
+        <line num="124" count="8" type="stmt"/>
+        <line num="128" count="0" type="stmt"/>
+        <line num="132" count="0" type="stmt"/>
+        <line num="141" count="0" type="stmt"/>
+        <line num="145" count="33" type="cond" truecount="2" falsecount="0"/>
+        <line num="146" count="33" type="stmt"/>
+        <line num="156" count="24" type="stmt"/>
+        <line num="161" count="9" type="stmt"/>
+        <line num="162" count="9" type="stmt"/>
+        <line num="163" count="9" type="cond" truecount="1" falsecount="1"/>
+        <line num="165" count="18" type="stmt"/>
+        <line num="166" count="9" type="stmt"/>
+        <line num="173" count="6" type="stmt"/>
+        <line num="177" count="6" type="stmt"/>
+      </file>
+      <file name="thanks.ts" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/content/thanks.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="4" type="stmt"/>
+      </file>
+      <file name="yourMacs.ts" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/content/yourMacs.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="1" methods="4" coveredmethods="4"/>
+        <line num="5" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="16" count="5" type="stmt"/>
+        <line num="24" count="4" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.content.legal">
+      <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="index.ts" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/content/legal/index.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="6" type="stmt"/>
+      </file>
+      <file name="notice.tsx" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/content/legal/notice.tsx">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="6" count="2" type="stmt"/>
+      </file>
+      <file name="privacy.tsx" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/content/legal/privacy.tsx">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="15" count="2" type="stmt"/>
+      </file>
+      <file name="terms.tsx" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/content/legal/terms.tsx">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="7" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.hooks">
+      <metrics statements="19" coveredstatements="9" conditionals="2" coveredconditionals="0" methods="9" coveredmethods="3"/>
+      <file name="useLostKey.ts" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/hooks/useLostKey.ts">
+        <metrics statements="5" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+      </file>
+      <file name="usePageTitle.ts" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/hooks/usePageTitle.ts">
+        <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+      </file>
+      <file name="useYourMacs.ts" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/hooks/useYourMacs.ts">
+        <metrics statements="12" coveredstatements="5" conditionals="2" coveredconditionals="0" methods="5" coveredmethods="1"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="18" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.lib">
+      <metrics statements="68" coveredstatements="60" conditionals="69" coveredconditionals="61" methods="18" coveredmethods="16"/>
+      <file name="checkoutSession.ts" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/lib/checkoutSession.ts">
+        <metrics statements="14" coveredstatements="14" conditionals="8" coveredconditionals="8" methods="3" coveredmethods="3"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="7" count="4" type="stmt"/>
+        <line num="12" count="23" type="cond" truecount="2" falsecount="0"/>
+        <line num="20" count="8" type="stmt"/>
+        <line num="21" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="22" count="3" type="stmt"/>
+        <line num="23" count="3" type="stmt"/>
+        <line num="27" count="3" type="stmt"/>
+        <line num="29" count="5" type="stmt"/>
+        <line num="30" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="31" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="37" count="4" type="stmt"/>
+        <line num="41" count="7" type="stmt"/>
+      </file>
+      <file name="cn.ts" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/lib/cn.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="2" count="211" type="stmt"/>
+      </file>
+      <file name="licence.ts" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/lib/licence.ts">
+        <metrics statements="18" coveredstatements="18" conditionals="16" coveredconditionals="16" methods="3" coveredmethods="3"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="27" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="28" count="5" type="stmt"/>
+        <line num="29" count="5" type="cond" truecount="4" falsecount="0"/>
+        <line num="30" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="35" count="7" type="stmt"/>
+        <line num="36" count="7" type="stmt"/>
+        <line num="37" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="38" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="39" count="4" type="stmt"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="47" count="5" type="stmt"/>
+        <line num="48" count="5" type="stmt"/>
+        <line num="53" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="54" count="3" type="stmt"/>
+        <line num="56" count="1" type="stmt"/>
+      </file>
+      <file name="macs.ts" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/lib/macs.ts">
+        <metrics statements="26" coveredstatements="26" conditionals="37" coveredconditionals="37" methods="9" coveredmethods="9"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="34" count="2" type="stmt"/>
+        <line num="35" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="40" count="3" type="stmt"/>
+        <line num="41" count="3" type="cond" truecount="5" falsecount="0"/>
+        <line num="42" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="47" count="9" type="cond" truecount="2" falsecount="0"/>
+        <line num="48" count="9" type="cond" truecount="4" falsecount="0"/>
+        <line num="49" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="50" count="7" type="cond" truecount="5" falsecount="0"/>
+        <line num="51" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="52" count="9" type="cond" truecount="2" falsecount="0"/>
+        <line num="57" count="10" type="stmt"/>
+        <line num="58" count="10" type="stmt"/>
+        <line num="63" count="9" type="stmt"/>
+        <line num="65" count="1" type="stmt"/>
+        <line num="71" count="9" type="stmt"/>
+        <line num="76" count="1" type="stmt"/>
+        <line num="93" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="94" count="6" type="cond" truecount="4" falsecount="0"/>
+        <line num="96" count="1" type="stmt"/>
+        <line num="98" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="100" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="102" count="1" type="stmt"/>
+      </file>
+      <file name="theme.ts" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/lib/theme.ts">
+        <metrics statements="9" coveredstatements="1" conditionals="8" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="11" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="16" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.pages">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="LostKeyPage.tsx" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/pages/LostKeyPage.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+      </file>
+      <file name="YourMacsPage.tsx" path="/Users/luca/Documents/Lectern/wt/297-web-your-macs/src/pages/YourMacsPage.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

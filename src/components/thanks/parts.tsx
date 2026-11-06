@@ -60,6 +60,20 @@ export function Panel({ children }: { children: ReactNode }) {
   return <div className="flex items-start gap-4 rounded-lg bg-mist px-6 py-5">{children}</div>
 }
 
+/** One message in the tinted box, ending with the support address */
+export function Problem({ text }: { text: string }) {
+  return (
+    <div role="alert">
+      <Panel>
+        <WarningIcon />
+        <p>
+          {text} <SupportLink />.
+        </p>
+      </Panel>
+    </div>
+  )
+}
+
 /** The three steps from the copied key to an activated app */
 function ActivationSteps() {
   return (
