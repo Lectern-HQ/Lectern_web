@@ -60,7 +60,7 @@ export const PRICING = {
   yearly: appPlan('yearly').amount,
   lifetime: appPlan('lifetime').amount,
   /** Macs one licence covers */
-  macsPerLicence: 1,
+  macsPerLicence: 3,
 } as const
 
 /** What the prices include, as the app says it */
