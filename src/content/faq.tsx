@@ -54,9 +54,10 @@ export const FAQ: readonly FaqEntry[] = [
     question: 'Does anything leave my computer?',
     answer: (
       <>
-        Your lectures, transcripts and logins stay on your computer. Lectern goes online for three things only: it
-        downloads the recording from the lecture's own site, it downloads the speech model once, and it checks for
-        updates without sending anything that identifies you. The details are in the{' '}
+        Your lectures, transcripts and logins stay on your computer. Lectern goes online only to download the
+        recording from the lecture's own site, to download the speech model once, to check for updates without
+        sending anything that identifies you, and for your licence: once when you enter your key, when you remove it,
+        and to renew a Monthly or Yearly plan. The details are in the{' '}
         <TextLink inline href={ROUTES.privacy}>
           privacy policy
         </TextLink>
