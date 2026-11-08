@@ -59,7 +59,7 @@ describe('LostKeyResult', () => {
   })
 
   it('shows the key with Copy, the steps, and the portal link for a plan that renews', () => {
-    const page = result({ status: 'ready', key: 'k.sig', plan: 'yearly', expires: '2027-01-01T00:00:00.000Z' })
+    const page = result({ status: 'ready', key: 'k.sig', plan: 'yearly' })
 
     expect(page).toContain('k.sig')
     expect(page).toContain(THANKS_COPY.copy)
@@ -67,10 +67,6 @@ describe('LostKeyResult', () => {
     expect(page).toContain(`href="${CUSTOMER_PORTAL_URL}"`)
     expect(page).toContain('href="lectern://activate?key=k.sig"')
     expect(page).toContain(THANKS_COPY.pasteInstead)
-  })
-
-  it('leaves the portal link out for Lifetime', () => {
-    expect(result({ status: 'ready', key: 'k.sig', plan: 'lifetime', expires: null })).not.toContain(CUSTOMER_PORTAL_URL)
   })
 
   it.each<[LostKeyState, string]>([

@@ -2,7 +2,6 @@ import { describe, expect, it } from 'vitest'
 import { CUSTOMER_PORTAL_URL } from '../src/content/site'
 import {
   SESSION_STORAGE_KEY,
-  hasManageLink,
   isCheckoutSessionId,
   rememberCheckoutSession,
 } from '../src/lib/checkoutSession'
@@ -84,17 +83,7 @@ describe('rememberCheckoutSession', () => {
   })
 })
 
-describe('hasManageLink', () => {
-  it('shows the portal link for plans that renew', () => {
-    expect(hasManageLink('monthly')).toBe(true)
-    expect(hasManageLink('yearly')).toBe(true)
-  })
-
-  it('hides it for lifetime and anything unknown', () => {
-    expect(hasManageLink('lifetime')).toBe(false)
-    expect(hasManageLink('')).toBe(false)
-  })
-
+describe('CUSTOMER_PORTAL_URL', () => {
   it('points at Stripe over https', () => {
     expect(new URL(CUSTOMER_PORTAL_URL).origin).toBe('https://billing.stripe.com')
   })

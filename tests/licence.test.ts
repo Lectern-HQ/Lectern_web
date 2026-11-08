@@ -7,17 +7,13 @@ function respond(status: number, body: unknown = {}) {
 }
 
 describe('fetchLicence', () => {
-  it('returns the key, plan and expiry from the licence service', async () => {
+  it('returns the key and plan from the licence service', async () => {
     const fetcher = respond(200, { key: 'a.b', plan: 'yearly', expires: '2027-01-01T00:00:00.000Z' })
 
     const state = await fetchLicence('cs_test_1', fetcher)
 
-    expect(state).toEqual({ status: 'ready', key: 'a.b', plan: 'yearly', expires: '2027-01-01T00:00:00.000Z' })
+    expect(state).toEqual({ status: 'ready', key: 'a.b', plan: 'yearly' })
     expect(fetcher).toHaveBeenCalledWith(`${LICENCE_SERVICE_URL}/key?session_id=cs_test_1`)
-  })
-
-  it('treats a missing expiry as a lifetime key', async () => {
-    expect(await fetchLicence('cs', respond(200, { key: 'a.b', plan: 'lifetime', expires: null }))).toMatchObject({ expires: null })
   })
 
   it('reports a payment that is still clearing', async () => {
@@ -39,11 +35,11 @@ describe('fetchLicence', () => {
 
 describe('recoverLicence', () => {
   it('sends the email and receipt number to the licence service and returns the key', async () => {
-    const fetcher = respond(200, { key: 'a.b', plan: 'lifetime', expires: null })
+    const fetcher = respond(200, { key: 'a.b', plan: 'semester', expires: '2027-05-08T00:00:00.000Z' })
 
     const state = await recoverLicence('a@b.c', '1234-5678', fetcher)
 
-    expect(state).toEqual({ status: 'ready', key: 'a.b', plan: 'lifetime', expires: null })
+    expect(state).toEqual({ status: 'ready', key: 'a.b', plan: 'semester' })
     expect(fetcher).toHaveBeenCalledWith(`${LICENCE_SERVICE_URL}/recover`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

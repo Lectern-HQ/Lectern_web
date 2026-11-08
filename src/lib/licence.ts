@@ -9,8 +9,8 @@ const NO_MATCH_STATUS = 404
 /** Where Lectern listens for a key to activate; the app registers the `lectern://` scheme */
 const ACTIVATE_LINK = 'lectern://activate?key='
 
-/** A key the licence service gave, with its plan and end date (null for Lifetime) */
-export type ReadyLicence = { status: 'ready'; key: string; plan: string; expires: string | null }
+/** A key the licence service gave, with its plan */
+export type ReadyLicence = { status: 'ready'; key: string; plan: string }
 
 /** Where the thank-you page is with fetching the key */
 export type LicenceState =
@@ -32,9 +32,9 @@ export function activationLink(key: string): string {
 /** The key in a successful answer from the licence service; any other answer is a failure */
 async function readKey(response: Response): Promise<ReadyLicence | { status: 'failed' }> {
   if (!response.ok) return { status: 'failed' }
-  const body = (await response.json()) as { key?: unknown; plan?: unknown; expires?: unknown }
+  const body = (await response.json()) as { key?: unknown; plan?: unknown }
   if (typeof body.key !== 'string' || typeof body.plan !== 'string') return { status: 'failed' }
-  return { status: 'ready', key: body.key, plan: body.plan, expires: typeof body.expires === 'string' ? body.expires : null }
+  return { status: 'ready', key: body.key, plan: body.plan }
 }
 
 /** Posts `body` as JSON to `path` on the licence service; throws when `fetcher` does, so callers catch */
