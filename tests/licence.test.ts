@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest'
 import { LICENCE_SERVICE_URL } from '../src/content/site'
-import { fetchLicence, postToService, recoverLicence } from '../src/lib/licence'
+import { activationLink, fetchLicence, postToService, recoverLicence } from '../src/lib/licence'
 
 function respond(status: number, body: unknown = {}) {
   return vi.fn(async () => new Response(JSON.stringify(body), { status }))
@@ -78,5 +78,16 @@ describe('postToService', () => {
     const fetcher = vi.fn(async () => Promise.reject(new Error('offline')))
 
     await expect(postToService('/macs', {}, fetcher as unknown as typeof fetch)).rejects.toThrow('offline')
+  })
+})
+
+describe('activationLink', () => {
+  it('keeps . _ - and escapes + / = so the app reads the key back unchanged', () => {
+    const key = 'a.b_c-d+e/f='
+
+    const link = activationLink(key)
+
+    expect(link).toBe('lectern://activate?key=a.b_c-d%2Be%2Ff%3D')
+    expect(new URL(link).searchParams.get('key')).toBe(key)
   })
 })

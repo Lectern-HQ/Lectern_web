@@ -4,6 +4,7 @@ import { THANKS_COPY } from '../../content/thanks'
 import type { ReadyLicence } from '../../lib/licence'
 import { TextLink } from '../ui/TextLink'
 import { LicenceKeyBox } from './LicenceKeyBox'
+import { OpenInLectern } from './OpenInLectern'
 
 /** The support address as a mail link, inside running text */
 export function SupportLink() {
@@ -87,10 +88,14 @@ function ActivationSteps() {
   )
 }
 
-/** A key from the licence service: the box with Copy, how to activate it, and the portal link, since every plan renews */
+/** A key from the licence service: Open in Lectern, the box with Copy and how to paste it by hand, and the portal link, since every plan renews */
 export function ReadyKey({ licence }: { licence: ReadyLicence }) {
   return (
     <>
+      <OpenInLectern licenceKey={licence.key} />
+      <p className="mt-2 flex items-center gap-4 text-sm text-muted before:h-px before:flex-1 before:bg-line after:h-px after:flex-1 after:bg-line">
+        {THANKS_COPY.pasteInstead}
+      </p>
       <LicenceKeyBox licenceKey={licence.key} />
       <ActivationSteps />
       <p>{THANKS_COPY.saveNote}</p>
