@@ -6,7 +6,8 @@
   "licence": {
     "freeLectures": 3,
     "macsPerKey": 3,
-    "freesPerYear": 3
+    "freesPerYear": 3,
+    "graceDays": 7
   },
   "plans": [
     {
