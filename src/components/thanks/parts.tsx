@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react'
 import { CUSTOMER_PORTAL_URL, SITE } from '../../content/site'
 import { THANKS_COPY } from '../../content/thanks'
-import { hasManageLink } from '../../lib/checkoutSession'
 import type { ReadyLicence } from '../../lib/licence'
 import { TextLink } from '../ui/TextLink'
 import { LicenceKeyBox } from './LicenceKeyBox'
@@ -88,14 +87,14 @@ function ActivationSteps() {
   )
 }
 
-/** A key from the licence service: the box with Copy, how to activate it, and the portal link for plans that renew */
+/** A key from the licence service: the box with Copy, how to activate it, and the portal link, since every plan renews */
 export function ReadyKey({ licence }: { licence: ReadyLicence }) {
   return (
     <>
       <LicenceKeyBox licenceKey={licence.key} />
       <ActivationSteps />
       <p>{THANKS_COPY.saveNote}</p>
-      {hasManageLink(licence.plan) && <ManageLink />}
+      <ManageLink />
     </>
   )
 }

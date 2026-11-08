@@ -1,5 +1,3 @@
-import type { PlanId } from '../content/site'
-
 /** Same shape the licence service accepts, capped at 255 characters after the prefix as it is; anything else is never stored or sent */
 const SESSION_ID = /^cs_(test|live)_[A-Za-z0-9]{1,255}$/
 
@@ -32,11 +30,4 @@ export function rememberCheckoutSession(search: string, store: SessionStore | nu
   } catch {
     return null
   }
-}
-
-const RENEWING_PLANS: readonly string[] = ['monthly', 'yearly'] satisfies PlanId[]
-
-/** Monthly and Yearly renew through Stripe, so only they get the customer portal link */
-export function hasManageLink(plan: string): boolean {
-  return RENEWING_PLANS.includes(plan)
 }

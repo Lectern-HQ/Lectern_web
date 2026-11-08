@@ -9,9 +9,29 @@ const STRIPE_CHECKOUT_ORIGIN = 'https://buy.stripe.com'
 /** Stand-in payment links, so the open state is tested before the real ones are filled in */
 const TEST_LINKS: Record<PlanId, string> = {
   monthly: `${STRIPE_CHECKOUT_ORIGIN}/test-monthly`,
+  semester: `${STRIPE_CHECKOUT_ORIGIN}/test-semester`,
   yearly: `${STRIPE_CHECKOUT_ORIGIN}/test-yearly`,
-  lifetime: `${STRIPE_CHECKOUT_ORIGIN}/test-lifetime`,
 }
+
+describe('PLANS', () => {
+  it('offers Monthly, Semester and Yearly in that order, with Yearly on the dark card', () => {
+    expect(PLANS.map(({ name, period, featured }) => [name, period, featured])).toEqual([
+      ['Monthly', 'a month', false],
+      ['Semester', 'every 6 months', false],
+      ['Yearly', 'a year', true],
+    ])
+  })
+
+  it('shows the Semester card with its price, period and saving', () => {
+    const semester = PLANS.find((plan) => plan.id === 'semester')
+    const html = renderToStaticMarkup(<PlanCard plan={semester!} />)
+
+    expect(html).toContain('>Semester</h3>')
+    expect(html).toContain('>50</span>')
+    expect(html).toContain('every 6 months')
+    expect(html).toContain('€8.33 a month, saves €10.')
+  })
+})
 
 describe('plansFor', () => {
   it('gives no plan a payment link while sales are closed, even with links filled in', () => {
@@ -21,7 +41,7 @@ describe('plansFor', () => {
   it('gives each plan its own payment link once sales open', () => {
     const plans = plansFor(true, TEST_LINKS)
 
-    expect(plans.map((plan) => plan.checkoutUrl)).toEqual([TEST_LINKS.monthly, TEST_LINKS.yearly, TEST_LINKS.lifetime])
+    expect(plans.map((plan) => plan.checkoutUrl)).toEqual([TEST_LINKS.monthly, TEST_LINKS.semester, TEST_LINKS.yearly])
   })
 
   it('follows the one sales switch', () => {

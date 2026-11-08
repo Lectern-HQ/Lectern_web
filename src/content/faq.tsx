@@ -32,7 +32,7 @@ export function checkDownloadEntry(dmgSha256: string): FaqEntry {
 export const FAQ: readonly FaqEntry[] = [
   {
     question: 'What does it cost?',
-    answer: `Your first ${PRICING.freeLectures} lectures are free. After that you choose a plan: ${formatPrice(PRICING.monthly)} a month, ${formatPrice(PRICING.yearly)} a year, or ${formatPrice(PRICING.lifetime)} once. Your transcripts stay yours either way.`,
+    answer: `Your first ${PRICING.freeLectures} lectures are free. After that you choose a plan: ${formatPrice(PRICING.monthly)} a month, ${formatPrice(PRICING.semester)} every 6 months or ${formatPrice(PRICING.yearly)} a year. Your transcripts stay yours either way.`,
   },
   {
     question: 'How long does it take?',
@@ -89,7 +89,7 @@ export const FAQ: readonly FaqEntry[] = [
         Your lectures, transcripts and logins stay on your computer. Lectern goes online only to download the
         recording from the lecture's own site, to download the speech model once, to check for updates without
         sending anything that identifies you, and for your licence: once when you enter your key, when you remove it,
-        and to renew a Monthly or Yearly plan. The details are in the{' '}
+        and to renew your plan. The details are in the{' '}
         <TextLink inline href={ROUTES.privacy}>
           privacy policy
         </TextLink>

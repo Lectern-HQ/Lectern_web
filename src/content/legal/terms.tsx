@@ -43,7 +43,7 @@ export const TERMS_OF_USE: LegalDocument = {
             not reverse engineer the app except where the law allows it.
           </p>
           <p>
-            Your licence key is checked on your Mac. A Monthly or Yearly key keeps working for{' '}
+            Your licence key is checked on your Mac. A Monthly, Semester or Yearly key keeps working for{' '}
             {LICENCE.renewalGraceDays} days after the end of the period you paid for, and Lectern renews it online
             during that time, as the{' '}
             <TextLink inline href={ROUTES.privacy}>
@@ -120,21 +120,20 @@ export const TERMS_OF_USE: LegalDocument = {
         <>
           <p>
             Your first {PRICING.freeLectures} lectures are free. After that you
-            need a plan: Monthly at {formatPrice(PRICING.monthly)} per month, Yearly at {formatPrice(PRICING.yearly)}{' '}
-            per year, or Lifetime at {formatPrice(PRICING.lifetime)} once. {VAT_NOTE}{' '}
+            need a plan: Monthly at {formatPrice(PRICING.monthly)} per month, Semester at {formatPrice(PRICING.semester)} every 6{' '}
+            months, or Yearly at {formatPrice(PRICING.yearly)} per year. {VAT_NOTE}{' '}
             You buy through {PROVIDERS.payment}, from our website or from the app. Plans are sold to customers in{' '}
             {formatList(SALES_REGIONS)}.
           </p>
           <p>
-            Monthly and Yearly plans renew until you cancel. You can cancel at any time and keep the plan until the end
+            Monthly, Semester and Yearly plans renew until you cancel. You can cancel at any time and keep the plan until the end
             of the period you paid for. To change your card or cancel, sign in to {PROVIDERS.payment}'s customer
             portal at{' '}
             <TextLink inline href={CUSTOMER_PORTAL_URL}>
               {portalHost}
             </TextLink>{' '}
             with the email address you paid with. After you pay, your licence key appears on screen; paste it into
-            Lectern under Settings, Licence. Lifetime means you pay once and never pay again: you get every update for as
-            long as we make Lectern, and the version you have keeps working after that. Your transcripts stay yours
+            Lectern under Settings, Licence. Your transcripts stay yours
             whether or not you have a plan.
           </p>
         </>

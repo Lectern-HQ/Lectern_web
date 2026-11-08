@@ -1,13 +1,11 @@
 import { CHECKOUT_LINKS, PRICING, SALES_OPEN, type PlanId, formatPrice } from './site'
 import { appPlan } from './appFiles'
 
-const MONTHS_PER_YEAR = 12
-
 export interface Plan {
   id: PlanId
   name: string
   amount: number
-  /** Shown after the price: "a month" */
+  /** Shown after the price: "a month", "every 6 months" */
   period: string
   blurb: string
   buyLabel: string
@@ -22,45 +20,28 @@ const NOTE_FIELD = /\{(\w+)\}/g
 
 /**
  * The app's note for plan `id`, as its Plans screen shows it. `{perMonth}` is the plan's price
- * over a year's months and `{saving}` what it saves against paying monthly for a year.
+ * over its months and `{saving}` what it saves against paying monthly for as many months.
  */
 function planNote(id: PlanId): string {
-  const { amount, note } = appPlan(id)
+  const { amount, months, note } = appPlan(id)
   const fields: Record<string, string> = {
-    perMonth: formatPrice(amount / MONTHS_PER_YEAR),
-    saving: formatPrice(PRICING.monthly * MONTHS_PER_YEAR - amount),
+    perMonth: formatPrice(amount / months),
+    saving: formatPrice(PRICING.monthly * months - amount),
   }
   return note.replace(NOTE_FIELD, (field, name: string) => fields[name] ?? field)
 }
 
+/** Plan `id` as its card shows it, with the name, price and period from the app */
+function planDetails(id: PlanId, buyLabel: string, featured: boolean): Omit<Plan, 'checkoutUrl'> {
+  const { name, amount, per } = appPlan(id)
+  return { id, name, amount, period: per, blurb: planNote(id), buyLabel, featured }
+}
+
+/** The cards in order; Yearly, the best value, is the dark one */
 const PLAN_DETAILS: readonly Omit<Plan, 'checkoutUrl'>[] = [
-  {
-    id: 'monthly',
-    name: 'Monthly',
-    amount: PRICING.monthly,
-    period: 'a month',
-    blurb: planNote('monthly'),
-    buyLabel: 'Buy monthly',
-    featured: false,
-  },
-  {
-    id: 'yearly',
-    name: 'Yearly',
-    amount: PRICING.yearly,
-    period: 'a year',
-    blurb: planNote('yearly'),
-    buyLabel: 'Buy yearly',
-    featured: true,
-  },
-  {
-    id: 'lifetime',
-    name: 'Lifetime',
-    amount: PRICING.lifetime,
-    period: 'once',
-    blurb: planNote('lifetime'),
-    buyLabel: 'Buy lifetime',
-    featured: false,
-  },
+  planDetails('monthly', 'Buy monthly', false),
+  planDetails('semester', 'Buy semester', false),
+  planDetails('yearly', 'Buy yearly', true),
 ]
 
 /** The plans with their payment `links`, or with none while `salesOpen` is false */
