@@ -4,7 +4,7 @@ import { PlanCard } from '../src/components/home/PlanCard'
 import appLanguages from '../src/content/app-languages.json'
 import appPlans from '../src/content/app-plans.json'
 import { PLANS } from '../src/content/pricing'
-import { CUSTOMER_PORTAL_URL, LANGUAGES, PRICING, SITE, VAT_NOTE } from '../src/content/site'
+import { CUSTOMER_PORTAL_URL, LANGUAGES, LICENCE, PRICING, SITE, VAT_NOTE } from '../src/content/site'
 
 /** The plan notes as the design writes them, the yearly one worked out from the prices */
 const DESIGN_NOTES = {
@@ -35,6 +35,7 @@ describe("the copy of the app's plans", () => {
       macsPerLicence: appPlans.licence.macsPerKey,
       remoteFreesPerYear: appPlans.licence.freesPerYear,
     })
+    expect(LICENCE.renewalGraceDays).toBe(appPlans.licence.graceDays)
   })
 
   it('gives the site its prices, VAT note, support address and portal link', () => {

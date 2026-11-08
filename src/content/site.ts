@@ -101,8 +101,8 @@ export const CUSTOMER_PORTAL_URL = APP_PLANS.manage
 export const LICENCE_SERVICE_URL = 'https://licence.lecternstudy.com'
 
 export const LICENCE = {
-  /** Days a Monthly or Yearly key keeps working after the period paid for, while the app renews it (`graceDays` in the licence service's contract, `RENEW_BEFORE` in the app) */
-  renewalGraceDays: 7,
+  /** Days a Monthly or Yearly key keeps working after the period paid for, while the app renews it; from the app's plans, so the site, the app and the licence service say the same */
+  renewalGraceDays: APP_PLANS.licence.graceDays,
 } as const
 
 export const PROVIDERS = {
