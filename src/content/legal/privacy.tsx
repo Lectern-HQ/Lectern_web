@@ -104,11 +104,11 @@ export const PRIVACY_POLICY: LegalDocument = {
               <strong>Our licence service, licence.{SITE.domain}.</strong> When you enter your licence key, Lectern
               sends it, once, your licence number and a random identifier made for this computer, so the service can
               count the Macs your key is active on. When you remove the key, Lectern sends the same two to free this
-              computer. On a Monthly or Yearly plan, your key keeps working for {LICENCE.renewalGraceDays} days after
+              computer. On a Monthly, Semester or Yearly plan, your key keeps working for {LICENCE.renewalGraceDays} days after
               the end of the period you paid for. From the end of that period, while Lectern is open, it sends your
               licence number alone, at most once an hour, to renew the key, until it gets a renewed key or you remove
               the key. That request carries nothing else about you or your Mac, except the app's name; like any
-              request, it shows your IP address and the time. A Lifetime key is never renewed. Only when you open Your Macs in Settings, Licence does Lectern send the key itself,
+              request, it shows your IP address and the time. Only when you open Your Macs in Settings, Licence does Lectern send the key itself,
               which contains your email address, to list the Macs it is active on and free the one you choose, as the
               Your Macs page on this website does; the service checks the key and keeps nothing of it. Lectern sends
               the key nowhere else.
@@ -137,8 +137,8 @@ export const PRIVACY_POLICY: LegalDocument = {
           <p>
             If you buy a plan, {PROVIDERS.payment} ({PAYMENT_DETAILS.company}, in {PAYMENT_DETAILS.country}) processes
             your payment and tells us your name, your email address, your billing country and what you bought, and it
-            emails you your receipt. We do not receive your card details. To change your card or cancel a Monthly or
-            Yearly plan, you sign in to {PROVIDERS.payment}'s customer portal at{' '}
+            emails you your receipt. We do not receive your card details. To change your card or cancel a Monthly,
+            Semester or Yearly plan, you sign in to {PROVIDERS.payment}'s customer portal at{' '}
             <TextLink inline href={CUSTOMER_PORTAL_URL}>
               {portalHost}
             </TextLink>{' '}

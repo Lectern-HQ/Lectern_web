@@ -44,7 +44,7 @@ describe('ThanksContent', () => {
   })
 
   it('shows the key with Copy and the portal link for a plan that renews', () => {
-    const html = render({ status: 'ready', key: 'a.b', plan: 'monthly', expires: null })
+    const html = render({ status: 'ready', key: 'a.b', plan: 'monthly' })
 
     expect(html).toContain('a.b')
     expect(html).toContain(THANKS_COPY.copy)

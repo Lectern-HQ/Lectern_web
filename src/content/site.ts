@@ -64,8 +64,8 @@ export const PRICING = {
   currency: APP_PLANS.currency,
   freeLectures: APP_PLANS.licence.freeLectures,
   monthly: appPlan('monthly').amount,
+  semester: appPlan('semester').amount,
   yearly: appPlan('yearly').amount,
-  lifetime: appPlan('lifetime').amount,
   /** Macs one licence covers */
   macsPerLicence: APP_PLANS.licence.macsPerKey,
   /** Macs one licence may free on the Your Macs page in a year; the licence service applies it */
@@ -75,7 +75,7 @@ export const PRICING = {
 /** What the prices include, as the app says it */
 export const VAT_NOTE = APP_PLANS.vatNote
 
-export type PlanId = 'monthly' | 'yearly' | 'lifetime'
+export type PlanId = 'monthly' | 'semester' | 'yearly'
 
 /**
  * The one switch for selling. While false, every plan shows "Coming soon" and no payment link is
@@ -90,8 +90,8 @@ export const SALES_OPEN = false
  */
 export const CHECKOUT_LINKS: Record<PlanId, string | null> = {
   monthly: null,
+  semester: null,
   yearly: null,
-  lifetime: null,
 }
 
 /** Stripe's customer portal: buyers sign in with their email to change card or cancel; the app opens the same page */
@@ -101,7 +101,7 @@ export const CUSTOMER_PORTAL_URL = APP_PLANS.manage
 export const LICENCE_SERVICE_URL = 'https://licence.lecternstudy.com'
 
 export const LICENCE = {
-  /** Days a Monthly or Yearly key keeps working after the period paid for, while the app renews it; from the app's plans, so the site, the app and the licence service say the same */
+  /** Days a key keeps working after the period paid for, while the app renews it; from the app's plans, so the site, the app and the licence service say the same */
   renewalGraceDays: APP_PLANS.licence.graceDays,
 } as const
 

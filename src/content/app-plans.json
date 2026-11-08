@@ -13,24 +13,27 @@
     {
       "id": "monthly",
       "name": "Monthly",
-      "amount": 15,
+      "amount": 10,
+      "months": 1,
       "per": "a month",
       "note": "Pay month by month and stop whenever you like."
+    },
+    {
+      "id": "semester",
+      "name": "Semester",
+      "amount": 50,
+      "months": 6,
+      "per": "every 6 months",
+      "note": "{perMonth} a month, saves {saving}. One payment covers a whole semester."
     },
     {
       "id": "yearly",
       "name": "Yearly",
       "badge": "Best value",
-      "amount": 100,
+      "amount": 90,
+      "months": 12,
       "per": "a year",
       "note": "{perMonth} a month, saves {saving}."
-    },
-    {
-      "id": "lifetime",
-      "name": "Lifetime",
-      "amount": 200,
-      "per": "once",
-      "note": "Pay once. You get every update for as long as we make Lectern."
     }
   ]
 }

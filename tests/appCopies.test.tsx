@@ -6,11 +6,11 @@ import appPlans from '../src/content/app-plans.json'
 import { PLANS } from '../src/content/pricing'
 import { CUSTOMER_PORTAL_URL, LANGUAGES, LICENCE, PRICING, SITE, VAT_NOTE } from '../src/content/site'
 
-/** The plan notes as the design writes them, the yearly one worked out from the prices */
+/** The plan notes as the design writes them, the Semester and Yearly ones worked out from the prices */
 const DESIGN_NOTES = {
   monthly: 'Pay month by month and stop whenever you like.',
-  yearly: '€8.33 a month, saves €80.',
-  lifetime: 'Pay once. You get every update for as long as we make Lectern.',
+  semester: '€8.33 a month, saves €10. One payment covers a whole semester.',
+  yearly: '€7.50 a month, saves €30.',
 }
 
 describe("the copy of the app's plans", () => {
@@ -19,11 +19,12 @@ describe("the copy of the app's plans", () => {
     expect(appPlans.currency).toBe('EUR')
     expect(appPlans.support).toMatch(/^[^@\s]+@[^@\s]+\.[a-z]+$/)
     expect(new URL(appPlans.manage).origin).toBe('https://billing.stripe.com')
-    expect(appPlans.plans.map((plan) => plan.id)).toEqual(['monthly', 'yearly', 'lifetime'])
+    expect(appPlans.plans.map((plan) => plan.id)).toEqual(['monthly', 'semester', 'yearly'])
     for (const plan of appPlans.plans) {
-      expect(Object.keys(plan).every((key) => ['id', 'name', 'badge', 'amount', 'per', 'note'].includes(key))).toBe(true)
+      expect(Object.keys(plan).every((key) => ['id', 'name', 'badge', 'amount', 'months', 'per', 'note'].includes(key))).toBe(true)
       expect(plan.amount).toBeTypeOf('number')
       expect(plan.amount).toBeGreaterThan(0)
+      expect(Number.isInteger(plan.months) && plan.months > 0).toBe(true)
       expect(plan.note).toBeTypeOf('string')
     }
     expect(JSON.stringify(appPlans)).not.toMatch(/"link"|buy\.stripe\.com/)
@@ -43,8 +44,8 @@ describe("the copy of the app's plans", () => {
     expect(PRICING).toMatchObject({
       currency: appPlans.currency,
       monthly: amount('monthly'),
+      semester: amount('semester'),
       yearly: amount('yearly'),
-      lifetime: amount('lifetime'),
     })
     expect(VAT_NOTE).toBe(appPlans.vatNote)
     expect(SITE.supportEmail).toBe(appPlans.support)

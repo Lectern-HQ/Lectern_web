@@ -29,7 +29,7 @@ export function PricingSection() {
           </ul>
           <p className="max-w-[52ch] flex-[1_1_320px] text-[15px] leading-[1.5] text-muted">
             Your licence key appears on screen right after you pay, and Stripe emails your receipt. {VAT_NOTE} Plans are sold in{' '}
-            {formatList(SALES_REGIONS)}, and {PROVIDERS.payment} handles the payment. Cancel Monthly and Yearly any
+            {formatList(SALES_REGIONS)}, and {PROVIDERS.payment} handles the payment. Cancel any plan any
             time. Sales are final except where the law requires a refund, as the{' '}
             <TextLink inline href={ROUTES.terms}>
               terms of use
