@@ -65,6 +65,8 @@ describe('LostKeyResult', () => {
     expect(page).toContain(THANKS_COPY.copy)
     expect(page).toContain(THANKS_COPY.stepsTitle)
     expect(page).toContain(`href="${CUSTOMER_PORTAL_URL}"`)
+    expect(page).toContain('href="lectern://activate?key=k.sig"')
+    expect(page).toContain(THANKS_COPY.pasteInstead)
   })
 
   it('leaves the portal link out for Lifetime', () => {

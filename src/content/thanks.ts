@@ -14,7 +14,12 @@ export const THANKS_COPY = {
     'Paste the key in the Licence key field and press Activate.',
   ],
   openInApp: 'Open in Lectern',
-  openInAppNote: 'The button needs Lectern installed and opened once; otherwise, copy the key and follow the steps below.',
+  openInAppNote: 'Lectern opens and asks you to activate this licence. It needs Lectern installed and opened once.',
+  /** After a press of Open in Lectern, around the link to the download */
+  notOpened: 'Lectern did not open?',
+  download: 'Download Lectern',
+  notOpenedAfter: ', open it once, then try again.',
+  pasteInstead: 'or paste the key yourself',
   stepsTitle: 'Activate Lectern',
   saveNote: 'Keep a copy of this key somewhere safe, such as your password manager. You need it again on a new computer.',
   copy: 'Copy key',

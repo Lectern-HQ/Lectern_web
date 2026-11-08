@@ -2,10 +2,10 @@ import type { ReactNode } from 'react'
 import { CUSTOMER_PORTAL_URL, SITE } from '../../content/site'
 import { THANKS_COPY } from '../../content/thanks'
 import { hasManageLink } from '../../lib/checkoutSession'
-import { activationLink, type ReadyLicence } from '../../lib/licence'
-import { ButtonLink } from '../ui/ButtonLink'
+import type { ReadyLicence } from '../../lib/licence'
 import { TextLink } from '../ui/TextLink'
 import { LicenceKeyBox } from './LicenceKeyBox'
+import { OpenInLectern } from './OpenInLectern'
 
 /** The support address as a mail link, inside running text */
 export function SupportLink() {
@@ -93,12 +93,10 @@ function ActivationSteps() {
 export function ReadyKey({ licence }: { licence: ReadyLicence }) {
   return (
     <>
-      <div className="flex flex-col gap-2">
-        <ButtonLink href={activationLink(licence.key)} className="w-fit">
-          {THANKS_COPY.openInApp}
-        </ButtonLink>
-        <p className="text-muted">{THANKS_COPY.openInAppNote}</p>
-      </div>
+      <OpenInLectern licenceKey={licence.key} />
+      <p className="mt-2 flex items-center gap-4 text-sm text-muted before:h-px before:flex-1 before:bg-line after:h-px after:flex-1 after:bg-line">
+        {THANKS_COPY.pasteInstead}
+      </p>
       <LicenceKeyBox licenceKey={licence.key} />
       <ActivationSteps />
       <p>{THANKS_COPY.saveNote}</p>

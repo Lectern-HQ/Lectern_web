@@ -1,9 +1,10 @@
 import { renderToStaticMarkup } from 'react-dom/server'
 import { MemoryRouter } from 'react-router'
 import { describe, expect, it } from 'vitest'
+import { NotOpened } from '../src/components/thanks/OpenInLectern'
 import { ThanksContent } from '../src/components/thanks/ThanksContent'
 import { LOST_KEY_COPY } from '../src/content/lostKey'
-import { CUSTOMER_PORTAL_URL, SITE } from '../src/content/site'
+import { CUSTOMER_PORTAL_URL, RELEASE, SITE } from '../src/content/site'
 import { THANKS_COPY } from '../src/content/thanks'
 import type { LicenceState } from '../src/lib/licence'
 import { ROUTES } from '../src/routes'
@@ -51,13 +52,35 @@ describe('ThanksContent', () => {
     expect(html).toContain(`href="${CUSTOMER_PORTAL_URL}"`)
   })
 
-  it('offers Open in Lectern with the key in the link, above the paste steps', () => {
+  it('offers Open in Lectern with the key in the link and its note, then the paste fallback', () => {
     const html = render({ status: 'ready', key: 'a.b+c', plan: 'lifetime', expires: null })
 
     expect(html).toContain('href="lectern://activate?key=a.b%2Bc"')
     expect(html).toContain(THANKS_COPY.openInApp)
     expect(html).toContain(THANKS_COPY.openInAppNote)
-    expect(html.indexOf(THANKS_COPY.openInApp)).toBeLessThan(html.indexOf(THANKS_COPY.stepsTitle))
+    expect(html.indexOf(THANKS_COPY.openInApp)).toBeLessThan(html.indexOf(THANKS_COPY.pasteInstead))
+    expect(html.indexOf(THANKS_COPY.pasteInstead)).toBeLessThan(html.indexOf(THANKS_COPY.copy))
+    expect(html).toContain('translate="no"')
+  })
+
+  it('waits for a press before saying Lectern did not open', () => {
+    const html = render({ status: 'ready', key: 'a.b', plan: 'lifetime', expires: null })
+
+    expect(html).not.toContain(THANKS_COPY.notOpened)
+  })
+
+  it('after a press, points to the download as a status, without sending people to paste', () => {
+    const html = renderToStaticMarkup(
+      <MemoryRouter>
+        <NotOpened />
+      </MemoryRouter>,
+    )
+
+    expect(html).toContain('role="status"')
+    expect(html).toContain(THANKS_COPY.notOpened)
+    expect(html).toContain(`href="${RELEASE.downloadUrl ?? ROUTES.home}"`)
+    expect(html).toContain(`${THANKS_COPY.download}</a>${THANKS_COPY.notOpenedAfter}`)
+    expect(html).not.toContain(THANKS_COPY.pasteInstead)
   })
 
   it.each<LicenceState>([
