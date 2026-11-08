@@ -13,6 +13,8 @@ export const THANKS_COPY = {
     'Open Lectern and go to Settings, then the Licence tab.',
     'Paste the key in the Licence key field and press Activate.',
   ],
+  openInApp: 'Open in Lectern',
+  openInAppNote: 'The button needs Lectern installed and opened once; otherwise, copy the key and follow the steps below.',
   stepsTitle: 'Activate Lectern',
   saveNote: 'Keep a copy of this key somewhere safe, such as your password manager. You need it again on a new computer.',
   copy: 'Copy key',

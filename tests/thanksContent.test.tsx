@@ -50,4 +50,26 @@ describe('ThanksContent', () => {
     expect(html).toContain(THANKS_COPY.copy)
     expect(html).toContain(`href="${CUSTOMER_PORTAL_URL}"`)
   })
+
+  it('offers Open in Lectern with the key in the link, above the paste steps', () => {
+    const html = render({ status: 'ready', key: 'a.b+c', plan: 'lifetime', expires: null })
+
+    expect(html).toContain('href="lectern://activate?key=a.b%2Bc"')
+    expect(html).toContain(THANKS_COPY.openInApp)
+    expect(html).toContain(THANKS_COPY.openInAppNote)
+    expect(html.indexOf(THANKS_COPY.openInApp)).toBeLessThan(html.indexOf(THANKS_COPY.stepsTitle))
+  })
+
+  it.each<LicenceState>([
+    { status: 'missing' },
+    { status: 'loading' },
+    { status: 'processing' },
+    { status: 'expired' },
+    { status: 'failed' },
+  ])('shows no Open in Lectern while the key is not ready ($status)', (licence) => {
+    const html = render(licence)
+
+    expect(html).not.toContain('lectern://')
+    expect(html).not.toContain(THANKS_COPY.openInApp)
+  })
 })

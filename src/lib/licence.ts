@@ -6,6 +6,8 @@ const PROCESSING_STATUS = 202
 const EXPIRED_STATUS = 410
 /** The lost key page's details match no purchase; the service never says which part was wrong */
 const NO_MATCH_STATUS = 404
+/** Where Lectern listens for a key to activate; the app registers the `lectern://` scheme */
+const ACTIVATE_LINK = 'lectern://activate?key='
 
 /** A key the licence service gave, with its plan and end date (null for Lifetime) */
 export type ReadyLicence = { status: 'ready'; key: string; plan: string; expires: string | null }
@@ -21,6 +23,11 @@ export type LicenceState =
 
 /** Where the lost key page is with getting the key back */
 export type LostKeyState = { status: 'idle' } | { status: 'sending' } | ReadyLicence | { status: 'notFound' } | { status: 'failed' }
+
+/** The link that opens Lectern and offers to activate `key`; the key is escaped so `+`, `/` and `=` survive the query */
+export function activationLink(key: string): string {
+  return `${ACTIVATE_LINK}${encodeURIComponent(key)}`
+}
 
 /** The key in a successful answer from the licence service; any other answer is a failure */
 async function readKey(response: Response): Promise<ReadyLicence | { status: 'failed' }> {
