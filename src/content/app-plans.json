@@ -26,5 +26,10 @@
       "per": "once",
       "note": "Pay once. You get every update for as long as we make Lectern."
     }
-  ]
+  ],
+  "licence": {
+    "freeLectures": 3,
+    "macsPerKey": 3,
+    "freesPerYear": 3
+  }
 }

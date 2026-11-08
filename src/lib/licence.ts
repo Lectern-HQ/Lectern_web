@@ -30,6 +30,15 @@ async function readKey(response: Response): Promise<ReadyLicence | { status: 'fa
   return { status: 'ready', key: body.key, plan: body.plan, expires: typeof body.expires === 'string' ? body.expires : null }
 }
 
+/** Posts `body` as JSON to `path` on the licence service; throws when `fetcher` does, so callers catch */
+export function postToService(path: string, body: object, fetcher: typeof fetch): Promise<Response> {
+  return fetcher(`${LICENCE_SERVICE_URL}${path}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  })
+}
+
 /** Asks the licence service for the key of a paid checkout. Never throws. */
 export async function fetchLicence(sessionId: string, fetcher: typeof fetch = fetch): Promise<LicenceState> {
   try {
@@ -45,11 +54,7 @@ export async function fetchLicence(sessionId: string, fetcher: typeof fetch = fe
 /** Asks the licence service for a lost key by the checkout email and Stripe's receipt number. Never throws. */
 export async function recoverLicence(email: string, receiptNumber: string, fetcher: typeof fetch = fetch): Promise<LostKeyState> {
   try {
-    const response = await fetcher(`${LICENCE_SERVICE_URL}/recover`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, receiptNumber }),
-    })
+    const response = await postToService('/recover', { email, receiptNumber }, fetcher)
     if (response.status === NO_MATCH_STATUS) return { status: 'notFound' }
     return await readKey(response)
   } catch {

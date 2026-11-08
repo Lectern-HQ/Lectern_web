@@ -15,7 +15,7 @@ const DESIGN_NOTES = {
 
 describe("the copy of the app's plans", () => {
   it('has the shape the site reads, and no payment link', () => {
-    expect(Object.keys(appPlans).sort()).toEqual(['currency', 'manage', 'plans', 'support', 'vatNote'])
+    expect(Object.keys(appPlans).sort()).toEqual(['currency', 'licence', 'manage', 'plans', 'support', 'vatNote'])
     expect(appPlans.currency).toBe('EUR')
     expect(appPlans.support).toMatch(/^[^@\s]+@[^@\s]+\.[a-z]+$/)
     expect(new URL(appPlans.manage).origin).toBe('https://billing.stripe.com')
@@ -27,6 +27,14 @@ describe("the copy of the app's plans", () => {
       expect(plan.note).toBeTypeOf('string')
     }
     expect(JSON.stringify(appPlans)).not.toMatch(/"link"|buy\.stripe\.com/)
+  })
+
+  it('gives the site the licence limits', () => {
+    expect(PRICING).toMatchObject({
+      freeLectures: appPlans.licence.freeLectures,
+      macsPerLicence: appPlans.licence.macsPerKey,
+      remoteFreesPerYear: appPlans.licence.freesPerYear,
+    })
   })
 
   it('gives the site its prices, VAT note, support address and portal link', () => {
