@@ -4,6 +4,14 @@ All notable changes to the Lectern app. The format follows [Keep a Changelog](ht
 
 ## [Unreleased]
 
+## [0.4.1] - 2026-11-08
+
+### Added
+- Open in Lectern: a `lectern://activate?key=...` link from the website's thank-you page opens Lectern, which checks the key as a pasted key is checked and asks "Activate this licence?" with its plan and email before anything is saved. Activate activates it as pasting does (the same 3-Mac, revoked and offline messages) and the main screen says "Licence activated"; Cancel drops it. A link that arrives during a transcription is asked about once it ends, and any other `lectern://` link is ignored.
+
+### Changed
+- New prices: Monthly €10 a month, Semester €50 every 6 months (new, €8.33 a month) and Yearly €90 a year (€7.50 a month, saves €30). Semester renews like Monthly and Yearly and shows by its name in Settings, Licence, on Your plan and on the Plans screen. Lifetime is no longer sold, and the app no longer reads Lifetime keys; none was ever sold.
+
 ## [0.4.0] - 2026-11-08
 
 A key works on up to 3 Macs: it is activated on this Mac when it is entered, Settings lists the Macs it is active on and can free one, and a key saved by an earlier version is activated by itself when Lectern opens.
@@ -110,7 +118,8 @@ The first beta for macOS (Apple Silicon, macOS 13 or later).
 - The window has no permissions of its own: the app's core runs every tool, reads every file and opens every dialog.
 - The bundled tools are pinned and checked: yt-dlp's signature, the built ffmpeg (LGPL) and whisper.cpp; every binary is signed with the hardened runtime.
 
-[Unreleased]: https://github.com/Lectern-HQ/lectern/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/Lectern-HQ/lectern/compare/v0.4.1...HEAD
+[0.4.1]: https://github.com/Lectern-HQ/lectern/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/Lectern-HQ/lectern/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/Lectern-HQ/lectern/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/Lectern-HQ/lectern/compare/v0.1.0...v0.2.0
