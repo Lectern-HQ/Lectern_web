@@ -16,7 +16,7 @@ export const PRIVACY_POLICY: LegalDocument = {
   path: ROUTES.privacy,
   label: 'Privacy policy',
   summary:
-    'Your lectures, transcripts and logins stay on your computer. Lectern has no accounts, so we hold no profile of you. The app goes online only to download your lecture from its own site, to download the speech model once, to check for updates, to activate your licence key once when you enter it and free your Mac when you remove it, and, on a Monthly or Yearly plan, to renew your licence.',
+    'Your lectures, transcripts and logins stay on your computer. Lectern has no accounts, so we hold no profile of you. The app goes online only to download your lecture from its own site, to download the speech model once, to check for updates, to activate your licence key once when you enter it and free your Mac when you remove it, to list and free your Macs when you open them in Settings, and, on a Monthly or Yearly plan, to renew your licence.',
   sections: [
     {
       heading: 'Who is responsible',
@@ -89,7 +89,10 @@ export const PRIVACY_POLICY: LegalDocument = {
               sends it, once, your licence number and a random identifier made for this computer, so the service can
               count the Macs your key is active on. When you remove the key, Lectern sends the same two to free this
               computer. On a Monthly or Yearly plan, it sends your licence number alone near the end of each paid
-              period to renew it. Lectern never sends the key itself, which contains your email address.
+              period to renew it. Only when you open Your Macs in Settings, Licence does Lectern send the key itself,
+              which contains your email address, to list the Macs it is active on and free the one you choose, as the
+              Your Macs page on this website does; the service checks the key and keeps nothing of it. Lectern sends
+              the key nowhere else.
             </li>
             <li>
               <strong>Our website.</strong> If you choose Buy, Lectern opens our website in your browser. See "This
@@ -123,10 +126,10 @@ export const PRIVACY_POLICY: LegalDocument = {
             date each was activated, until that computer is freed or the key is revoked. For a revoked key, it keeps the
             licence number, the date and the reason, so the key stays refused. It keeps no email address and no key.
             If you lost your key, the lost key page sends it the email address and receipt number you type, so it can ask {PROVIDERS.payment} for the matching purchase; it
-            keeps neither. The Your Macs page sends it the licence key you paste, to list the Macs the key is active on
-            and free the one you choose; it checks the key and keeps nothing of it. For each Mac freed there, it keeps
-            the licence number and the date for one year, so a key can free only {PRICING.remoteFreesPerYear} Macs a
-            year from the website.
+            keeps neither. The Your Macs page, and Your Macs in the app's Settings, send it the licence key, to list the
+            Macs the key is active on and free the one you choose; it checks the key and keeps nothing of it. For each
+            Mac freed there, it keeps the licence number and the date for one year, so a key can free only{' '}
+            {PRICING.remoteFreesPerYear} Macs a year that way.
           </p>
         </>
       ),
@@ -167,7 +170,7 @@ export const PRIVACY_POLICY: LegalDocument = {
           Server logs: we keep none; our host keeps its own, as described above. Purchase records: {PURCHASE_RECORD_YEARS}{' '}
           years after the purchase, as French accounting law requires, then deleted. Activations: the licence number,
           the computer's random identifier and the date, until you remove the key on that computer while it is online, you free it on the Your
-          Macs page, we free it at your request, or the key is revoked. Macs freed on the Your Macs page: the licence
+          Macs page or in the app's Settings, we free it at your request, or the key is revoked. Macs freed on the Your Macs page or in the app's Settings: the licence
           number and the date, for one year. Revoked keys: the licence number, the date and the reason, for as long as the
           key must stay refused. Everything the app stores on your computer stays there until you delete it.
         </p>
