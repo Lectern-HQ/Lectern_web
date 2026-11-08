@@ -1,8 +1,22 @@
 import { TextLink } from '../../components/ui/TextLink'
 import { YourMacsLink } from '../../components/yourMacs/YourMacsLink'
 import { ROUTES } from '../../routes'
-import { PRICING, PROVIDERS, PUBLISHER, SALES_REGIONS, SITE, SPEECH_MODEL, VAT_NOTE, formatList, formatPrice } from '../site'
+import {
+  CUSTOMER_PORTAL_URL,
+  LICENCE,
+  PRICING,
+  PROVIDERS,
+  PUBLISHER,
+  SALES_REGIONS,
+  SITE,
+  SPEECH_MODEL,
+  VAT_NOTE,
+  formatList,
+  formatPrice,
+} from '../site'
 import type { LegalDocument } from './types'
+
+const portalHost = new URL(CUSTOMER_PORTAL_URL).host
 
 export const TERMS_OF_USE: LegalDocument = {
   path: ROUTES.terms,
@@ -22,11 +36,24 @@ export const TERMS_OF_USE: LegalDocument = {
     {
       heading: 'Your licence',
       body: (
-        <p>
-          We give you a personal, non-exclusive, non-transferable licence to install and use Lectern on{' '}
-          up to {PRICING.macsPerLicence} Macs that you own or control. You may not sell, rent, copy or share the app or your licence key, and you may
-          not reverse engineer the app except where the law allows it.
-        </p>
+        <>
+          <p>
+            We give you a personal, non-exclusive, non-transferable licence to install and use Lectern on{' '}
+            up to {PRICING.macsPerLicence} Macs that you own or control. You may not sell, rent, copy or share the app or your licence key, and you may
+            not reverse engineer the app except where the law allows it.
+          </p>
+          <p>
+            Your licence key is checked on your Mac. A Monthly or Yearly key keeps working for{' '}
+            {LICENCE.renewalGraceDays} days after the end of the period you paid for, and Lectern renews it online
+            during that time, as the{' '}
+            <TextLink inline href={ROUTES.privacy}>
+              privacy policy
+            </TextLink>{' '}
+            explains. If the key cannot be renewed, because the plan was cancelled or not paid or because your Mac
+            stayed offline, Lectern goes back to any free lectures you have left once the key ends, until the key is
+            renewed or you buy a plan. Lectern counts your free lectures on your Mac.
+          </p>
+        </>
       ),
     },
     {
@@ -100,7 +127,13 @@ export const TERMS_OF_USE: LegalDocument = {
           </p>
           <p>
             Monthly and Yearly plans renew until you cancel. You can cancel at any time and keep the plan until the end
-            of the period you paid for. Lifetime means you pay once and never pay again: you get every update for as
+            of the period you paid for. To change your card or cancel, sign in to {PROVIDERS.payment}'s customer
+            portal at{' '}
+            <TextLink inline href={CUSTOMER_PORTAL_URL}>
+              {portalHost}
+            </TextLink>{' '}
+            with the email address you paid with. After you pay, your licence key appears on screen; paste it into
+            Lectern under Settings, Licence. Lifetime means you pay once and never pay again: you get every update for as
             long as we make Lectern, and the version you have keeps working after that. Your transcripts stay yours
             whether or not you have a plan.
           </p>
