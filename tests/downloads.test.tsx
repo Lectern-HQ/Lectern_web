@@ -1,9 +1,11 @@
 import { renderToStaticMarkup } from 'react-dom/server'
 import { describe, expect, it } from 'vitest'
 import { DOWNLOADS_CLOSED_LABEL, SiteHeader } from '../src/components/layout/SiteHeader'
-import { DOWNLOADS_OPEN, RELEASE, downloadUrlFor } from '../src/content/site'
+import { checkDownloadEntry } from '../src/content/faq'
+import { DOWNLOADS_OPEN, RELEASE, downloadSha256For, downloadUrlFor } from '../src/content/site'
 
 const DMG_URL = 'https://github.com/Lectern-HQ/Lectern_web/releases/download/v0.2.0/Lectern_0.2.0_aarch64.dmg'
+const DMG_SHA256 = 'a3a1787b9ed71e5a6af9b0a5e1e190a474aebd14e1cfaa249cb3414094280966'
 
 /** The header as the home page draws it, with `downloadHref` */
 function headerWith(downloadHref: string | null): string {
@@ -23,6 +25,29 @@ describe('downloadUrlFor', () => {
 
   it('is what the site uses', () => {
     expect(RELEASE.downloadUrl).toBe(downloadUrlFor(DOWNLOADS_OPEN))
+  })
+})
+
+describe('downloadSha256For', () => {
+  it('gives no hash while downloads are closed', () => {
+    expect(downloadSha256For(false, DMG_SHA256)).toBeNull()
+  })
+
+  it("gives the DMG's hash once downloads are open", () => {
+    expect(downloadSha256For(true, DMG_SHA256)).toBe(DMG_SHA256)
+  })
+
+  it('is what the site uses', () => {
+    expect(RELEASE.downloadSha256).toBe(downloadSha256For(DOWNLOADS_OPEN))
+  })
+})
+
+describe('the FAQ answer on checking the download', () => {
+  it('gives the command and the hash to compare with', () => {
+    const html = renderToStaticMarkup(<>{checkDownloadEntry(DMG_SHA256).answer}</>)
+
+    expect(html).toContain('shasum -a 256')
+    expect(html).toContain(DMG_SHA256)
   })
 })
 
