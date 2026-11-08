@@ -93,6 +93,11 @@ export const CUSTOMER_PORTAL_URL = APP_PLANS.manage
 /** The Worker that turns a paid checkout into a licence key */
 export const LICENCE_SERVICE_URL = 'https://licence.lecternstudy.com'
 
+export const LICENCE = {
+  /** Days a Monthly or Yearly key keeps working after the period paid for, while the app renews it (`graceDays` in the licence service's contract, `RENEW_BEFORE` in the app) */
+  renewalGraceDays: 7,
+} as const
+
 export const PROVIDERS = {
   hosting: 'GitHub Pages',
   payment: 'Stripe',
@@ -119,7 +124,10 @@ export const HOST_DETAILS = {
 /** French accounting law keeps sales records for 10 years (Code de commerce, article L123-22) */
 export const PURCHASE_RECORD_YEARS = 10
 
-export const LEGAL_UPDATED = '6 November 2026'
+/** How long emails to us are kept; the owner's choice */
+export const EMAIL_RETENTION = '3 years after the last reply'
+
+export const LEGAL_UPDATED = '8 November 2026'
 
 const META_SEPARATOR = ' · '
 

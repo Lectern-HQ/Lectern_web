@@ -1,6 +1,10 @@
+import { TextLink } from '../../components/ui/TextLink'
 import { ROUTES } from '../../routes'
 import {
+  CUSTOMER_PORTAL_URL,
+  EMAIL_RETENTION,
   HOST_DETAILS,
+  LICENCE,
   PAYMENT_DETAILS,
   PRICING,
   PURCHASE_RECORD_YEARS,
@@ -11,6 +15,8 @@ import {
   formatList,
 } from '../site'
 import type { LegalDocument } from './types'
+
+const portalHost = new URL(CUSTOMER_PORTAL_URL).host
 
 export const PRIVACY_POLICY: LegalDocument = {
   path: ROUTES.privacy,
@@ -36,9 +42,19 @@ export const PRIVACY_POLICY: LegalDocument = {
             <li>the lecture recordings you download, kept only while the setting "Keep the downloaded media" is on;</li>
             <li>your transcripts and the list of past transcripts;</li>
             <li>your settings, such as the default language and the browser you chose;</li>
+            <li>
+              your licence key, if you have one, which holds your email address, your plan, its end date and your
+              licence number;
+            </li>
+            <li>
+              in your macOS Keychain, so that reinstalling the app does not reset them: how many of your{' '}
+              {PRICING.freeLectures} free lectures you have used, the latest time Lectern has seen on your Mac's clock,
+              the licence number and dates of the newest key it has taken, and the random identifier made for this
+              computer;
+            </li>
             <li>the speech model, about {SPEECH_MODEL.size}.</li>
           </ul>
-          <p>We cannot see any of it. Nothing is uploaded to us.</p>
+          <p>We cannot see any of it. Nothing is uploaded to us. Lectern checks your licence key on your Mac; checking it sends nothing.</p>
         </>
       ),
     },
@@ -88,15 +104,18 @@ export const PRIVACY_POLICY: LegalDocument = {
               <strong>Our licence service, licence.{SITE.domain}.</strong> When you enter your licence key, Lectern
               sends it, once, your licence number and a random identifier made for this computer, so the service can
               count the Macs your key is active on. When you remove the key, Lectern sends the same two to free this
-              computer. On a Monthly or Yearly plan, it sends your licence number alone near the end of each paid
-              period to renew it. Only when you open Your Macs in Settings, Licence does Lectern send the key itself,
+              computer. On a Monthly or Yearly plan, your key keeps working for {LICENCE.renewalGraceDays} days after
+              the end of the period you paid for. From the end of that period, while Lectern is open, it sends your
+              licence number alone, at most once an hour, to renew the key, until it gets a renewed key or you remove
+              the key. That request carries nothing else about you or your Mac, except the app's name; like any
+              request, it shows your IP address and the time. A Lifetime key is never renewed. Only when you open Your Macs in Settings, Licence does Lectern send the key itself,
               which contains your email address, to list the Macs it is active on and free the one you choose, as the
               Your Macs page on this website does; the service checks the key and keeps nothing of it. Lectern sends
               the key nowhere else.
             </li>
             <li>
-              <strong>Our website.</strong> If you choose Buy, Lectern opens our website in your browser. See "This
-              website" below.
+              <strong>{PROVIDERS.payment}.</strong> If you choose a plan, or choose to manage or cancel one, Lectern
+              opens {PROVIDERS.payment}'s payment page or customer portal in your browser. See "This website" below.
             </li>
           </ul>
           <p>Lectern sends no analytics, no crash reports, no recordings and no transcripts. When Lectern opens, macOS may run its own security checks
@@ -110,18 +129,30 @@ export const PRIVACY_POLICY: LegalDocument = {
         <>
           <p>
             This website uses no cookies and no analytics, and loads nothing from other sites: its fonts are served from{' '}
-            {SITE.domain}. Our host, {PROVIDERS.hosting}, logs
+            {SITE.domain}. Your browser keeps two things for this site: your light or dark choice, if you pick one, and,
+            on the thank-you page, the reference described below. Our host, {PROVIDERS.hosting}, logs
             your IP address to keep the site secure and keeps those logs under its own privacy statement; we cannot
             see them.
           </p>
           <p>
             If you buy a plan, {PROVIDERS.payment} ({PAYMENT_DETAILS.company}, in {PAYMENT_DETAILS.country}) processes
             your payment and tells us your name, your email address, your billing country and what you bought, and it
-            emails you your receipt. We do not receive your card details.
+            emails you your receipt. We do not receive your card details. To change your card or cancel a Monthly or
+            Yearly plan, you sign in to {PROVIDERS.payment}'s customer portal at{' '}
+            <TextLink inline href={CUSTOMER_PORTAL_URL}>
+              {portalHost}
+            </TextLink>{' '}
+            with your email address; {PROVIDERS.payment}'s own privacy policy covers it.
+          </p>
+          <p>
+            After you pay, {PROVIDERS.payment} sends you back to our thank-you page with the reference of your checkout
+            session. The page takes the reference out of the address bar and keeps it only in that browser tab until
+            you close it, so that reloading still shows your key, and sends it to our licence service to get your key.
           </p>
           <p>
             Our licence service at licence.{SITE.domain}, which runs on {PROVIDERS.licences}, asks {PROVIDERS.payment}{' '}
-            whether a purchase is paid and signs your licence key, which contains your email address and your plan.
+            whether a purchase is paid and signs your licence key, which contains your email address, your plan, its end date and your licence number
+            ({PROVIDERS.payment}'s id for your subscription or purchase).
             For each licence number, it keeps the random identifiers of the computers the key is activated on and the
             date each was activated, until that computer is freed or the key is revoked. For a revoked key, it keeps the
             licence number, the date and the reason, so the key stays refused. It keeps no email address and no key.
@@ -129,7 +160,9 @@ export const PRIVACY_POLICY: LegalDocument = {
             keeps neither. The Your Macs page, and Your Macs in the app's Settings, send it the licence key, to list the
             Macs the key is active on and free the one you choose; it checks the key and keeps nothing of it. For each
             Mac freed there, it keeps the licence number and the date for one year, so a key can free only{' '}
-            {PRICING.remoteFreesPerYear} Macs a year that way.
+            {PRICING.remoteFreesPerYear} Macs a year that way. Its error reports contain no email address and no IP
+            address. It uses your IP address only to limit how many requests one address can make;{' '}
+            {PROVIDERS.licences} handles that address under its own privacy policy.
           </p>
         </>
       ),
@@ -138,7 +171,7 @@ export const PRIVACY_POLICY: LegalDocument = {
       heading: 'Why we may use this data',
       body: (
         <p>
-          Server logs and the update check: our legitimate interest in running and securing the service (article
+          Server logs, the update check and the limit on requests to the licence service: our legitimate interest in running and securing the service (article
           6(1)(f) GDPR). Payments and licences: to carry out our contract with you (article 6(1)(b) GDPR). We also
           follow the Swiss Federal Act on Data Protection.
         </p>
@@ -167,12 +200,13 @@ export const PRIVACY_POLICY: LegalDocument = {
       heading: 'How long we keep it',
       body: (
         <p>
-          Server logs: we keep none; our host keeps its own, as described above. Purchase records: {PURCHASE_RECORD_YEARS}{' '}
+          Server logs: we keep none, and the licence service's error reports contain no email address or IP address;{' '}
+          {PROVIDERS.hosting} and {PROVIDERS.licences} keep their own, as described above. Purchase records: {PURCHASE_RECORD_YEARS}{' '}
           years after the purchase, as French accounting law requires, then deleted. Activations: the licence number,
           the computer's random identifier and the date, until you remove the key on that computer while it is online, you free it on the Your
           Macs page or in the app's Settings, we free it at your request, or the key is revoked. Macs freed on the Your Macs page or in the app's Settings: the licence
           number and the date, for one year. Revoked keys: the licence number, the date and the reason, for as long as the
-          key must stay refused. Everything the app stores on your computer stays there until you delete it.
+          key must stay refused. Emails you send us: {EMAIL_RETENTION}. Everything the app stores on your computer stays there until you delete it.
         </p>
       ),
     },
@@ -190,7 +224,8 @@ export const PRIVACY_POLICY: LegalDocument = {
           </p>
           <p>
             Because the app keeps your data on your computer, you can delete it yourself: remove transcripts in the app,
-            delete the speech model, and uninstall Lectern.
+            remove your licence key under Settings, Licence, delete the speech model, and uninstall Lectern. What
+            Lectern keeps in your Keychain, such as the count of free lectures, stays there after you uninstall.
           </p>
         </>
       ),
