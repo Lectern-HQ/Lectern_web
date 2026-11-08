@@ -1,4 +1,4 @@
-import { LICENCE_SERVICE_URL } from '../content/site'
+import { postToService } from './licence'
 
 /** The licence service's answer to a key that is not one it signed */
 const INVALID_KEY_STATUS = 400
@@ -55,11 +55,7 @@ function readAnswer(status: number, body: unknown): MacsAnswer {
 /** Posts `body` to `path` on the licence service. Never throws. */
 async function ask(path: string, body: object, fetcher: typeof fetch): Promise<MacsAnswer> {
   try {
-    const response = await fetcher(`${LICENCE_SERVICE_URL}${path}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body),
-    })
+    const response = await postToService(path, body, fetcher)
     return readAnswer(response.status, await response.json().catch(() => null))
   } catch {
     return { status: 'failed' }

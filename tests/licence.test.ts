@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest'
 import { LICENCE_SERVICE_URL } from '../src/content/site'
-import { fetchLicence, recoverLicence } from '../src/lib/licence'
+import { fetchLicence, postToService, recoverLicence } from '../src/lib/licence'
 
 function respond(status: number, body: unknown = {}) {
   return vi.fn(async () => new Response(JSON.stringify(body), { status }))
@@ -61,5 +61,26 @@ describe('recoverLicence', () => {
     ['a network failure', vi.fn(async () => Promise.reject(new Error('offline')))],
   ])('fails on %s', async (_case, fetcher) => {
     expect(await recoverLicence('a@b.c', '1234-5678', fetcher as unknown as typeof fetch)).toEqual({ status: 'failed' })
+  })
+})
+
+describe('postToService', () => {
+  it('posts the body as JSON to the path on the licence service and answers the response', async () => {
+    const fetcher = respond(200, { ok: true })
+
+    const response = await postToService('/macs', { key: 'a.b' }, fetcher)
+
+    expect(response.status).toBe(200)
+    expect(fetcher).toHaveBeenCalledWith(`${LICENCE_SERVICE_URL}/macs`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ key: 'a.b' }),
+    })
+  })
+
+  it('leaves a network failure to the caller', async () => {
+    const fetcher = vi.fn(async () => Promise.reject(new Error('offline')))
+
+    await expect(postToService('/macs', {}, fetcher as unknown as typeof fetch)).rejects.toThrow('offline')
   })
 })

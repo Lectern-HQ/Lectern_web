@@ -13,7 +13,7 @@ export type AppPlan = (typeof appPlans.plans)[number]
 /** The language code the app uses for "Detect automatically", which is not a language */
 const DETECT_LANGUAGE = 'auto'
 
-/** The app's plans file: currency, support address, VAT note, portal link and the plans */
+/** The app's plans file: currency, support address, VAT note, portal link, the plans and the licence limits */
 export const APP_PLANS = appPlans
 
 /** The plan with `id` in the app's file; a missing one fails the build */

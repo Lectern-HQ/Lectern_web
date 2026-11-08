@@ -52,17 +52,17 @@ export const SPEECH_MODEL = {
 /** The languages the app transcribes, from the app's own list */
 export const LANGUAGES = APP_LANGUAGE_NAMES
 
-/** Prices come from the app's plans, so the site and the app ask the same */
+/** Prices and the licence limits come from the app's plans, so the site and the app say the same */
 export const PRICING = {
   currency: APP_PLANS.currency,
-  freeLectures: 3,
+  freeLectures: APP_PLANS.licence.freeLectures,
   monthly: appPlan('monthly').amount,
   yearly: appPlan('yearly').amount,
   lifetime: appPlan('lifetime').amount,
   /** Macs one licence covers */
-  macsPerLicence: 3,
+  macsPerLicence: APP_PLANS.licence.macsPerKey,
   /** Macs one licence may free on the Your Macs page in a year; the licence service applies it */
-  remoteFreesPerYear: 3,
+  remoteFreesPerYear: APP_PLANS.licence.freesPerYear,
 } as const
 
 /** What the prices include, as the app says it */

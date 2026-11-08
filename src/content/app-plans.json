@@ -3,6 +3,11 @@
   "vatNote": "No VAT is charged (TVA non applicable, art. 293 B du CGI).",
   "manage": "https://billing.stripe.com/p/login/3cI3cv5rfeirdlT8p9fMA00",
   "currency": "EUR",
+  "licence": {
+    "freeLectures": 3,
+    "macsPerKey": 3,
+    "freesPerYear": 3
+  },
   "plans": [
     {
       "id": "monthly",
