@@ -35,11 +35,18 @@ export function downloadUrlFor(downloadsOpen: boolean, dmgUrl: string = release.
   return downloadsOpen ? dmgUrl : null
 }
 
+/** The DMG's SHA-256 while `downloadsOpen`, otherwise null so the page shows no hash for a file it does not offer */
+export function downloadSha256For(downloadsOpen: boolean, dmgSha256: string = release.dmgSha256): string | null {
+  return downloadsOpen ? dmgSha256 : null
+}
+
 /** Version, date and download come from the published update feed, so each release updates the site. */
 export const RELEASE = {
   version: release.version,
   publishedAt: release.publishedAt,
   downloadUrl: downloadUrlFor(DOWNLOADS_OPEN),
+  /** So a download can be checked against the release */
+  downloadSha256: downloadSha256For(DOWNLOADS_OPEN),
   minMacOS: '13 Ventura',
   chip: 'Apple Silicon',
 } as const

@@ -3,11 +3,30 @@ import { LostKeyLink } from '../components/lostKey/LostKeyLink'
 import { TextLink } from '../components/ui/TextLink'
 import { YourMacsLink } from '../components/yourMacs/YourMacsLink'
 import { ROUTES } from '../routes'
-import { LANGUAGES, PRICING, RELEASE, SPEECH_MODEL, formatList, formatPrice } from './site'
+import { LANGUAGES, PRICING, RELEASE, SITE, SPEECH_MODEL, formatList, formatPrice } from './site'
 
 export interface FaqEntry {
   question: string
   answer: ReactNode
+}
+
+/** How to check a downloaded DMG against `dmgSha256`, the hash the hero shows under the version */
+export function checkDownloadEntry(dmgSha256: string): FaqEntry {
+  return {
+    question: 'How can I check the download?',
+    answer: (
+      <>
+        Open Terminal, type <code className="font-mono text-[0.85em]">shasum -a 256 </code> with a space after it, drag
+        the downloaded file onto the window and press Return. It should print the SHA-256 shown at the top of this
+        page, under the version: <code className="font-mono text-[0.85em] break-all">{dmgSha256}</code>. If it prints
+        anything else, delete the file and write to{' '}
+        <TextLink inline href={`mailto:${SITE.supportEmail}`}>
+          {SITE.supportEmail}
+        </TextLink>
+        .
+      </>
+    ),
+  }
 }
 
 export const FAQ: readonly FaqEntry[] = [
@@ -38,6 +57,8 @@ export const FAQ: readonly FaqEntry[] = [
     question: 'Which computers does it run on?',
     answer: `Macs with ${RELEASE.chip} (M1 or later), on macOS ${RELEASE.minMacOS} or later. Intel Macs are not supported. A Windows version is planned and is not available yet.`,
   },
+  // Only while downloads are open, as there is no file to check before
+  ...(RELEASE.downloadSha256 === null ? [] : [checkDownloadEntry(RELEASE.downloadSha256)]),
   {
     question: 'How big is the speech model?',
     answer: `About ${SPEECH_MODEL.size}. Lectern downloads it one time, the first time you use the app, and keeps it on your Mac. You need ${SPEECH_MODEL.size} of free space.`,
