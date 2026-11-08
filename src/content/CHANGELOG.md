@@ -4,6 +4,18 @@ All notable changes to the Lectern app. The format follows [Keep a Changelog](ht
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-11-08
+
+A key works on up to 3 Macs: it is activated on this Mac when it is entered, Settings lists the Macs it is active on and can free one, and a key saved by an earlier version is activated by itself when Lectern opens.
+
+### Added
+- A key works on up to 3 Macs. Entering a key activates it on this Mac once, online, and only then is it saved; after that it works offline as before. A key already on 3 Macs is refused with how to free one (remove the key in Settings, Licence, on that Mac), a revoked key is refused, and without a connection Lectern says that activating needs the internet once. Removing the key frees this Mac, and is done even offline. Only the licence id and a random id for this Mac, kept in the Keychain, are sent.
+- Your Macs in Settings, Licence, under the key: the Macs the key is active on with their activation dates and this Mac marked, a Free button with a confirm step for another Mac (up to 3 frees a year, the same as the website's Your Macs page), how many frees are left, and Refresh. Removing the key still frees this Mac without counting. This sends the saved key itself to the licence service, which keeps nothing of it.
+- A key saved before activation existed (0.3.0 and earlier) is activated on this Mac by itself, once, in the background when Lectern opens, so Your Macs counts it. Offline or with the licence service down, nothing shows and Lectern tries again at the next start; the key keeps working. If the key is already on all its Macs or was revoked, the key is kept and the main screen says so: free a Mac on Your Macs in Settings, Licence, or on the website, or write to support. A Mac that is activated keeps a note of it in the Keychain and asks no more.
+
+### Changed
+- A renewal refused because the licence was revoked says the plan was not renewed.
+
 ## [0.3.0] - 2026-11-06
 
 The screens as the design draws them: Your plan on the Plans screen, a line under each Progress step, the plans as rows in a small window, the design's wording, no text smaller than 13px, the design's Safari permission step, and screens that fit the smallest window.
@@ -98,7 +110,8 @@ The first beta for macOS (Apple Silicon, macOS 13 or later).
 - The window has no permissions of its own: the app's core runs every tool, reads every file and opens every dialog.
 - The bundled tools are pinned and checked: yt-dlp's signature, the built ffmpeg (LGPL) and whisper.cpp; every binary is signed with the hardened runtime.
 
-[Unreleased]: https://github.com/Lectern-HQ/lectern/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/Lectern-HQ/lectern/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/Lectern-HQ/lectern/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/Lectern-HQ/lectern/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/Lectern-HQ/lectern/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/Lectern-HQ/lectern/releases/tag/v0.1.0
